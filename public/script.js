@@ -20,7 +20,11 @@ class AudioFileBrowser {
         
         this.initializeElements();
         this.bindEvents();
-        this.loadDirectory('');
+        
+        // Load from saved path or start at root
+        const savedPath = localStorage.getItem('audioFileBrowserLastPath') || '';
+        this.loadDirectory(savedPath);
+        
         this.updateBookmarkSelect();
         this.updateUserInfo();
         this.checkHintVisibility();
@@ -98,6 +102,9 @@ class AudioFileBrowser {
             this.updateUI(data);
             this.renderFileList(data.items);
             
+            // Save current path to localStorage
+            localStorage.setItem('audioFileBrowserLastPath', this.currentPath);
+            
         } catch (error) {
             console.error('LoadDirectory error:', error);
             this.fileList.innerHTML = `<div class="error">Error: ${error.message}</div>`;
@@ -107,7 +114,7 @@ class AudioFileBrowser {
     updateUI(data) {
         this.currentPathSpan.textContent = data.currentPath || 'Root';
         this.breadcrumb.textContent = `Path: ${data.currentPath || '/'}`;
-        // Enable back button if we have path history or if we're not at root
+        // Enable back button if we have path history OR if we're not at root (can go up one level)
         this.backBtn.disabled = this.pathHistory.length === 0 && !data.currentPath;
     }
     
@@ -304,19 +311,33 @@ class AudioFileBrowser {
     
     goBack() {
         if (this.pathHistory.length > 0) {
+            // Use path history if available
             const previousPath = this.pathHistory.pop();
             this.loadDirectory(previousPath);
+        } else if (this.currentPath) {
+            // If no path history but we're in a nested folder, go up one level
+            const pathParts = this.currentPath.split('/').filter(part => part.length > 0);
+            if (pathParts.length > 0) {
+                pathParts.pop(); // Remove the last part
+                const parentPath = pathParts.join('/');
+                this.loadDirectory(parentPath);
+            } else {
+                // Go to root
+                this.loadDirectory('');
+            }
         }
     }
     
     // Bookmark functionality
     loadBookmarks() {
-        const saved = localStorage.getItem('audioFileBrowserBookmarks');
+        const bookmarkKey = `audioFileBrowserBookmarks_${this.username || 'default'}`;
+        const saved = localStorage.getItem(bookmarkKey);
         return saved ? JSON.parse(saved) : {};
     }
     
     saveBookmarks() {
-        localStorage.setItem('audioFileBrowserBookmarks', JSON.stringify(this.bookmarks));
+        const bookmarkKey = `audioFileBrowserBookmarks_${this.username || 'default'}`;
+        localStorage.setItem(bookmarkKey, JSON.stringify(this.bookmarks));
     }
     
     addBookmark() {
@@ -387,12 +408,12 @@ class AudioFileBrowser {
             const evaluationNotes = this.evaluationNotes.value || '';
             
             // Create tab-separated values for spreadsheet (matching the exact template order)
-            // Corrected Order: 1.Filename 2.Duration 3.Text 4.Correct 5.Word Missing 6.Spelling Mistake 7.Word Accuracy 8.Grammar & Syntax 9.Proper Noun Recognition 10.Punctuation & Formatting 11.Audio Quality 12.Language Content 13.Notes
-            const tsvData = `${this.selectedFile.name}\t${duration}\t${fullText}\t${correct}\t${wordMissing}\t${spellingMistake}\t${wordAccuracy}\t${grammarSyntax}\t${properNounRecognition}\t${punctuationFormatting}\t${audioQuality}\t${languageContent}\t${evaluationNotes}`;
+            // Corrected Order: 1.Filename(Absolute Path) 2.Duration 3.Text 4.Correct 5.Word Missing 6.Spelling Mistake 7.Word Accuracy 8.Grammar & Syntax 9.Proper Noun Recognition 10.Punctuation & Formatting 11.Audio Quality 12.Language Content 13.Notes
+            const tsvData = `${absolutePath}\t${duration}\t${fullText}\t${correct}\t${wordMissing}\t${spellingMistake}\t${wordAccuracy}\t${grammarSyntax}\t${properNounRecognition}\t${punctuationFormatting}\t${audioQuality}\t${languageContent}\t${evaluationNotes}`;
             
             // Debug: Log the data being copied (remove in production)
             console.log('Copying data:', {
-                filename: this.selectedFile.name,
+                filename: absolutePath,
                 duration: duration,
                 correct: correct,
                 wordMissing: wordMissing,
