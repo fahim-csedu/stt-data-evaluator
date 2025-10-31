@@ -71,7 +71,9 @@ app.post('/api/logout', (req, res) => {
 // API endpoint to get directory contents
 app.get('/api/browse', requireAuth, (req, res) => {
     const relativePath = decodeURIComponent(req.query.path || '');
-    const fullPath = path.resolve(BASE_DIR, relativePath);
+    // Convert forward slashes to Windows path separators
+    const windowsPath = relativePath.replace(/\//g, path.sep);
+    const fullPath = path.resolve(BASE_DIR, windowsPath);
 
     try {
         // Security check: ensure the resolved path is within BASE_DIR
@@ -120,7 +122,8 @@ app.get('/api/browse', requireAuth, (req, res) => {
 
         // Debug logging
         console.log(`\n=== DIRECTORY SCAN ===`);
-        console.log(`Relative path: "${relativePath}"`);
+        console.log(`Original relative path: "${relativePath}"`);
+        console.log(`Windows path: "${windowsPath}"`);
         console.log(`Full path: "${fullPath}"`);
         console.log(`Directory exists: ${fs.existsSync(fullPath)}`);
         console.log(`All files found: ${allFiles.length}`);
@@ -186,7 +189,8 @@ app.get('/api/browse', requireAuth, (req, res) => {
 // Debug endpoint to list all files in directory (remove in production)
 app.get('/api/debug', requireAuth, (req, res) => {
     const relativePath = decodeURIComponent(req.query.path || '');
-    const fullPath = path.resolve(BASE_DIR, relativePath);
+    const windowsPath = relativePath.replace(/\//g, path.sep);
+    const fullPath = path.resolve(BASE_DIR, windowsPath);
 
     try {
         if (!fs.existsSync(fullPath)) {
@@ -228,7 +232,8 @@ app.get('/api/absolutePath', requireAuth, (req, res) => {
     }
 
     const decodedPath = decodeURIComponent(filePath);
-    const fullPath = path.resolve(BASE_DIR, decodedPath);
+    const windowsPath = decodedPath.replace(/\//g, path.sep);
+    const fullPath = path.resolve(BASE_DIR, windowsPath);
     res.json({ absolutePath: fullPath });
 });
 
@@ -240,7 +245,8 @@ app.get('/api/transcript', requireAuth, (req, res) => {
     }
 
     const decodedPath = decodeURIComponent(filePath);
-    const fullPath = path.resolve(BASE_DIR, decodedPath);
+    const windowsPath = decodedPath.replace(/\//g, path.sep);
+    const fullPath = path.resolve(BASE_DIR, windowsPath);
 
     try {
         if (!fs.existsSync(fullPath)) {
