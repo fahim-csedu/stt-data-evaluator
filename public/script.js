@@ -5,11 +5,21 @@ class AudioFileBrowser {
         this.selectedFile = null;
         this.currentTranscript = null;
         this.bookmarks = this.loadBookmarks();
+        this.sessionId = localStorage.getItem('audioFileBrowserSession');
+        this.username = localStorage.getItem('audioFileBrowserUsername');
+        
+        // Check authentication
+        if (!this.sessionId) {
+            window.location.href = '/login.html';
+            return;
+        }
         
         this.initializeElements();
         this.bindEvents();
         this.loadDirectory('');
         this.updateBookmarkSelect();
+        this.updateUserInfo();
+        this.checkHintVisibility();
     }
     
     initializeElements() {
@@ -23,6 +33,10 @@ class AudioFileBrowser {
         this.bookmarkBtn = document.getElementById('bookmarkBtn');
         this.bookmarkSelect = document.getElementById('bookmarkSelect');
         this.copyBtn = document.getElementById('copyBtn');
+        this.logoutBtn = document.getElementById('logoutBtn');
+        this.userInfo = document.getElementById('userInfo');
+        this.navigationHint = document.getElementById('navigationHint');
+        this.hintClose = document.getElementById('hintClose');
     }
     
     bindEvents() {
@@ -30,6 +44,8 @@ class AudioFileBrowser {
         this.bookmarkBtn.addEventListener('click', () => this.addBookmark());
         this.bookmarkSelect.addEventListener('change', (e) => this.jumpToBookmark(e.target.value));
         this.copyBtn.addEventListener('click', () => this.copyToClipboard());
+        this.logoutBtn.addEventListener('click', () => this.logout());
+        this.hintClose.addEventListener('click', () => this.dismissHint());
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -48,10 +64,18 @@ class AudioFileBrowser {
         try {
             this.fileList.innerHTML = '<div class="loading">Loading files...</div>';
             
-            const response = await fetch(`/api/browse?path=${encodeURIComponent(path)}`);
+            const response = await fetch(`/api/browse?path=${encodeURIComponent(path)}`, {
+                headers: {
+                    'x-session-id': this.sessionId
+                }
+            });
             const data = await response.json();
             
             if (!response.ok) {
+                if (response.status === 401) {
+                    this.handleAuthError();
+                    return;
+                }
                 throw new Error(data.error || 'Failed to load directory');
             }
             
@@ -202,7 +226,11 @@ class AudioFileBrowser {
             
             // Load transcript if available
             if (item.jsonFile) {
-                const response = await fetch(`/api/transcript?file=${encodeURIComponent(item.jsonFile)}`);
+                const response = await fetch(`/api/transcript?file=${encodeURIComponent(item.jsonFile)}`, {
+                    headers: {
+                        'x-session-id': this.sessionId
+                    }
+                });
                 if (response.ok) {
                     const transcript = await response.json();
                     this.currentTranscript = transcript;
@@ -308,7 +336,11 @@ class AudioFileBrowser {
         
         try {
             // Get absolute path from server
-            const pathResponse = await fetch(`/api/absolutePath?file=${encodeURIComponent(this.selectedFile.audioFile)}`);
+            const pathResponse = await fetch(`/api/absolutePath?file=${encodeURIComponent(this.selectedFile.audioFile)}`, {
+                headers: {
+                    'x-session-id': this.sessionId
+                }
+            });
             const pathData = await pathResponse.json();
             
             const absolutePath = pathData.absolutePath || this.selectedFile.name;
@@ -340,6 +372,52 @@ class AudioFileBrowser {
             console.error('Failed to copy to clipboard:', err);
             alert('Failed to copy to clipboard. Please try again.');
         }
+    }
+    
+    updateUserInfo() {
+        if (this.userInfo && this.username) {
+            this.userInfo.textContent = `Logged in as: ${this.username}`;
+        }
+    }
+    
+    handleAuthError() {
+        localStorage.removeItem('audioFileBrowserSession');
+        localStorage.removeItem('audioFileBrowserUsername');
+        window.location.href = '/login.html';
+    }
+    
+    async logout() {
+        try {
+            await fetch('/api/logout', {
+                method: 'POST',
+                headers: {
+                    'x-session-id': this.sessionId
+                }
+            });
+        } catch (error) {
+            console.error('Logout error:', error);
+        } finally {
+            localStorage.removeItem('audioFileBrowserSession');
+            localStorage.removeItem('audioFileBrowserUsername');
+            window.location.href = '/login.html';
+        }
+    }
+    
+    // Hint management
+    checkHintVisibility() {
+        const hintDismissed = localStorage.getItem('audioFileBrowserHintDismissed');
+        if (hintDismissed === 'true') {
+            this.navigationHint.classList.add('hidden');
+            // Adjust file list height when hint is hidden
+            this.fileList.style.height = 'calc(100% - 60px)';
+        }
+    }
+    
+    dismissHint() {
+        this.navigationHint.classList.add('hidden');
+        localStorage.setItem('audioFileBrowserHintDismissed', 'true');
+        // Adjust file list height when hint is hidden
+        this.fileList.style.height = 'calc(100% - 60px)';
     }
 }
 

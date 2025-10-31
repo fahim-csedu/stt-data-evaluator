@@ -4,10 +4,11 @@ A web server for browsing and playing audio files with their transcriptions.
 
 ## Features
 
+- **Authentication system** with demo accounts for secure access
 - Browse folders and subfolders with smooth navigation
 - Play FLAC audio files with transcript display
 - Bookmark folders for quick access
-- Copy audio data (filename, duration, transcript) for spreadsheet import
+- Copy audio data (absolute path, duration, transcript) for spreadsheet import
 - Keyboard shortcuts for efficient navigation
 - Responsive design
 
@@ -28,7 +29,11 @@ const BASE_DIR = './data';
 npm start
 ```
 
-4. Open your browser and go to `http://localhost:3002`
+4. Open your browser and go to `http://localhost:3000`
+
+## Authentication
+
+The application requires login credentials to access the audio file browser. Contact the administrator for access credentials.
 
 ## Usage
 

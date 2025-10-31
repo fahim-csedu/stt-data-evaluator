@@ -9,8 +9,16 @@
 <body>
     <div class="container">
         <header>
-            <h1>Audio File Browser</h1>
-            <div class="breadcrumb" id="breadcrumb"></div>
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>Audio File Browser</h1>
+                    <div class="breadcrumb" id="breadcrumb"></div>
+                </div>
+                <div class="header-right">
+                    <span id="userInfo" class="user-info"></span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
         </header>
         
         <main>
@@ -25,6 +33,10 @@
                                 <option value="">Jump to bookmark...</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="navigation-hint" id="navigationHint">
+                        <span class="hint-text">💡 Double-click folders to enter • Single-click audio files to play</span>
+                        <button class="hint-close" id="hintClose" title="Dismiss hint">×</button>
                     </div>
                     <div class="file-list" id="fileList">
                         <div class="loading">Loading files...</div>

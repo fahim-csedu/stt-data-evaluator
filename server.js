@@ -5,15 +5,71 @@ const fs = require('fs');
 const app = express();
 const PORT = 3002;
 
+// Demo accounts with secure random passwords
+const DEMO_ACCOUNTS = {
+    'mehadi': 'Kx9#mP2vL8qR',
+    'annoor': 'Zt4$nW7jF3xY',
+    'lina': 'Bv6&hQ9sM1kE',
+    'rar': 'Gp3*rT8cN5wA',
+    'dipto': 'Jm7@uV2bX4zD',
+    'sta': 'Qw5!yH8fK9pL',
+    'rkr': 'Cx2%eR6gJ7nM',
+    'fa': 'Fs4^iO1tY3vB',
+    'demo': 'Nz8&aU5hW2qS'
+};
+
+// Simple session storage (in production, use proper session management)
+const sessions = new Map();
+
+// Middleware to parse JSON
+app.use(express.json());
+
 // Configure the base directory - you can change this path
 const BASE_DIR = path.join(__dirname, 'data');
 
+// Authentication middleware
+function requireAuth(req, res, next) {
+    const sessionId = req.headers['x-session-id'];
+    if (!sessionId || !sessions.has(sessionId)) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+    next();
+}
+
 // Serve static files (CSS, JS, audio files)
 app.use('/static', express.static(path.join(__dirname, 'public')));
-app.use('/audio', express.static(BASE_DIR));
+app.use('/audio', requireAuth, express.static(BASE_DIR));
+
+// Login endpoint
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Username and password required' });
+    }
+
+    if (DEMO_ACCOUNTS[username] && DEMO_ACCOUNTS[username] === password) {
+        // Generate session ID
+        const sessionId = Math.random().toString(36).substring(2) + Date.now().toString(36);
+        sessions.set(sessionId, { username, loginTime: new Date() });
+
+        res.json({ success: true, sessionId, username });
+    } else {
+        res.status(401).json({ error: 'Invalid username or password' });
+    }
+});
+
+// Logout endpoint
+app.post('/api/logout', (req, res) => {
+    const sessionId = req.headers['x-session-id'];
+    if (sessionId) {
+        sessions.delete(sessionId);
+    }
+    res.json({ success: true });
+});
 
 // API endpoint to get directory contents
-app.get('/api/browse', (req, res) => {
+app.get('/api/browse', requireAuth, (req, res) => {
     const relativePath = req.query.path || '';
     const fullPath = path.join(BASE_DIR, relativePath);
 
@@ -75,7 +131,7 @@ app.get('/api/browse', (req, res) => {
 });
 
 // API endpoint to get absolute path
-app.get('/api/absolutePath', (req, res) => {
+app.get('/api/absolutePath', requireAuth, (req, res) => {
     const filePath = req.query.file;
     if (!filePath) {
         return res.status(400).json({ error: 'File path required' });
@@ -86,7 +142,7 @@ app.get('/api/absolutePath', (req, res) => {
 });
 
 // API endpoint to get JSON content
-app.get('/api/transcript', (req, res) => {
+app.get('/api/transcript', requireAuth, (req, res) => {
     const filePath = req.query.file;
     if (!filePath) {
         return res.status(400).json({ error: 'File path required' });
@@ -107,9 +163,14 @@ app.get('/api/transcript', (req, res) => {
     }
 });
 
-// Serve the main HTML page
+// Serve the main HTML page (protected)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Serve login page
+app.get('/login.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 app.listen(PORT, () => {
