@@ -5,13 +5,13 @@
 const config = {
     // Local testing path - change this to your local directory
     BASE_DIR: './data',  // or 'C:\\Users\\YourName\\Documents\\AudioFiles\\'
-    
+
     // Local development port
     PORT: 3002,
-    
+
     // Session timeout
     SESSION_TIMEOUT: 24 * 60 * 60 * 1000, // 24 hours
-    
+
     // Enable debug logging for local development
     DEBUG: true
 };

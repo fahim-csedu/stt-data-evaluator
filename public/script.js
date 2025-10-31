@@ -376,14 +376,19 @@ class AudioFileBrowser {
         
         try {
             // Get absolute path from server
+            console.log('Fetching absolute path for:', this.selectedFile.audioFile);
             const pathResponse = await fetch(`/api/absolutePath?file=${encodeURIComponent(this.selectedFile.audioFile)}`, {
                 headers: {
                     'x-session-id': this.sessionId
                 }
             });
+            
+            console.log('Path response status:', pathResponse.status);
             const pathData = await pathResponse.json();
+            console.log('Path response data:', pathData);
             
             const absolutePath = pathData.absolutePath || this.selectedFile.name;
+            console.log('Using absolute path:', absolutePath);
             const duration = this.currentTranscript.duration || 'N/A';
             
             // Extract all text from annotations
