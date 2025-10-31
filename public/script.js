@@ -41,6 +41,11 @@ class AudioFileBrowser {
         this.userInfo = document.getElementById('userInfo');
         this.navigationHint = document.getElementById('navigationHint');
         this.hintClose = document.getElementById('hintClose');
+        
+        // Annotation elements
+        this.annotationArea = document.getElementById('annotationArea');
+        this.clearAnnotationBtn = document.getElementById('clearAnnotationBtn');
+        this.evaluationNotes = document.getElementById('evaluationNotes');
     }
     
     bindEvents() {
@@ -50,6 +55,7 @@ class AudioFileBrowser {
         this.copyBtn.addEventListener('click', () => this.copyToClipboard());
         this.logoutBtn.addEventListener('click', () => this.logout());
         this.hintClose.addEventListener('click', () => this.dismissHint());
+        this.clearAnnotationBtn.addEventListener('click', () => this.clearAnnotation());
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -165,11 +171,14 @@ class AudioFileBrowser {
         // If it's an audio file, load it immediately
         if (item.type === 'audio') {
             this.loadAudioFile(item);
+            // Clear annotation form when selecting new audio
+            this.clearAnnotationSilent();
         }
         // For folders, just select them - require double-click or Enter to navigate
         
-        // Hide copy button when no audio is selected
-        this.copyBtn.style.display = item.type === 'audio' ? 'block' : 'none';
+        // Show/hide annotation area based on selection
+        const isAudio = item.type === 'audio';
+        this.annotationArea.style.display = isAudio ? 'block' : 'none';
     }
     
     selectFileElement(element) {
@@ -362,8 +371,40 @@ class AudioFileBrowser {
                 fullText = this.currentTranscript.annotation.map(item => item.text).join(' ');
             }
             
-            // Create tab-separated values for spreadsheet
-            const tsvData = `${absolutePath}\t${duration}\t${fullText}`;
+            // Get evaluation data from radio buttons
+            const correct = document.querySelector('input[name="correct"]:checked')?.value || '';
+            const wordMissing = document.querySelector('input[name="wordMissing"]:checked')?.value || '';
+            const spellingMistake = document.querySelector('input[name="spellingMistake"]:checked')?.value || '';
+            const languageContent = document.querySelector('input[name="languageContent"]:checked')?.value || '';
+            
+            // Get radio button values
+            const wordAccuracy = document.querySelector('input[name="wordAccuracy"]:checked')?.value || '';
+            const grammarSyntax = document.querySelector('input[name="grammarSyntax"]:checked')?.value || '';
+            const properNounRecognition = document.querySelector('input[name="properNounRecognition"]:checked')?.value || '';
+            const punctuationFormatting = document.querySelector('input[name="punctuationFormatting"]:checked')?.value || '';
+            const audioQuality = document.querySelector('input[name="audioQuality"]:checked')?.value || '';
+            
+            const evaluationNotes = this.evaluationNotes.value || '';
+            
+            // Create tab-separated values for spreadsheet (matching the exact template order)
+            // Corrected Order: 1.Filename 2.Duration 3.Text 4.Correct 5.Word Missing 6.Spelling Mistake 7.Word Accuracy 8.Grammar & Syntax 9.Proper Noun Recognition 10.Punctuation & Formatting 11.Audio Quality 12.Language Content 13.Notes
+            const tsvData = `${this.selectedFile.name}\t${duration}\t${fullText}\t${correct}\t${wordMissing}\t${spellingMistake}\t${wordAccuracy}\t${grammarSyntax}\t${properNounRecognition}\t${punctuationFormatting}\t${audioQuality}\t${languageContent}\t${evaluationNotes}`;
+            
+            // Debug: Log the data being copied (remove in production)
+            console.log('Copying data:', {
+                filename: this.selectedFile.name,
+                duration: duration,
+                correct: correct,
+                wordMissing: wordMissing,
+                spellingMistake: spellingMistake,
+                wordAccuracy: wordAccuracy,
+                grammarSyntax: grammarSyntax,
+                properNounRecognition: properNounRecognition,
+                punctuationFormatting: punctuationFormatting,
+                audioQuality: audioQuality,
+                languageContent: languageContent,
+                notes: evaluationNotes
+            });
             
             // Copy to clipboard
             await navigator.clipboard.writeText(tsvData);
@@ -428,6 +469,30 @@ class AudioFileBrowser {
         localStorage.setItem('audioFileBrowserHintDismissed', 'true');
         // Adjust file list height when hint is hidden
         this.fileList.style.height = 'calc(100% - 60px)';
+    }
+    
+    // Clear annotation form with confirmation
+    clearAnnotation() {
+        if (confirm('Are you sure you want to clear all evaluation fields?')) {
+            this.clearAnnotationSilent();
+        }
+    }
+    
+    // Clear annotation form without confirmation (used when selecting new audio)
+    clearAnnotationSilent() {
+        // Clear all radio buttons
+        document.querySelectorAll('input[name="correct"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="wordMissing"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="spellingMistake"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="languageContent"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="wordAccuracy"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="grammarSyntax"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="properNounRecognition"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="punctuationFormatting"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="audioQuality"]').forEach(radio => radio.checked = false);
+        
+        // Clear notes
+        this.evaluationNotes.value = '';
     }
 }
 

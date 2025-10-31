@@ -253,6 +253,8 @@ header {
 .player-area {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .audio-player {
@@ -266,10 +268,231 @@ header {
 }
 
 .transcript-area {
-    flex: 1;
+    flex-shrink: 0;
     padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.annotation-area {
+    flex-shrink: 0;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.annotation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.annotation-header h4 {
+    color: #2c3e50;
+    margin: 0;
+}
+
+.copy-button-container {
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 2px solid #007bff;
+}
+
+.copy-all-btn {
+    background: #007bff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    min-width: 150px;
+}
+
+.copy-all-btn:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.clear-btn {
+    background: #dc3545;
+}
+
+.clear-btn:hover {
+    background: #c82333;
+}
+
+.annotation-form {
+    /* Remove max-height since parent container handles scrolling */
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section h5 {
+    color: #495057;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.instructions {
+    background: #e3f2fd;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.instructions p {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.instructions ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 4px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
     display: flex;
     flex-direction: column;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.form-select,
+.form-input,
+.form-textarea {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 12px;
+    background: white;
+}
+
+.form-select:focus,
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 120px;
+}
+
+.yesno-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #e8f4fd;
+    border-radius: 6px;
+}
+
+.yesno-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.yesno-item:last-child {
+    border-bottom: none;
+}
+
+.scoring-group {
+    margin-bottom: 20px;
+}
+
+.scoring-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.scoring-item:last-child {
+    border-bottom: none;
+}
+
+.field-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #495057;
+    min-width: 150px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-group label {
+    font-size: 12px;
+    color: #495057;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.radio-group input[type="radio"] {
+    margin: 0;
+}
+
+.audio-quality-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.audio-quality-group .field-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-group-vertical label {
+    font-size: 12px;
+    color: #495057;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.radio-group-vertical input[type="radio"] {
+    margin: 0;
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
 .transcript-header {
@@ -307,13 +530,13 @@ header {
 }
 
 .transcript-content {
-    flex: 1;
     background: #f8f9fa;
     padding: 15px;
     border-radius: 6px;
-    overflow-y: auto;
     line-height: 1.6;
     white-space: pre-wrap;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .loading {
@@ -372,5 +595,42 @@ header {
     
     .hint-close {
         align-self: center;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .annotation-area {
+        max-height: 250px;
+    }
+    
+    .instructions {
+        font-size: 11px;
+    }
+    
+    .transcript-content {
+        min-height: 150px;
+    }
+    
+    .yesno-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .scoring-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .field-label {
+        min-width: auto;
+    }
+    
+    .radio-group {
+        gap: 10px;
     }
 }
