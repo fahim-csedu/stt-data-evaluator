@@ -63,12 +63,20 @@ class AudioFileBrowser {
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
+            // Check if user is typing in an input field
+            const isTyping = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable;
+            
             if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-                e.preventDefault();
-                this.navigateFiles(e.key === 'ArrowUp' ? -1 : 1);
+                if (!isTyping) {
+                    e.preventDefault();
+                    this.navigateFiles(e.key === 'ArrowUp' ? -1 : 1);
+                }
             } else if (e.key === 'Enter') {
-                this.activateSelectedFile();
-            } else if (e.key === 'Backspace' && !this.backBtn.disabled) {
+                if (!isTyping) {
+                    this.activateSelectedFile();
+                }
+            } else if (e.key === 'Backspace' && !this.backBtn.disabled && !isTyping) {
+                e.preventDefault();
                 this.goBack();
             }
         });
