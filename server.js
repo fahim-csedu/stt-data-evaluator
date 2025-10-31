@@ -336,7 +336,32 @@ app.get('/api/absolutePath', requireAuth, (req, res) => {
 
     const decodedPath = decodeURIComponent(filePath);
     const windowsPath = decodedPath.replace(/\//g, path.sep);
-    const fullPath = path.resolve(BASE_DIR, windowsPath);
+    
+    // Ensure we get an absolute path - handle Windows paths properly
+    let fullPath;
+    if (path.isAbsolute(BASE_DIR)) {
+        // BASE_DIR is already absolute (like D:\STT D3\...), use path.join
+        fullPath = path.join(BASE_DIR, windowsPath);
+    } else {
+        // BASE_DIR is relative (like ./data), resolve to absolute
+        fullPath = path.resolve(BASE_DIR, windowsPath);
+    }
+    
+    // Ensure the path is normalized and absolute
+    fullPath = path.resolve(fullPath);
+    
+    // Debug logging
+    if (DEBUG) {
+        console.log('AbsolutePath Debug:', {
+            originalFile: filePath,
+            decodedPath: decodedPath,
+            windowsPath: windowsPath,
+            BASE_DIR: BASE_DIR,
+            isAbsoluteBaseDir: path.isAbsolute(BASE_DIR),
+            fullPath: fullPath
+        });
+    }
+    
     res.json({ absolutePath: fullPath });
 });
 
