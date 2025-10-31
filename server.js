@@ -38,7 +38,81 @@ function requireAuth(req, res, next) {
 
 // Serve static files (CSS, JS, audio files)
 app.use('/static', express.static(path.join(__dirname, 'public')));
-app.use('/audio', requireAuth, express.static(BASE_DIR));
+
+// Custom audio file serving with authentication
+app.get('/audio/*', (req, res) => {
+    // Check authentication via query parameter or header
+    const sessionId = req.query.session || req.headers['x-session-id'];
+
+    if (!sessionId || !sessions.has(sessionId)) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+
+    // Get the file path from the URL
+    const filePath = req.params[0];
+    const decodedPath = decodeURIComponent(filePath);
+    const windowsPath = decodedPath.replace(/\//g, path.sep);
+    const fullPath = path.resolve(BASE_DIR, windowsPath);
+
+    try {
+        // Security check: ensure the resolved path is within BASE_DIR
+        const normalizedBase = path.resolve(BASE_DIR);
+        const normalizedFull = path.resolve(fullPath);
+
+        if (!normalizedFull.startsWith(normalizedBase)) {
+            return res.status(403).json({ error: 'Access denied: Path outside base directory' });
+        }
+
+        if (!fs.existsSync(fullPath)) {
+            return res.status(404).json({ error: 'File not found' });
+        }
+
+        // Determine content type based on file extension
+        const ext = path.extname(fullPath).toLowerCase();
+        const contentTypes = {
+            '.flac': 'audio/flac',
+            '.wav': 'audio/wav',
+            '.mp3': 'audio/mpeg',
+            '.m4a': 'audio/mp4',
+            '.ogg': 'audio/ogg'
+        };
+        const contentType = contentTypes[ext] || 'audio/octet-stream';
+
+        // Set appropriate headers for audio streaming
+        const stat = fs.statSync(fullPath);
+        const fileSize = stat.size;
+        const range = req.headers.range;
+
+        if (range) {
+            // Handle range requests for audio seeking
+            const parts = range.replace(/bytes=/, "").split("-");
+            const start = parseInt(parts[0], 10);
+            const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+            const chunksize = (end - start) + 1;
+            const file = fs.createReadStream(fullPath, { start, end });
+            const head = {
+                'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+                'Accept-Ranges': 'bytes',
+                'Content-Length': chunksize,
+                'Content-Type': contentType,
+            };
+            res.writeHead(206, head);
+            file.pipe(res);
+        } else {
+            // Serve the entire file
+            const head = {
+                'Content-Length': fileSize,
+                'Content-Type': contentType,
+                'Accept-Ranges': 'bytes',
+            };
+            res.writeHead(200, head);
+            fs.createReadStream(fullPath).pipe(res);
+        }
+    } catch (error) {
+        console.error('Audio serving error:', error);
+        res.status(500).json({ error: 'Failed to serve audio file' });
+    }
+});
 
 // Login endpoint
 app.post('/api/login', (req, res) => {

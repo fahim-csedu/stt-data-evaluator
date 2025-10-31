@@ -220,8 +220,8 @@ class AudioFileBrowser {
     
     async loadAudioFile(item) {
         try {
-            // Load audio
-            this.audioPlayer.src = `/audio/${item.audioFile}`;
+            // Load audio with session ID in query parameter
+            this.audioPlayer.src = `/audio/${item.audioFile}?session=${encodeURIComponent(this.sessionId)}`;
             this.currentFileSpan.textContent = item.name;
             
             // Load transcript if available
