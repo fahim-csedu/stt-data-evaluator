@@ -4,6 +4,9 @@ node_modules/
 # Package lock files
 package-lock.json
 
+# Local configuration (for development)
+config.local.js
+
 # Logs
 logs
 *.log

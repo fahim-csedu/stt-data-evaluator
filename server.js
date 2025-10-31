@@ -2,8 +2,20 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
+// Load configuration
+let config;
+try {
+    // Try to load local config first (for development)
+    config = require('./config.local.js');
+    console.log('Using local configuration');
+} catch (error) {
+    // Fall back to default config (for production)
+    config = require('./config.js');
+    console.log('Using default configuration');
+}
+
 const app = express();
-const PORT = 3002;
+const { BASE_DIR, PORT, SESSION_TIMEOUT, DEBUG } = config;
 
 // Demo accounts with secure random passwords
 const DEMO_ACCOUNTS = {
@@ -23,9 +35,6 @@ const sessions = new Map();
 
 // Middleware to parse JSON
 app.use(express.json());
-
-// Configure the base directory - you can change this path
-const BASE_DIR = 'D:\\STT D3\\STT D3\\deliverables3\\';
 
 // Authentication middleware
 function requireAuth(req, res, next) {
@@ -194,25 +203,27 @@ app.get('/api/browse', requireAuth, (req, res) => {
             }
         });
 
-        // Debug logging
-        console.log(`\n=== DIRECTORY SCAN ===`);
-        console.log(`Original relative path: "${relativePath}"`);
-        console.log(`Windows path: "${windowsPath}"`);
-        console.log(`Full path: "${fullPath}"`);
-        console.log(`Directory exists: ${fs.existsSync(fullPath)}`);
-        console.log(`All files found: ${allFiles.length}`);
-        if (allFiles.length > 0) {
-            console.log(`Files:`, allFiles);
+        // Debug logging (only in debug mode)
+        if (DEBUG) {
+            console.log(`\n=== DIRECTORY SCAN ===`);
+            console.log(`Original relative path: "${relativePath}"`);
+            console.log(`Windows path: "${windowsPath}"`);
+            console.log(`Full path: "${fullPath}"`);
+            console.log(`Directory exists: ${fs.existsSync(fullPath)}`);
+            console.log(`All files found: ${allFiles.length}`);
+            if (allFiles.length > 0) {
+                console.log(`Files:`, allFiles);
+            }
+            console.log(`Audio files found: ${audioFiles.length}`);
+            if (audioFiles.length > 0) {
+                console.log(`Audio files:`, audioFiles);
+            }
+            console.log(`JSON files found: ${jsonFiles.length}`);
+            if (jsonFiles.length > 0) {
+                console.log(`JSON files:`, jsonFiles);
+            }
+            console.log(`======================\n`);
         }
-        console.log(`Audio files found: ${audioFiles.length}`);
-        if (audioFiles.length > 0) {
-            console.log(`Audio files:`, audioFiles);
-        }
-        console.log(`JSON files found: ${jsonFiles.length}`);
-        if (jsonFiles.length > 0) {
-            console.log(`JSON files:`, jsonFiles);
-        }
-        console.log(`======================\n`);
 
         // Process audio files with flexible matching
         audioFiles.forEach(audioFile => {
