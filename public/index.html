@@ -19,6 +19,12 @@
                     <div class="browser-header">
                         <button id="backBtn" class="nav-btn" disabled>← Back</button>
                         <span id="currentPath">Loading...</span>
+                        <div class="browser-actions">
+                            <button id="bookmarkBtn" class="action-btn" title="Bookmark current folder">⭐</button>
+                            <select id="bookmarkSelect" class="bookmark-select">
+                                <option value="">Jump to bookmark...</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="file-list" id="fileList">
                         <div class="loading">Loading files...</div>
@@ -36,7 +42,10 @@
                     </div>
                     
                     <div class="transcript-area">
-                        <h4>Transcript</h4>
+                        <div class="transcript-header">
+                            <h4>Transcript</h4>
+                            <button id="copyBtn" class="action-btn" title="Copy data for spreadsheet" style="display: none;">📋 Copy</button>
+                        </div>
                         <div id="transcriptContent" class="transcript-content">
                             Select an audio file to view its transcript
                         </div>

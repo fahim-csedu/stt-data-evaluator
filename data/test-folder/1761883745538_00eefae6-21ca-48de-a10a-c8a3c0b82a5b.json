@@ -1,0 +1,41 @@
+{
+  "speech_id": "00eefae6-21ca-48de-a10a-c8a3c0b82a5b",
+  "duration": 30.0,
+  "distribution_source": "collect",
+  "distribution": "miscellaneous",
+  "domain": "Leisure",
+  "subdomain": "Frequent Speeches",
+  "source": "Dhaka FM",
+  "deliverables": [
+    3,
+    4
+  ],
+  "path": "collect/miscellaneous/Dhaka FM/DFM - AUDIO CLIP (03-01-2023)/00eefae6-21ca-48de-a10a-c8a3c0b82a5b.flac",
+  "annotation": [
+    {
+      "start": 0,
+      "end": 5.45,
+      "text": "আজকে আমরা এই আয়োজনটিতে আমাদের সঙ্গে একজন খুবই গুরুত্বপূর্ণ অতিথি এবং"
+    },
+    {
+      "start": 6.22,
+      "end": 10.73,
+      "text": "আমরা সত্যি আনন্দিতম গর্বিত এই ধরনের আয়োজন করতে পেরে আমাদের সঙ্গে আজকে উপস্থিত থাকবেন"
+    },
+    {
+      "start": 11.18,
+      "end": 18.33,
+      "text": "স্টসাজিদ অমিথ চিনি আমাদের সঙ্গে রয়েছেন এবং মোহাম্মদ আমরা এই মুহূর্তে তাকে"
+    },
+    {
+      "start": 18.7,
+      "end": 24.57,
+      "text": "আমাদের এই আয়োজনের যুক্ত করছি তিনিই আমাদের সঙ্গে যুক্ত হচ্ছেন আমাদের ফেইসবুক পেয়জে আমাদের সব বন্ধুদেরকে জানায়"
+    },
+    {
+      "start": 25.1,
+      "end": 29.13,
+      "text": "স্বাগত্ এবং তাকে আমরা একটু ওেলকম করে আসছি স্যার সালামু আলাইকম কেমন আছেন"
+    }
+  ]
+}

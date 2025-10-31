@@ -55,6 +55,13 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 15px;
+    justify-content: space-between;
+}
+
+.browser-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .nav-btn {
@@ -101,6 +108,16 @@ header h1 {
     background-color: #f8f9fa;
 }
 
+.file-item[data-type="folder"]:hover {
+    background-color: #e3f2fd;
+    cursor: pointer;
+}
+
+.file-item[data-type="audio"]:hover {
+    background-color: #f1f8e9;
+    cursor: pointer;
+}
+
 .file-item.selected {
     background-color: #e3f2fd;
     border-left: 4px solid #2196f3;
@@ -117,6 +134,12 @@ header h1 {
 
 .audio-icon {
     color: #28a745;
+}
+
+.file-item[data-type="folder"] .file-name::after {
+    content: " →";
+    color: #666;
+    font-size: 12px;
 }
 
 .file-name {
@@ -145,9 +168,38 @@ header h1 {
     flex-direction: column;
 }
 
-.transcript-area h4 {
+.transcript-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
+}
+
+.transcript-header h4 {
     color: #2c3e50;
+    margin: 0;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.action-btn:hover {
+    background: #218838;
+}
+
+.bookmark-select {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background: white;
 }
 
 .transcript-content {

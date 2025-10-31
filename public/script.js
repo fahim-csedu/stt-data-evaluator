@@ -3,10 +3,13 @@ class AudioFileBrowser {
         this.currentPath = '';
         this.pathHistory = [];
         this.selectedFile = null;
+        this.currentTranscript = null;
+        this.bookmarks = this.loadBookmarks();
         
         this.initializeElements();
         this.bindEvents();
         this.loadDirectory('');
+        this.updateBookmarkSelect();
     }
     
     initializeElements() {
@@ -17,10 +20,16 @@ class AudioFileBrowser {
         this.audioPlayer = document.getElementById('audioPlayer');
         this.currentFileSpan = document.getElementById('currentFile');
         this.transcriptContent = document.getElementById('transcriptContent');
+        this.bookmarkBtn = document.getElementById('bookmarkBtn');
+        this.bookmarkSelect = document.getElementById('bookmarkSelect');
+        this.copyBtn = document.getElementById('copyBtn');
     }
     
     bindEvents() {
         this.backBtn.addEventListener('click', () => this.goBack());
+        this.bookmarkBtn.addEventListener('click', () => this.addBookmark());
+        this.bookmarkSelect.addEventListener('change', (e) => this.jumpToBookmark(e.target.value));
+        this.copyBtn.addEventListener('click', () => this.copyToClipboard());
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -58,7 +67,8 @@ class AudioFileBrowser {
     updateUI(data) {
         this.currentPathSpan.textContent = data.currentPath || 'Root';
         this.breadcrumb.textContent = `Path: ${data.currentPath || '/'}`;
-        this.backBtn.disabled = !data.currentPath;
+        // Enable back button if we have path history or if we're not at root
+        this.backBtn.disabled = this.pathHistory.length === 0 && !data.currentPath;
     }
     
     renderFileList(items) {
@@ -122,12 +132,15 @@ class AudioFileBrowser {
         if (item.type === 'audio') {
             this.loadAudioFile(item);
         }
+        // For folders, just select them - require double-click or Enter to navigate
+        
+        // Hide copy button when no audio is selected
+        this.copyBtn.style.display = item.type === 'audio' ? 'block' : 'none';
     }
     
     selectFileElement(element) {
         if (!element) return;
         
-        const index = parseInt(element.dataset.index);
         const type = element.dataset.type;
         const path = element.dataset.path;
         
@@ -139,13 +152,11 @@ class AudioFileBrowser {
         };
         
         if (type === 'audio') {
-            // Find the audio and json file paths from the original data
-            const allItems = Array.from(this.fileList.querySelectorAll('.file-item'));
-            const currentElement = allItems[index];
             // We need to reconstruct the full item data for audio files
             item.audioFile = path;
             item.jsonFile = path.replace('.flac', '.json');
         }
+        // For folders, no additional properties needed
         
         this.selectFile(element, item);
     }
@@ -194,9 +205,13 @@ class AudioFileBrowser {
                 const response = await fetch(`/api/transcript?file=${encodeURIComponent(item.jsonFile)}`);
                 if (response.ok) {
                     const transcript = await response.json();
+                    this.currentTranscript = transcript;
                     this.displayTranscript(transcript);
+                    this.copyBtn.style.display = 'block';
                 } else {
                     this.transcriptContent.textContent = 'Transcript not available';
+                    this.currentTranscript = null;
+                    this.copyBtn.style.display = 'none';
                 }
             } else {
                 this.transcriptContent.textContent = 'No transcript file found';
@@ -214,6 +229,13 @@ class AudioFileBrowser {
         
         if (typeof transcript === 'string') {
             text = transcript;
+        } else if (transcript.annotation && Array.isArray(transcript.annotation)) {
+            // Handle the annotation format with timestamps
+            text = transcript.annotation.map(item => {
+                const start = this.formatTime(item.start);
+                const end = this.formatTime(item.end);
+                return `[${start} - ${end}] ${item.text}`;
+            }).join('\n\n');
         } else if (transcript.text) {
             text = transcript.text;
         } else if (transcript.transcript) {
@@ -227,10 +249,96 @@ class AudioFileBrowser {
         this.transcriptContent.textContent = text;
     }
     
+    formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+    
     goBack() {
         if (this.pathHistory.length > 0) {
             const previousPath = this.pathHistory.pop();
             this.loadDirectory(previousPath);
+        }
+    }
+    
+    // Bookmark functionality
+    loadBookmarks() {
+        const saved = localStorage.getItem('audioFileBrowserBookmarks');
+        return saved ? JSON.parse(saved) : {};
+    }
+    
+    saveBookmarks() {
+        localStorage.setItem('audioFileBrowserBookmarks', JSON.stringify(this.bookmarks));
+    }
+    
+    addBookmark() {
+        const name = prompt('Enter bookmark name:', this.currentPath || 'Root');
+        if (name) {
+            this.bookmarks[name] = this.currentPath;
+            this.saveBookmarks();
+            this.updateBookmarkSelect();
+        }
+    }
+    
+    updateBookmarkSelect() {
+        this.bookmarkSelect.innerHTML = '<option value="">Jump to bookmark...</option>';
+        Object.keys(this.bookmarks).forEach(name => {
+            const option = document.createElement('option');
+            option.value = this.bookmarks[name];
+            option.textContent = name;
+            this.bookmarkSelect.appendChild(option);
+        });
+    }
+    
+    jumpToBookmark(path) {
+        if (path !== '') {
+            this.pathHistory.push(this.currentPath);
+            this.loadDirectory(path);
+            this.bookmarkSelect.value = '';
+        }
+    }
+    
+    // Copy functionality for spreadsheet
+    async copyToClipboard() {
+        if (!this.selectedFile || !this.currentTranscript) {
+            alert('No audio file selected or transcript not loaded');
+            return;
+        }
+        
+        try {
+            // Get absolute path from server
+            const pathResponse = await fetch(`/api/absolutePath?file=${encodeURIComponent(this.selectedFile.audioFile)}`);
+            const pathData = await pathResponse.json();
+            
+            const absolutePath = pathData.absolutePath || this.selectedFile.name;
+            const duration = this.currentTranscript.duration || 'N/A';
+            
+            // Extract all text from annotations
+            let fullText = '';
+            if (this.currentTranscript.annotation && Array.isArray(this.currentTranscript.annotation)) {
+                fullText = this.currentTranscript.annotation.map(item => item.text).join(' ');
+            }
+            
+            // Create tab-separated values for spreadsheet
+            const tsvData = `${absolutePath}\t${duration}\t${fullText}`;
+            
+            // Copy to clipboard
+            await navigator.clipboard.writeText(tsvData);
+            
+            // Show temporary success message
+            const originalText = this.copyBtn.textContent;
+            this.copyBtn.textContent = '✓ Copied!';
+            this.copyBtn.style.background = '#28a745';
+            
+            setTimeout(() => {
+                this.copyBtn.textContent = originalText;
+                this.copyBtn.style.background = '#28a745';
+            }, 2000);
+            
+        } catch (err) {
+            console.error('Failed to copy to clipboard:', err);
+            alert('Failed to copy to clipboard. Please try again.');
         }
     }
 }

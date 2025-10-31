@@ -3,10 +3,10 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3002;
 
 // Configure the base directory - you can change this path
-const BASE_DIR = 'D:\\STT D3\\STT D3\\deliverables3\\';
+const BASE_DIR = path.join(__dirname, 'data');
 
 // Serve static files (CSS, JS, audio files)
 app.use('/static', express.static(path.join(__dirname, 'public')));
@@ -16,18 +16,22 @@ app.use('/audio', express.static(BASE_DIR));
 app.get('/api/browse', (req, res) => {
     const relativePath = req.query.path || '';
     const fullPath = path.join(BASE_DIR, relativePath);
-    
+
     try {
         if (!fs.existsSync(fullPath)) {
             return res.status(404).json({ error: 'Directory not found' });
         }
-        
+
         const items = fs.readdirSync(fullPath, { withFileTypes: true });
         const result = {
             currentPath: relativePath,
             items: []
         };
-        
+
+        // First, collect all files and group by UUID
+        const audioFiles = [];
+        const jsonFiles = [];
+
         items.forEach(item => {
             if (item.isDirectory()) {
                 result.items.push({
@@ -36,24 +40,49 @@ app.get('/api/browse', (req, res) => {
                     path: path.join(relativePath, item.name).replace(/\\/g, '/')
                 });
             } else if (item.name.endsWith('.flac')) {
-                const baseName = item.name.replace('.flac', '');
-                const jsonFile = baseName + '.json';
-                const jsonPath = path.join(fullPath, jsonFile);
-                
+                audioFiles.push(item.name);
+            } else if (item.name.endsWith('.json')) {
+                jsonFiles.push(item.name);
+            }
+        });
+
+        // Match audio files with their corresponding JSON files by UUID
+        audioFiles.forEach(audioFile => {
+            // Extract UUID from filename (everything after the first underscore)
+            const uuidMatch = audioFile.match(/_(.+)\.flac$/);
+            if (uuidMatch) {
+                const uuid = uuidMatch[1];
+
+                // Find matching JSON file with same UUID
+                const matchingJson = jsonFiles.find(jsonFile => jsonFile.includes(uuid));
+
+                const baseName = audioFile.replace('.flac', '');
+
                 result.items.push({
                     name: baseName,
                     type: 'audio',
-                    audioFile: path.join(relativePath, item.name).replace(/\\/g, '/'),
-                    jsonFile: fs.existsSync(jsonPath) ? path.join(relativePath, jsonFile).replace(/\\/g, '/') : null,
-                    path: path.join(relativePath, item.name).replace(/\\/g, '/')
+                    audioFile: path.join(relativePath, audioFile).replace(/\\/g, '/'),
+                    jsonFile: matchingJson ? path.join(relativePath, matchingJson).replace(/\\/g, '/') : null,
+                    path: path.join(relativePath, audioFile).replace(/\\/g, '/')
                 });
             }
         });
-        
+
         res.json(result);
     } catch (error) {
         res.status(500).json({ error: 'Failed to read directory' });
     }
+});
+
+// API endpoint to get absolute path
+app.get('/api/absolutePath', (req, res) => {
+    const filePath = req.query.file;
+    if (!filePath) {
+        return res.status(400).json({ error: 'File path required' });
+    }
+
+    const fullPath = path.join(BASE_DIR, filePath);
+    res.json({ absolutePath: fullPath });
 });
 
 // API endpoint to get JSON content
@@ -62,14 +91,14 @@ app.get('/api/transcript', (req, res) => {
     if (!filePath) {
         return res.status(400).json({ error: 'File path required' });
     }
-    
+
     const fullPath = path.join(BASE_DIR, filePath);
-    
+
     try {
         if (!fs.existsSync(fullPath)) {
             return res.status(404).json({ error: 'File not found' });
         }
-        
+
         const content = fs.readFileSync(fullPath, 'utf8');
         const jsonData = JSON.parse(content);
         res.json(jsonData);
