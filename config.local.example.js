@@ -7,7 +7,7 @@ const config = {
     BASE_DIR: './data',  // or 'C:\\Users\\YourName\\Documents\\AudioFiles\\'
     
     // Local development port
-    PORT: 3000,
+    PORT: 3002,
     
     // Session timeout
     SESSION_TIMEOUT: 24 * 60 * 60 * 1000, // 24 hours

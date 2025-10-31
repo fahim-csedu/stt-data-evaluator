@@ -8,8 +8,12 @@ class AudioFileBrowser {
         this.sessionId = localStorage.getItem('audioFileBrowserSession');
         this.username = localStorage.getItem('audioFileBrowserUsername');
         
+        console.log('AudioFileBrowser constructor - Session ID:', this.sessionId);
+        console.log('AudioFileBrowser constructor - Username:', this.username);
+        
         // Check authentication
         if (!this.sessionId) {
+            console.log('No session ID found, redirecting to login');
             window.location.href = '/login.html';
             return;
         }
@@ -62,6 +66,7 @@ class AudioFileBrowser {
     
     async loadDirectory(path) {
         try {
+            console.log('Loading directory:', path, 'with session:', this.sessionId);
             this.fileList.innerHTML = '<div class="loading">Loading files...</div>';
             
             const response = await fetch(`/api/browse?path=${encodeURIComponent(path)}`, {
@@ -69,10 +74,14 @@ class AudioFileBrowser {
                     'x-session-id': this.sessionId
                 }
             });
+            
+            console.log('Browse response status:', response.status);
             const data = await response.json();
+            console.log('Browse response data:', data);
             
             if (!response.ok) {
                 if (response.status === 401) {
+                    console.log('Authentication error, handling...');
                     this.handleAuthError();
                     return;
                 }
@@ -84,6 +93,7 @@ class AudioFileBrowser {
             this.renderFileList(data.items);
             
         } catch (error) {
+            console.error('LoadDirectory error:', error);
             this.fileList.innerHTML = `<div class="error">Error: ${error.message}</div>`;
         }
     }

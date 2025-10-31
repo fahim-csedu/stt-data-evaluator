@@ -25,7 +25,7 @@ const DEMO_ACCOUNTS = {
     'rar': 'Gp3*rT8cN5wA',
     'dipto': 'Jm7@uV2bX4zD',
     'sta': 'Qw5!yH8fK9pL',
-    'rkr': 'Cx2%eR6gJ7nM',
+    'mrk': 'Cx2%eR6gJ7nM',
     'fa': 'Fs4^iO1tY3vB',
     'demo': 'Nz8&aU5hW2qS'
 };
@@ -39,7 +39,17 @@ app.use(express.json());
 // Authentication middleware
 function requireAuth(req, res, next) {
     const sessionId = req.headers['x-session-id'];
+
+    if (DEBUG) {
+        console.log(`Auth check - Session ID: ${sessionId}`);
+        console.log(`Active sessions: ${sessions.size}`);
+        console.log(`Session exists: ${sessions.has(sessionId)}`);
+    }
+
     if (!sessionId || !sessions.has(sessionId)) {
+        if (DEBUG) {
+            console.log(`Authentication failed for session: ${sessionId}`);
+        }
         return res.status(401).json({ error: 'Authentication required' });
     }
     next();
@@ -136,8 +146,16 @@ app.post('/api/login', (req, res) => {
         const sessionId = Math.random().toString(36).substring(2) + Date.now().toString(36);
         sessions.set(sessionId, { username, loginTime: new Date() });
 
+        if (DEBUG) {
+            console.log(`Login successful - User: ${username}, Session: ${sessionId}`);
+            console.log(`Total active sessions: ${sessions.size}`);
+        }
+
         res.json({ success: true, sessionId, username });
     } else {
+        if (DEBUG) {
+            console.log(`Login failed - User: ${username}`);
+        }
         res.status(401).json({ error: 'Invalid username or password' });
     }
 });
