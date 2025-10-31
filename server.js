@@ -25,7 +25,7 @@ const sessions = new Map();
 app.use(express.json());
 
 // Configure the base directory - you can change this path
-const BASE_DIR = path.join(__dirname, 'data');
+const BASE_DIR = 'D:\\STT D3\\STT D3\\deliverables3\\';
 
 // Authentication middleware
 function requireAuth(req, res, next) {

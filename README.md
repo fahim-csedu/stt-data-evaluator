@@ -19,9 +19,9 @@ A web server for browsing and playing audio files with their transcriptions.
 npm install
 ```
 
-2. Update the base directory path in `server.js`:
+2. The server is configured to serve files from:
 ```javascript
-const BASE_DIR = './data';
+const BASE_DIR = 'D:\\STT D3\\STT D3\\deliverables3\\';
 ```
 
 3. Start the server:
@@ -29,7 +29,7 @@ const BASE_DIR = './data';
 npm start
 ```
 
-4. Open your browser and go to `http://localhost:3000`
+4. Open your browser and go to `http://localhost:3002`
 
 ## Authentication
 
