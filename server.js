@@ -65,8 +65,17 @@ function requireAuth(req, res, next) {
     next();
 }
 
-// Serve static files (CSS, JS, audio files)
-app.use('/static', express.static(path.join(__dirname, 'public')));
+// Serve static files (CSS, JS, audio files) with cache control
+app.use('/static', express.static(path.join(__dirname, 'public'), {
+    setHeaders: (res, path) => {
+        // Disable caching for HTML, CSS, and JS files to ensure users get updates
+        if (path.endsWith('.html') || path.endsWith('.css') || path.endsWith('.js')) {
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader('Pragma', 'no-cache');
+            res.setHeader('Expires', '0');
+        }
+    }
+}));
 
 // Custom audio file serving with authentication
 app.get('/audio/*', (req, res) => {
@@ -399,13 +408,19 @@ app.get('/api/transcript', requireAuth, (req, res) => {
     }
 });
 
-// Serve the main HTML page (protected)
+// Serve the main HTML page (protected) with no-cache headers
 app.get('/', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Serve login page
+// Serve login page with no-cache headers
 app.get('/login.html', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
