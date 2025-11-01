@@ -17,6 +17,16 @@ try {
 const app = express();
 const { BASE_DIR, PORT, SESSION_TIMEOUT, DEBUG } = config;
 
+// Helper function to normalize paths to forward slashes consistently
+function normalizePath(pathStr) {
+    if (!pathStr) return '';
+    return pathStr
+        .replace(/\\/g, '/')           // Convert backslashes to forward slashes
+        .replace(/\/+/g, '/')          // Replace multiple consecutive slashes with single slash
+        .replace(/^\//, '')            // Remove leading slash if present
+        .replace(/\/$/, '');           // Remove trailing slash if present
+}
+
 // Demo accounts with secure random passwords
 const DEMO_ACCOUNTS = {
     'mehadi': 'Kx9#mP2vL8qR',
@@ -203,11 +213,24 @@ app.get('/api/browse', requireAuth, (req, res) => {
         items.forEach(item => {
             if (item.isDirectory()) {
                 // Use forward slashes for web paths, but handle Windows paths properly
-                const itemPath = relativePath ? `${relativePath}/${item.name}` : item.name;
+                const itemPath = normalizePath(relativePath ? `${relativePath}/${item.name}` : item.name);
+
+                // Count files in this directory
+                const dirFullPath = path.join(fullPath, item.name);
+                let fileCount = 0;
+                try {
+                    const dirItems = fs.readdirSync(dirFullPath, { withFileTypes: true });
+                    fileCount = dirItems.filter(dirItem => dirItem.isFile()).length;
+                } catch (error) {
+                    // If we can't read the directory, set count to 0
+                    fileCount = 0;
+                }
+
                 result.items.push({
                     name: item.name,
                     type: 'folder',
-                    path: itemPath
+                    path: itemPath,
+                    fileCount: fileCount
                 });
             } else {
                 allFiles.push(item.name);
@@ -269,8 +292,8 @@ app.get('/api/browse', requireAuth, (req, res) => {
                 });
             }
 
-            const audioPath = relativePath ? `${relativePath}/${audioFile}` : audioFile;
-            const jsonPath = matchingJson ? (relativePath ? `${relativePath}/${matchingJson}` : matchingJson) : null;
+            const audioPath = normalizePath(relativePath ? `${relativePath}/${audioFile}` : audioFile);
+            const jsonPath = matchingJson ? normalizePath(relativePath ? `${relativePath}/${matchingJson}` : matchingJson) : null;
 
             result.items.push({
                 name: baseName,
@@ -335,34 +358,21 @@ app.get('/api/absolutePath', requireAuth, (req, res) => {
     }
 
     const decodedPath = decodeURIComponent(filePath);
-    const windowsPath = decodedPath.replace(/\//g, path.sep);
-    
-    // Ensure we get an absolute path - handle Windows paths properly
-    let fullPath;
-    if (path.isAbsolute(BASE_DIR)) {
-        // BASE_DIR is already absolute (like D:\STT D3\...), use path.join
-        fullPath = path.join(BASE_DIR, windowsPath);
-    } else {
-        // BASE_DIR is relative (like ./data), resolve to absolute
-        fullPath = path.resolve(BASE_DIR, windowsPath);
-    }
-    
-    // Ensure the path is normalized and absolute
-    fullPath = path.resolve(fullPath);
-    
+
+    // Convert the path to the desired format: collect/read/YouTube/Sangsad TV/496k9w8hY2c/filename.flac
+    // Use helper function to ensure consistent forward slash format
+    const normalizedPath = normalizePath(decodedPath);
+
     // Debug logging
     if (DEBUG) {
         console.log('AbsolutePath Debug:', {
             originalFile: filePath,
             decodedPath: decodedPath,
-            windowsPath: windowsPath,
-            BASE_DIR: BASE_DIR,
-            isAbsoluteBaseDir: path.isAbsolute(BASE_DIR),
-            fullPath: fullPath
+            normalizedPath: normalizedPath
         });
     }
-    
-    res.json({ absolutePath: fullPath });
+
+    res.json({ absolutePath: normalizedPath });
 });
 
 // API endpoint to get JSON content

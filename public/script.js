@@ -1,4 +1,14 @@
 class AudioFileBrowser {
+    // Helper function to normalize paths consistently
+    normalizePath(pathStr) {
+        if (!pathStr) return '';
+        return pathStr
+            .replace(/\\/g, '/')           // Convert backslashes to forward slashes
+            .replace(/\/+/g, '/')          // Replace multiple consecutive slashes with single slash
+            .replace(/^\//, '')            // Remove leading slash if present
+            .replace(/\/$/, '');           // Remove trailing slash if present
+    }
+    
     constructor() {
         this.currentPath = '';
         this.pathHistory = [];
@@ -149,6 +159,11 @@ class AudioFileBrowser {
             fileItem.dataset.type = item.type;
             fileItem.dataset.path = item.path;
             
+            // Serial number
+            const serial = document.createElement('span');
+            serial.className = 'file-serial';
+            serial.textContent = (index + 1).toString().padStart(2, '0');
+            
             const icon = document.createElement('span');
             icon.className = `file-icon ${item.type}-icon`;
             icon.textContent = item.type === 'folder' ? '📁' : '🎵';
@@ -157,8 +172,34 @@ class AudioFileBrowser {
             name.className = 'file-name';
             name.textContent = item.name;
             
+            // File count for folders
+            if (item.type === 'folder' && item.fileCount !== undefined) {
+                const count = document.createElement('span');
+                count.className = 'file-count';
+                count.textContent = `${item.fileCount} files`;
+                name.appendChild(count);
+            }
+            
+            // Actions container
+            const actions = document.createElement('div');
+            actions.className = 'file-actions';
+            
+            // Copy filename button
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-filename-btn';
+            copyBtn.innerHTML = '📋';
+            copyBtn.title = 'Copy filename';
+            copyBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.copyFilename(item, copyBtn);
+            });
+            
+            actions.appendChild(copyBtn);
+            
+            fileItem.appendChild(serial);
             fileItem.appendChild(icon);
             fileItem.appendChild(name);
+            fileItem.appendChild(actions);
             
             fileItem.addEventListener('click', () => this.selectFile(fileItem, item));
             fileItem.addEventListener('dblclick', () => this.activateFile(item));
@@ -395,7 +436,8 @@ class AudioFileBrowser {
             const pathData = await pathResponse.json();
             console.log('Path response data:', pathData);
             
-            const absolutePath = pathData.absolutePath || this.selectedFile.name;
+            // Ensure consistent forward slash format using helper function
+            const absolutePath = this.normalizePath(pathData.absolutePath || this.selectedFile.name);
             console.log('Using absolute path:', absolutePath);
             const duration = this.currentTranscript.duration || 'N/A';
             
@@ -527,6 +569,62 @@ class AudioFileBrowser {
         
         // Clear notes
         this.evaluationNotes.value = '';
+    }
+    
+    // Copy filename to clipboard
+    async copyFilename(item, buttonElement) {
+        try {
+            let filename;
+            
+            if (item.type === 'audio') {
+                // For audio files, get the normalized path format
+                const pathResponse = await fetch(`/api/absolutePath?file=${encodeURIComponent(item.audioFile)}`, {
+                    headers: {
+                        'x-session-id': this.sessionId
+                    }
+                });
+                
+                if (pathResponse.ok) {
+                    const pathData = await pathResponse.json();
+                    // Ensure consistent forward slash format using helper function
+                    filename = this.normalizePath(pathData.absolutePath);
+                } else {
+                    // Fallback: normalize the item name as well
+                    filename = this.normalizePath(item.name);
+                }
+            } else {
+                // For folders, normalize the path format
+                if (item.path) {
+                    filename = this.normalizePath(item.path);
+                } else {
+                    filename = this.normalizePath(item.name);
+                }
+            }
+            
+            await navigator.clipboard.writeText(filename);
+            
+            // Show visual feedback
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✓';
+            buttonElement.classList.add('copied');
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.classList.remove('copied');
+            }, 1500);
+            
+        } catch (error) {
+            console.error('Failed to copy filename:', error);
+            // Show error feedback
+            const originalContent = buttonElement.innerHTML;
+            buttonElement.innerHTML = '✗';
+            buttonElement.style.color = '#dc3545';
+            
+            setTimeout(() => {
+                buttonElement.innerHTML = originalContent;
+                buttonElement.style.color = '';
+            }, 1500);
+        }
     }
 }
 
