@@ -5,7 +5,7 @@ const config = {
     // Base directory for audio files
     // For local testing, you can change this to your local path
     // For production deployment, this will default to the Windows server path
-    BASE_DIR: process.env.AUDIO_BASE_DIR || 'D:\\STT D3\\STT D3\\deliverables3\\',
+    BASE_DIR: process.env.AUDIO_BASE_DIR || 'D:',
     
     // Server port
     PORT: process.env.PORT || 3002,
