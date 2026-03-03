@@ -1,0 +1,501 @@
+file_id,priority,quality_score,bangla_ratio,ooc_ratio,complexity_score,review_reason
+0006b05f-07e1-4af3-b1e0-85cf81ebeb2e,CRITICAL - Filter Out,17,0.00%,100.00%,49.4,CRITICAL: 100.0% OOC tags (9/9 words) - Unusable
+0151e564-0045-45e4-bbb8-4cfe610c3ace,CRITICAL - Filter Out,22,0.00%,95.45%,49.0,CRITICAL: 95.5% OOC tags (21/22 words) - Unusable
+0165b249-484a-4342-8dfa-4b0b00cc4e15,CRITICAL - Filter Out,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (84/84 words) - Unusable
+02d4547b-ee6b-484a-a11b-55234dedba58,CRITICAL - Filter Out,22,0.00%,96.36%,47.1,CRITICAL: 96.4% OOC tags (53/55 words) - Unusable
+2a9d3781-2e3f-4e4d-90ec-63a99988a588,CRITICAL - Filter Out,12,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable
+2b60dd1c-ce88-40f2-9e28-50bccdcdb378,CRITICAL - Filter Out,22,4.13%,93.85%,48.0,CRITICAL: 93.8% OOC tags (61/65 words) - Unusable
+4713135a-5206-453e-9fb9-ebec5d16f44c,CRITICAL - Filter Out,9,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable
+482b6e16-f925-4925-8632-dd3e2d73a38a,CRITICAL - Filter Out,22,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable
+497e5507-35f4-4150-b902-4b2ca4ab9c30,CRITICAL - Filter Out,22,0.00%,98.04%,46.7,CRITICAL: 98.0% OOC tags (50/51 words) - Unusable
+4e0eed73-33da-46d1-8670-a07a803ac016,CRITICAL - Filter Out,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable
+4f17930c-64f8-4049-a2f2-ed48bd9d9a36,CRITICAL - Filter Out,22,11.61%,84.21%,53.3,CRITICAL: 84.2% OOC tags (16/19 words) - Unusable
+5061c5c4-6a47-4996-94eb-3c44fed8a563,CRITICAL - Filter Out,22,16.35%,77.97%,55.2,CRITICAL: 78.0% OOC tags (46/59 words) - Unusable
+51edcbf5-ed91-4c2b-9d87-a4c8720983b8,CRITICAL - Filter Out,12,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable
+56cad792-6908-4f80-94ca-74f0b7a246bb,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (51/51 words) - Unusable
+5a3812a8-125c-4218-aff2-e823557f0875,CRITICAL - Filter Out,22,14.84%,77.78%,52.5,CRITICAL: 77.8% OOC tags (21/27 words) - Unusable
+5c3dcbf9-9740-4772-9f1c-d0496e239fbf,CRITICAL - Filter Out,22,17.45%,78.26%,52.4,CRITICAL: 78.3% OOC tags (36/46 words) - Unusable
+5e602415-b993-43bd-907b-ad6ddc872756,CRITICAL - Filter Out,22,0.00%,95.45%,48.9,CRITICAL: 95.5% OOC tags (21/22 words) - Unusable
+61dcce13-5986-453e-b0fd-1640ff60afa6,CRITICAL - Filter Out,22,17.26%,75.41%,52.9,CRITICAL: 75.4% OOC tags (46/61 words) - Unusable
+63558d56-5139-40a0-b934-aba8a6f4030b,CRITICAL - Filter Out,22,14.81%,80.49%,52.6,CRITICAL: 80.5% OOC tags (66/82 words) - Unusable
+676027b8-45b9-440e-bfe3-79873b221dfd,CRITICAL - Filter Out,22,10.84%,85.51%,51.5,CRITICAL: 85.5% OOC tags (59/69 words) - Unusable
+6a47ce0c-291b-4462-af55-800c1703306d,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (54/54 words) - Unusable
+6b874ebd-bd10-417b-a894-d3265ec2ff28,CRITICAL - Filter Out,22,0.00%,96.15%,47.6,CRITICAL: 96.2% OOC tags (50/52 words) - Unusable
+6c207d71-2ecd-4966-87cd-af8821a659b5,CRITICAL - Filter Out,22,0.00%,96.49%,47.1,CRITICAL: 96.5% OOC tags (55/57 words) - Unusable
+6c6bf0af-24b9-4ac9-8046-13d0b1f75f1c,CRITICAL - Filter Out,17,0.00%,100.00%,47.0,CRITICAL: 100.0% OOC tags (20/20 words) - Unusable
+6f261dfd-eee4-4db2-b7e5-c52063c75420,CRITICAL - Filter Out,22,0.00%,98.25%,46.4,CRITICAL: 98.2% OOC tags (56/57 words) - Unusable
+701c0e22-02de-4782-9201-f00eea8662d3,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (48/48 words) - Unusable
+708a557d-0991-4af9-9ad3-01756255e692,CRITICAL - Filter Out,22,0.00%,98.08%,46.5,CRITICAL: 98.1% OOC tags (51/52 words) - Unusable
+7175f791-2623-4c87-9d24-356489b5846c,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (57/57 words) - Unusable
+749f33a5-3e94-49a2-b357-02802350d240,CRITICAL - Filter Out,22,12.01%,85.53%,50.6,CRITICAL: 85.5% OOC tags (65/76 words) - Unusable
+763d1dc2-0763-4e79-b342-4288d66da0df,CRITICAL - Filter Out,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (71/71 words) - Unusable
+79c0e3d9-a2ab-46d9-814f-8e3e441abe48,CRITICAL - Filter Out,22,0.00%,95.38%,47.1,CRITICAL: 95.4% OOC tags (62/65 words) - Unusable
+7defc653-b213-491f-a3f0-4305b16f46ed,CRITICAL - Filter Out,22,0.00%,100.00%,45.9,CRITICAL: 100.0% OOC tags (47/47 words) - Unusable
+7e16b6c9-80c3-49e4-9100-f1f9b88de0aa,CRITICAL - Filter Out,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (62/62 words) - Unusable
+7e9e90ba-e166-4404-bded-ca487840bc82,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+7f776a92-74dd-4cdc-be0c-d48165aba566,CRITICAL - Filter Out,22,11.95%,79.17%,57.0,CRITICAL: 79.2% OOC tags (19/24 words) - Unusable
+7f880b36-281f-4e89-9490-c51e310ee512,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (52/52 words) - Unusable
+8429040e-e24f-47fe-bcff-cd0a8ebf0cfa,CRITICAL - Filter Out,22,7.95%,87.50%,50.3,CRITICAL: 87.5% OOC tags (49/56 words) - Unusable
+84fd0bd0-9c6f-4cdc-a5bd-f376d58b81d8,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+8650f115-b025-4df6-a689-8f03ac7d6776,CRITICAL - Filter Out,17,0.00%,100.00%,49.0,CRITICAL: 100.0% OOC tags (10/10 words) - Unusable
+871d2f64-5fff-44e3-b966-940d19b0b103,CRITICAL - Filter Out,22,0.00%,94.29%,47.5,CRITICAL: 94.3% OOC tags (66/70 words) - Unusable
+89d98887-8532-4098-b5f5-21c8d207a2c5,CRITICAL - Filter Out,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (86/86 words) - Unusable
+8b393f80-731f-4674-848e-95cc444b0546,CRITICAL - Filter Out,22,0.00%,100.00%,47.4,CRITICAL: 100.0% OOC tags (17/17 words) - Unusable
+8c627669-074a-4f5b-bdc6-d1b464f6dbe8,CRITICAL - Filter Out,22,0.00%,94.29%,49.4,CRITICAL: 94.3% OOC tags (33/35 words) - Unusable
+8d009bed-b7c3-4b1b-b8ca-68472f3105e2,CRITICAL - Filter Out,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable
+8d41cc78-c923-4ef1-9684-0310c329b306,CRITICAL - Filter Out,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (62/62 words) - Unusable
+8deb93a9-0823-4c3b-86e2-d91b7d3030cf,CRITICAL - Filter Out,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable
+8e3049f3-33d5-4aac-9315-204715bcbf7d,CRITICAL - Filter Out,17,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable
+901849a9-bce7-494e-8a01-c34a8a884114,CRITICAL - Filter Out,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable
+92163706-299d-47ac-a565-d11367062543,CRITICAL - Filter Out,22,0.00%,95.83%,48.6,CRITICAL: 95.8% OOC tags (23/24 words) - Unusable
+922c2a1c-87fa-476e-a8dd-71887136bdf0,CRITICAL - Filter Out,17,0.00%,100.00%,47.5,CRITICAL: 100.0% OOC tags (16/16 words) - Unusable
+95326f66-bf6f-4c22-bd41-1cc7e6d1ea94,CRITICAL - Filter Out,22,24.11%,75.44%,56.3,CRITICAL: 75.4% OOC tags (43/57 words) - Unusable
+9868b919-dd48-4819-b9b1-eea001f20cd4,CRITICAL - Filter Out,17,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable
+9c6a62a4-db79-4a11-92b7-40d5f49adcea,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+a0ccc3b1-1827-4224-bd28-4c4b2d4d4a30,CRITICAL - Filter Out,22,0.00%,94.44%,49.8,CRITICAL: 94.4% OOC tags (17/18 words) - Unusable
+a19a6573-06e0-404d-ad41-9f36f5af1a66,CRITICAL - Filter Out,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable
+a1ce9685-71c9-4eef-871a-54eaa51488e2,CRITICAL - Filter Out,22,12.24%,84.51%,52.1,CRITICAL: 84.5% OOC tags (60/71 words) - Unusable
+a2392112-3b1c-4651-8fc2-f366c516c111,CRITICAL - Filter Out,22,2.97%,88.64%,50.2,CRITICAL: 88.6% OOC tags (39/44 words) - Unusable
+a583786b-59a7-419e-b4e0-fc4497655bd3,CRITICAL - Filter Out,22,13.48%,83.78%,52.1,CRITICAL: 83.8% OOC tags (62/74 words) - Unusable
+a752417e-73c9-4bed-8ca6-34aa7e1ff494,CRITICAL - Filter Out,17,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable
+ac221add-6562-4184-b93f-04efc04e9f36,CRITICAL - Filter Out,22,9.90%,83.58%,51.0,CRITICAL: 83.6% OOC tags (56/67 words) - Unusable
+ad277bb4-b04c-497f-b41e-5c009c3223d3,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (60/60 words) - Unusable
+ae0ecbf3-5461-4e9e-af2d-90c354cbb8bb,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (49/49 words) - Unusable
+b4660d59-e9ae-435c-800d-99a85d0e90b2,CRITICAL - Filter Out,22,10.02%,88.16%,50.0,CRITICAL: 88.2% OOC tags (67/76 words) - Unusable
+b4e1e226-de93-4890-aeaf-f178e58d63a8,CRITICAL - Filter Out,9,0.00%,100.00%,65.0,CRITICAL: 100.0% OOC tags (2/2 words) - Unusable
+b588ed3c-e1d2-498a-9dfc-fd500ad06ed5,CRITICAL - Filter Out,14,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable
+b7a2bf57-bad5-4f52-a866-393648544ce0,CRITICAL - Filter Out,17,0.00%,100.00%,47.4,CRITICAL: 100.0% OOC tags (17/17 words) - Unusable
+b8a85f9e-0cd2-40b5-9923-ff2214773eca,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+b95af17c-90ee-4408-8888-2debf9af06a6,CRITICAL - Filter Out,22,0.00%,98.15%,46.5,CRITICAL: 98.1% OOC tags (53/54 words) - Unusable
+ba0f4e10-e995-4a6a-95a8-e90398930881,CRITICAL - Filter Out,22,0.00%,98.51%,46.1,CRITICAL: 98.5% OOC tags (66/67 words) - Unusable
+ba62c128-879e-410d-8ab0-893beba94d38,CRITICAL - Filter Out,22,0.00%,92.59%,50.8,CRITICAL: 92.6% OOC tags (25/27 words) - Unusable
+be546224-b34d-49f5-ac2a-fa7ac93e6d9c,CRITICAL - Filter Out,22,1.33%,96.00%,47.5,CRITICAL: 96.0% OOC tags (48/50 words) - Unusable
+bf52ec55-9cd2-48f1-b1b3-d74c199c4762,CRITICAL - Filter Out,22,11.50%,79.03%,53.5,CRITICAL: 79.0% OOC tags (49/62 words) - Unusable
+c02fa393-fc00-4b76-8546-bfe65bc9befc,CRITICAL - Filter Out,22,0.00%,95.77%,46.7,CRITICAL: 95.8% OOC tags (68/71 words) - Unusable
+c157b539-5bd5-4add-b9da-4de2da0d7e4a,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+c2e9f298-e4fa-41ba-99b6-a20d0d46bdea,CRITICAL - Filter Out,17,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable
+c481e82d-6098-48cf-b6a1-2d6574d915d1,CRITICAL - Filter Out,17,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable
+c56e132f-fa55-4312-94e6-94022f466e4a,CRITICAL - Filter Out,22,17.37%,79.31%,53.7,CRITICAL: 79.3% OOC tags (23/29 words) - Unusable
+c6383163-53e7-4ded-ba68-4b22fd9081f6,CRITICAL - Filter Out,14,0.00%,100.00%,49.0,CRITICAL: 100.0% OOC tags (10/10 words) - Unusable
+c6e21778-cac1-4b94-a93c-e6d731a85795,CRITICAL - Filter Out,22,14.20%,85.71%,52.0,CRITICAL: 85.7% OOC tags (48/56 words) - Unusable
+c8800c82-5353-42c8-8b29-c730e0f394c1,CRITICAL - Filter Out,22,1.03%,96.88%,47.2,CRITICAL: 96.9% OOC tags (62/64 words) - Unusable
+cbfaff80-6491-4e62-8302-0e4a6eb76171,CRITICAL - Filter Out,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable
+cd53b34e-1c22-4d6c-862c-e76785dcaee8,CRITICAL - Filter Out,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (79/79 words) - Unusable
+cda88637-5527-4bc7-8403-fdaa83efdbf9,CRITICAL - Filter Out,14,0.00%,100.00%,53.0,CRITICAL: 100.0% OOC tags (5/5 words) - Unusable
+cee720e9-4ad0-410d-886c-428c7178060b,CRITICAL - Filter Out,17,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable
+d0948c29-41f4-44a8-bde7-e7b5f88060c4,CRITICAL - Filter Out,22,0.00%,100.00%,45.4,CRITICAL: 100.0% OOC tags (96/96 words) - Unusable
+d1f5bd7c-1504-42ff-b7fc-921d816b311e,CRITICAL - Filter Out,17,0.00%,100.00%,46.9,CRITICAL: 100.0% OOC tags (21/21 words) - Unusable
+d41f3154-f79f-4d53-a06a-e2fb3d7d5c53,CRITICAL - Filter Out,17,7.55%,88.37%,51.1,CRITICAL: 88.4% OOC tags (38/43 words) - Unusable
+d70c0df2-1269-46e1-839b-5b7d87dda332,CRITICAL - Filter Out,22,0.00%,96.43%,47.3,CRITICAL: 96.4% OOC tags (54/56 words) - Unusable
+daa4c365-add4-4c95-bf81-d439942d706a,CRITICAL - Filter Out,22,7.84%,91.18%,48.9,CRITICAL: 91.2% OOC tags (31/34 words) - Unusable
+ddc82738-c8f3-41a9-97cb-fd619e155b3c,CRITICAL - Filter Out,17,12.17%,82.05%,51.9,CRITICAL: 82.1% OOC tags (32/39 words) - Unusable
+e3380f92-934a-4aec-857d-1ecebcfe7b21,CRITICAL - Filter Out,22,11.45%,80.00%,50.6,CRITICAL: 80.0% OOC tags (52/65 words) - Unusable
+e9c1ef28-232d-4847-a4c6-2239ff116ba2,CRITICAL - Filter Out,22,5.34%,95.65%,48.0,CRITICAL: 95.7% OOC tags (44/46 words) - Unusable
+eb464b1d-e254-4821-8d7b-9fd9dca2a68a,CRITICAL - Filter Out,22,0.00%,97.18%,46.7,CRITICAL: 97.2% OOC tags (69/71 words) - Unusable
+ec34b89a-48f6-4f7d-8763-26e630f3facd,CRITICAL - Filter Out,9,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable
+ed9b227c-0f42-4d9e-873d-146c2abf3d3e,CRITICAL - Filter Out,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable
+ee2ec508-fdac-4a8c-b504-9ee1cc57f437,CRITICAL - Filter Out,22,0.00%,93.33%,50.9,CRITICAL: 93.3% OOC tags (14/15 words) - Unusable
+f577c322-be75-4d85-86c6-67205b37f28e,CRITICAL - Filter Out,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (68/68 words) - Unusable
+f8e6907c-6b56-4a3b-b37c-7d0a808b6710,CRITICAL - Filter Out,22,9.09%,80.82%,52.9,CRITICAL: 80.8% OOC tags (59/73 words) - Unusable
+fc5c8b03-a5f9-4285-9fcb-b5e0e75b5089,CRITICAL - Filter Out,22,0.00%,97.83%,46.8,CRITICAL: 97.8% OOC tags (45/46 words) - Unusable
+fda504cf-1fa9-4ed8-834c-0039cf6b7bf0,CRITICAL - Filter Out,14,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable
+fe4e8731-3737-4877-b346-d26d1160a2cd,CRITICAL - Filter Out,22,13.04%,80.33%,52.2,CRITICAL: 80.3% OOC tags (49/61 words) - Unusable
+2ea180c6-3148-4fcc-9977-49ad796a04f5,CRITICAL - Filter Out,22,0.00%,96.97%,47.6,CRITICAL: 97.0% OOC tags (32/33 words) - Unusable
+30d6829c-9d96-46d7-b035-d44c245adad4,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (58/58 words) - Unusable
+31378628-b4d0-4d7f-90f7-2fe7fa7abb91,CRITICAL - Filter Out,17,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable
+315e5060-5ba5-42f1-b045-d159502a031d,CRITICAL - Filter Out,22,19.18%,81.82%,53.9,CRITICAL: 81.8% OOC tags (54/66 words) - Unusable
+3431eb75-a897-4e06-9fef-89077bb757b0,CRITICAL - Filter Out,22,15.41%,80.39%,53.0,CRITICAL: 80.4% OOC tags (41/51 words) - Unusable
+3a2ba39e-c3fb-4be6-a128-ba8053ce90f4,CRITICAL - Filter Out,22,0.00%,97.37%,47.8,CRITICAL: 97.4% OOC tags (37/38 words) - Unusable
+3a30e5ce-a1b1-439b-b1ed-2d11c675d841,CRITICAL - Filter Out,22,16.33%,78.43%,53.3,CRITICAL: 78.4% OOC tags (40/51 words) - Unusable
+3cb4f928-46d6-4105-8048-5fb452168988,CRITICAL - Filter Out,22,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable
+3d180730-2cea-4f9a-90ac-00fc40012172,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (53/53 words) - Unusable
+3df80917-95b8-4a99-b758-6bf052b343e9,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (57/57 words) - Unusable
+3e323419-b77d-4573-94e4-7897205ecc77,CRITICAL - Filter Out,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (49/49 words) - Unusable
+3fe7ada2-d685-46d5-a264-386360de2553,CRITICAL - Filter Out,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (66/66 words) - Unusable
+41ddb26a-e4d0-485a-b631-23e18a1f2496,CRITICAL - Filter Out,17,0.00%,83.33%,58.8,CRITICAL: 83.3% OOC tags (5/6 words) - Unusable
+42c5580b-ed7f-4c43-850e-b38ad2f2345c,CRITICAL - Filter Out,17,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable
+44385bf9-8c62-421a-9af4-cccebe2e771e,CRITICAL - Filter Out,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (61/61 words) - Unusable
+44a9e96b-ce66-4080-94dc-f53bf97154b5,CRITICAL - Filter Out,22,0.00%,97.73%,46.8,CRITICAL: 97.7% OOC tags (43/44 words) - Unusable
+059c7145-a955-43b2-b5c2-4e6fad60115d,CRITICAL - Filter Out,22,9.54%,90.00%,49.5,CRITICAL: 90.0% OOC tags (45/50 words) - Unusable
+0626f4b4-75d3-4246-9dba-cb327cea8dec,CRITICAL - Filter Out,22,0.00%,100.00%,46.5,CRITICAL: 100.0% OOC tags (27/27 words) - Unusable
+0635174a-99f0-4e8d-a718-31fa6023a2df,CRITICAL - Filter Out,9,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable
+07281128-3989-46f3-8c1a-b8b8371691af,CRITICAL - Filter Out,22,10.67%,91.67%,49.4,CRITICAL: 91.7% OOC tags (44/48 words) - Unusable
+0a111a40-1ae3-46ca-8e08-7f17d508c46e,CRITICAL - Filter Out,12,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable
+0dabb103-4433-41ec-8f7d-c832a93db6b9,CRITICAL - Filter Out,22,0.00%,100.00%,46.2,CRITICAL: 100.0% OOC tags (34/34 words) - Unusable
+0ff41670-cda0-4ac8-bad4-204036ad91c4,CRITICAL - Filter Out,22,6.31%,89.47%,49.4,CRITICAL: 89.5% OOC tags (17/19 words) - Unusable
+10b058f6-0398-41b8-87b0-c63d9a6d3209,CRITICAL - Filter Out,22,8.00%,92.98%,49.0,CRITICAL: 93.0% OOC tags (53/57 words) - Unusable
+124f5677-72a5-4740-8d2f-f68ef8b32257,CRITICAL - Filter Out,22,0.00%,92.86%,48.1,CRITICAL: 92.9% OOC tags (26/28 words) - Unusable
+16665e3c-3146-4caa-b258-1d54db1ef636,CRITICAL - Filter Out,12,0.00%,100.00%,53.0,CRITICAL: 100.0% OOC tags (5/5 words) - Unusable
+1c0d4cd5-5c52-4e29-bc4c-51e1f7424636,CRITICAL - Filter Out,17,10.26%,76.92%,57.5,CRITICAL: 76.9% OOC tags (10/13 words) - Unusable
+1fd94496-0da0-4546-aca3-f87e7245a851,CRITICAL - Filter Out,9,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable
+20c0a458-1468-4870-b1b1-388544d811db,CRITICAL - Filter Out,20,0.00%,93.75%,49.3,CRITICAL: 93.8% OOC tags (45/48 words) - Unusable
+20ea6d00-10db-4784-88ef-5de7c9996283,CRITICAL - Filter Out,9,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable
+214366c9-1c27-4f88-83e2-a60af3438a40,CRITICAL - Filter Out,22,0.00%,98.08%,46.5,CRITICAL: 98.1% OOC tags (51/52 words) - Unusable
+29bb55ed-8619-456d-8e96-de2587cab8fb,CRITICAL - Filter Out,22,0.00%,100.00%,49.4,CRITICAL: 100.0% OOC tags (9/9 words) - Unusable
+10b058f6-0398-41b8-87b0-c63d9a6d3209,HIGH - Low Quality,22,8.00%,92.98%,49.0,CRITICAL: 93.0% OOC tags (53/57 words) - Unusable|Mixed English-Bangla text: 159 English characters|Low Bangla character ratio: 8.0%
+0ff41670-cda0-4ac8-bad4-204036ad91c4,HIGH - Low Quality,22,6.31%,89.47%,49.4,CRITICAL: 89.5% OOC tags (17/19 words) - Unusable|High OOC frequency: 2.8 OOC/second|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 6.3%
+0dabb103-4433-41ec-8f7d-c832a93db6b9,HIGH - Low Quality,22,0.00%,100.00%,46.2,CRITICAL: 100.0% OOC tags (34/34 words) - Unusable|High OOC frequency: 2.5 OOC/second|Mixed English-Bangla text: 102 English characters|Low Bangla character ratio: 0.0%
+0cc493d1-5aa8-415e-a53a-19f5e0119466,HIGH - Low Quality,37,26.30%,66.67%,57.6,SEVERE: 66.7% OOC tags (36/54 words) - Manual review needed|Mixed English-Bangla text: 108 English characters|Low Bangla character ratio: 26.3%
+0c56446b-f75d-4126-94d2-c9306032cc27,HIGH - Low Quality,37,28.86%,64.00%,59.8,SEVERE: 64.0% OOC tags (16/25 words) - Manual review needed|Mixed English-Bangla text: 48 English characters|Low Bangla character ratio: 28.9%
+0a111a40-1ae3-46ca-8e08-7f17d508c46e,HIGH - Low Quality,12,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable|High OOC frequency: 2.4 OOC/second|Poor annotation coverage: 39.1% of audio annotated|Unrealistically high word density: 6.1 words/second|Mixed English
+08785bf2-27ee-42be-9aee-94dca5ae9d65,HIGH - Low Quality,37,29.01%,59.09%,59.0,SEVERE: 59.1% OOC tags (26/44 words) - Manual review needed|Mixed English-Bangla text: 78 English characters|Low Bangla character ratio: 29.0%
+07281128-3989-46f3-8c1a-b8b8371691af,HIGH - Low Quality,22,10.67%,91.67%,49.4,CRITICAL: 91.7% OOC tags (44/48 words) - Unusable|Mixed English-Bangla text: 132 English characters|Low Bangla character ratio: 10.7%
+0635174a-99f0-4e8d-a718-31fa6023a2df,HIGH - Low Quality,9,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable|Poor annotation coverage: 38.4% of audio annotated|Low word density: 0.6 words/second (expected 2-4)|Mixed English-Bangla text: 21 English characters|V
+0626f4b4-75d3-4246-9dba-cb327cea8dec,HIGH - Low Quality,22,0.00%,100.00%,46.5,CRITICAL: 100.0% OOC tags (27/27 words) - Unusable|High OOC frequency: 2.7 OOC/second|Mixed English-Bangla text: 81 English characters|Low Bangla character ratio: 0.0%
+059c7145-a955-43b2-b5c2-4e6fad60115d,HIGH - Low Quality,22,9.54%,90.00%,49.5,CRITICAL: 90.0% OOC tags (45/50 words) - Unusable|Mixed English-Bangla text: 135 English characters|Low Bangla character ratio: 9.5%
+02d4547b-ee6b-484a-a11b-55234dedba58,HIGH - Low Quality,22,0.00%,96.36%,47.1,CRITICAL: 96.4% OOC tags (53/55 words) - Unusable|Mixed English-Bangla text: 159 English characters|Low Bangla character ratio: 0.0%
+028f3100-a2b5-43c3-9439-981c22d41b23,HIGH - Low Quality,32,22.22%,72.22%,58.5,SEVERE: 72.2% OOC tags (13/18 words) - Manual review needed|Moderate annotation coverage: 75.3% of audio annotated|Mixed English-Bangla text: 39 English characters|Low Bangla character ratio: 22.2%
+0165b249-484a-4342-8dfa-4b0b00cc4e15,HIGH - Low Quality,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (84/84 words) - Unusable|High OOC frequency: 2.8 OOC/second|Mixed English-Bangla text: 252 English characters|Low Bangla character ratio: 0.0%
+0151e564-0045-45e4-bbb8-4cfe610c3ace,HIGH - Low Quality,22,0.00%,95.45%,49.0,CRITICAL: 95.5% OOC tags (21/22 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 63 English characters|Low Bangla character ratio: 0.0%
+00a9409c-0fbf-42e6-b812-57b92653703e,HIGH - Low Quality,37,26.93%,66.67%,56.8,SEVERE: 66.7% OOC tags (50/75 words) - Manual review needed|Mixed English-Bangla text: 150 English characters|Low Bangla character ratio: 26.9%
+30ed89b5-5547-4014-805f-bbe80c288fa2,HIGH - Low Quality,37,24.28%,68.97%,57.8,SEVERE: 69.0% OOC tags (20/29 words) - Manual review needed|Mixed English-Bangla text: 60 English characters|Low Bangla character ratio: 24.3%
+30d6829c-9d96-46d7-b035-d44c245adad4,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (58/58 words) - Unusable|Mixed English-Bangla text: 174 English characters|Low Bangla character ratio: 0.0%
+30abbc28-e99e-44eb-8c1b-8619b1863c9a,HIGH - Low Quality,37,20.54%,66.10%,56.0,SEVERE: 66.1% OOC tags (39/59 words) - Manual review needed|Mixed English-Bangla text: 117 English characters|Low Bangla character ratio: 20.5%
+2ea180c6-3148-4fcc-9977-49ad796a04f5,HIGH - Low Quality,22,0.00%,96.97%,47.6,CRITICAL: 97.0% OOC tags (32/33 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 96 English characters|Low Bangla character ratio: 0.0%
+2b60dd1c-ce88-40f2-9e28-50bccdcdb378,HIGH - Low Quality,22,4.13%,93.85%,48.0,CRITICAL: 93.8% OOC tags (61/65 words) - Unusable|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 183 English characters|Low Bangla character ratio: 4.1%
+2a9d3781-2e3f-4e4d-90ec-63a99988a588,HIGH - Low Quality,12,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable|High OOC frequency: 3.5 OOC/second|Poor annotation coverage: 36.6% of audio annotated|Unrealistically high word density: 9.5 words/second|Mixed English
+29bb55ed-8619-456d-8e96-de2587cab8fb,HIGH - Low Quality,22,0.00%,100.00%,49.4,CRITICAL: 100.0% OOC tags (9/9 words) - Unusable|Mixed English-Bangla text: 27 English characters|Low Bangla character ratio: 0.0%
+21559fe1-e2a2-480c-87a6-a750df16a6e6,HIGH - Low Quality,32,21.99%,70.83%,56.8,SEVERE: 70.8% OOC tags (17/24 words) - Manual review needed|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 22.0%
+214366c9-1c27-4f88-83e2-a60af3438a40,HIGH - Low Quality,22,0.00%,98.08%,46.5,CRITICAL: 98.1% OOC tags (51/52 words) - Unusable|Mixed English-Bangla text: 153 English characters|Low Bangla character ratio: 0.0%
+20ea6d00-10db-4784-88ef-5de7c9996283,HIGH - Low Quality,9,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable|Poor annotation coverage: 38.6% of audio annotated|Low word density: 0.6 words/second (expected 2-4)|Mixed English-Bangla text: 21 English characters|V
+20c0a458-1468-4870-b1b1-388544d811db,HIGH - Low Quality,20,0.00%,93.75%,49.3,CRITICAL: 93.8% OOC tags (45/48 words) - Unusable|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 135 English characters|Many Western numerals: 21 digits|Low Bangla character ratio: 0.0%
+1fd94496-0da0-4546-aca3-f87e7245a851,HIGH - Low Quality,9,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable|Moderate annotation coverage: 59.4% of audio annotated|Low word density: 0.4 words/second (expected 2-4)|Mixed English-Bangla text: 24 English characte
+1c0d4cd5-5c52-4e29-bc4c-51e1f7424636,HIGH - Low Quality,17,10.26%,76.92%,57.5,CRITICAL: 76.9% OOC tags (10/13 words) - Unusable|Moderate annotation coverage: 71.1% of audio annotated|Mixed English-Bangla text: 30 English characters|Low Bangla character ratio: 10.3%
+16665e3c-3146-4caa-b258-1d54db1ef636,HIGH - Low Quality,12,0.00%,100.00%,53.0,CRITICAL: 100.0% OOC tags (5/5 words) - Unusable|High OOC frequency: 2.6 OOC/second|Poor annotation coverage: 41.3% of audio annotated|Unrealistically high word density: 6.4 words/second|Mixed English
+13fc2a59-0a6e-4e92-b380-4895b70cf6e4,HIGH - Low Quality,32,24.49%,68.00%,58.0,SEVERE: 68.0% OOC tags (17/25 words) - Manual review needed|Low word density: 0.9 words/second (expected 2-4)|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 24.5%
+124f5677-72a5-4740-8d2f-f68ef8b32257,HIGH - Low Quality,22,0.00%,92.86%,48.1,CRITICAL: 92.9% OOC tags (26/28 words) - Unusable|Mixed English-Bangla text: 78 English characters|Low Bangla character ratio: 0.0%
+42c5580b-ed7f-4c43-850e-b38ad2f2345c,HIGH - Low Quality,17,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable|Moderate annotation coverage: 63.2% of audio annotated|Mixed English-Bangla text: 18 English characters|Low Bangla character ratio: 0.0%
+41ddb26a-e4d0-485a-b631-23e18a1f2496,HIGH - Low Quality,17,0.00%,83.33%,58.8,CRITICAL: 83.3% OOC tags (5/6 words) - Unusable|Moderate annotation coverage: 76.6% of audio annotated|Mixed English-Bangla text: 15 English characters|Low Bangla character ratio: 0.0%
+3fe7ada2-d685-46d5-a264-386360de2553,HIGH - Low Quality,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (66/66 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 198 English characters|Low Bangla character ratio: 0.0%
+3e323419-b77d-4573-94e4-7897205ecc77,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (49/49 words) - Unusable|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 0.0%
+3df80917-95b8-4a99-b758-6bf052b343e9,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (57/57 words) - Unusable|Mixed English-Bangla text: 171 English characters|Low Bangla character ratio: 0.0%
+3d180730-2cea-4f9a-90ac-00fc40012172,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (53/53 words) - Unusable|High OOC frequency: 2.5 OOC/second|Mixed English-Bangla text: 159 English characters|Low Bangla character ratio: 0.0%
+3cb4f928-46d6-4105-8048-5fb452168988,HIGH - Low Quality,22,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable|High OOC frequency: 2.9 OOC/second|Mixed English-Bangla text: 42 English characters|Low Bangla character ratio: 0.0%
+3a30e5ce-a1b1-439b-b1ed-2d11c675d841,HIGH - Low Quality,22,16.33%,78.43%,53.3,CRITICAL: 78.4% OOC tags (40/51 words) - Unusable|Mixed English-Bangla text: 120 English characters|Low Bangla character ratio: 16.3%
+3a2ba39e-c3fb-4be6-a128-ba8053ce90f4,HIGH - Low Quality,22,0.00%,97.37%,47.8,CRITICAL: 97.4% OOC tags (37/38 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 111 English characters|Low Bangla character ratio: 0.0%
+37c045fa-4384-48c8-bfb9-bdeb56ba2801,HIGH - Low Quality,37,28.42%,59.38%,61.8,SEVERE: 59.4% OOC tags (19/32 words) - Manual review needed|Mixed English-Bangla text: 57 English characters|Low Bangla character ratio: 28.4%
+3600e496-3b6a-4dd0-977c-ae3634b16c1a,HIGH - Low Quality,37,27.94%,62.82%,58.2,SEVERE: 62.8% OOC tags (49/78 words) - Manual review needed|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 27.9%
+35a6e6e3-5940-463b-ae87-835bf509a20c,HIGH - Low Quality,37,29.10%,66.67%,59.0,SEVERE: 66.7% OOC tags (44/66 words) - Manual review needed|Mixed English-Bangla text: 132 English characters|Low Bangla character ratio: 29.1%
+3431eb75-a897-4e06-9fef-89077bb757b0,HIGH - Low Quality,22,15.41%,80.39%,53.0,CRITICAL: 80.4% OOC tags (41/51 words) - Unusable|Mixed English-Bangla text: 123 English characters|Low Bangla character ratio: 15.4%
+32d93829-c522-40ef-ba5e-146eff3a399a,HIGH - Low Quality,37,28.96%,59.15%,59.6,SEVERE: 59.2% OOC tags (42/71 words) - Manual review needed|Mixed English-Bangla text: 126 English characters|Low Bangla character ratio: 29.0%
+315e5060-5ba5-42f1-b045-d159502a031d,HIGH - Low Quality,22,19.18%,81.82%,53.9,CRITICAL: 81.8% OOC tags (54/66 words) - Unusable|Mixed English-Bangla text: 162 English characters|Low Bangla character ratio: 19.2%
+31378628-b4d0-4d7f-90f7-2fe7fa7abb91,HIGH - Low Quality,17,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable|High OOC frequency: 2.5 OOC/second|Moderate annotation coverage: 78.5% of audio annotated|Mixed English-Bangla text: 42 English characters|Low Bangla
+61dcce13-5986-453e-b0fd-1640ff60afa6,HIGH - Low Quality,22,17.26%,75.41%,52.9,CRITICAL: 75.4% OOC tags (46/61 words) - Unusable|Mixed English-Bangla text: 138 English characters|Low Bangla character ratio: 17.3%
+5e602415-b993-43bd-907b-ad6ddc872756,HIGH - Low Quality,22,0.00%,95.45%,48.9,CRITICAL: 95.5% OOC tags (21/22 words) - Unusable|High OOC frequency: 2.5 OOC/second|Mixed English-Bangla text: 63 English characters|Low Bangla character ratio: 0.0%
+5c3dcbf9-9740-4772-9f1c-d0496e239fbf,HIGH - Low Quality,22,17.45%,78.26%,52.4,CRITICAL: 78.3% OOC tags (36/46 words) - Unusable|Mixed English-Bangla text: 108 English characters|Low Bangla character ratio: 17.5%
+5bdbaa1d-6d92-4a8f-824a-d6d4004de52f,HIGH - Low Quality,37,29.15%,57.38%,58.8,SEVERE: 57.4% OOC tags (35/61 words) - Manual review needed|Mixed English-Bangla text: 105 English characters|Low Bangla character ratio: 29.2%
+5a3812a8-125c-4218-aff2-e823557f0875,HIGH - Low Quality,22,14.84%,77.78%,52.5,CRITICAL: 77.8% OOC tags (21/27 words) - Unusable|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 63 English characters|Low Bangla character ratio: 14.8%
+56cad792-6908-4f80-94ca-74f0b7a246bb,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (51/51 words) - Unusable|Mixed English-Bangla text: 153 English characters|Low Bangla character ratio: 0.0%
+52c5365f-c8cf-4b78-9078-a3d84c8c2baa,HIGH - Low Quality,32,21.67%,60.00%,65.3,SEVERE: 60.0% OOC tags (6/10 words) - Manual review needed|Moderate annotation coverage: 71.2% of audio annotated|Mixed English-Bangla text: 18 English characters|Low Bangla character ratio: 21.7%
+51edcbf5-ed91-4c2b-9d87-a4c8720983b8,HIGH - Low Quality,12,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable|Poor annotation coverage: 40.5% of audio annotated|Low word density: 1.4 words/second (expected 2-4)|Mixed English-Bangla text: 18 English characters|L
+5061c5c4-6a47-4996-94eb-3c44fed8a563,HIGH - Low Quality,22,16.35%,77.97%,55.2,CRITICAL: 78.0% OOC tags (46/59 words) - Unusable|Mixed English-Bangla text: 138 English characters|Low Bangla character ratio: 16.3%
+4f17930c-64f8-4049-a2f2-ed48bd9d9a36,HIGH - Low Quality,22,11.61%,84.21%,53.3,CRITICAL: 84.2% OOC tags (16/19 words) - Unusable|Mixed English-Bangla text: 48 English characters|Low Bangla character ratio: 11.6%
+4e0eed73-33da-46d1-8670-a07a803ac016,HIGH - Low Quality,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable|Low word density: 0.4 words/second (expected 2-4)|Mixed English-Bangla text: 36 English characters|Very low character rate: 2.4 chars/second|Low Bang
+497e5507-35f4-4150-b902-4b2ca4ab9c30,HIGH - Low Quality,22,0.00%,98.04%,46.7,CRITICAL: 98.0% OOC tags (50/51 words) - Unusable|Mixed English-Bangla text: 150 English characters|Low Bangla character ratio: 0.0%
+482b6e16-f925-4925-8632-dd3e2d73a38a,HIGH - Low Quality,22,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable|High OOC frequency: 2.7 OOC/second|Mixed English-Bangla text: 39 English characters|Low Bangla character ratio: 0.0%
+4713135a-5206-453e-9fb9-ebec5d16f44c,HIGH - Low Quality,9,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable|Moderate annotation coverage: 54.2% of audio annotated|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 24 English characte
+44a9e96b-ce66-4080-94dc-f53bf97154b5,HIGH - Low Quality,22,0.00%,97.73%,46.8,CRITICAL: 97.7% OOC tags (43/44 words) - Unusable|Mixed English-Bangla text: 129 English characters|Low Bangla character ratio: 0.0%
+44385bf9-8c62-421a-9af4-cccebe2e771e,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (61/61 words) - Unusable|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 183 English characters|Low Bangla character ratio: 0.0%
+79c0e3d9-a2ab-46d9-814f-8e3e441abe48,HIGH - Low Quality,22,0.00%,95.38%,47.1,CRITICAL: 95.4% OOC tags (62/65 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 186 English characters|Low Bangla character ratio: 0.0%
+78090f5c-87be-400f-bbab-52c73bdb8376,HIGH - Low Quality,37,28.70%,63.01%,58.8,SEVERE: 63.0% OOC tags (46/73 words) - Manual review needed|Mixed English-Bangla text: 138 English characters|Low Bangla character ratio: 28.7%
+765d4a24-1c2b-45c2-a0d6-0455663ddbd9,HIGH - Low Quality,37,21.30%,68.18%,55.9,SEVERE: 68.2% OOC tags (45/66 words) - Manual review needed|Mixed English-Bangla text: 135 English characters|Low Bangla character ratio: 21.3%
+763d1dc2-0763-4e79-b342-4288d66da0df,HIGH - Low Quality,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (71/71 words) - Unusable|High OOC frequency: 2.4 OOC/second|Mixed English-Bangla text: 213 English characters|Low Bangla character ratio: 0.0%
+74d85c6d-a6fb-4b46-badd-e0a635852046,HIGH - Low Quality,37,27.74%,62.50%,56.8,SEVERE: 62.5% OOC tags (15/24 words) - Manual review needed|Mixed English-Bangla text: 45 English characters|Low Bangla character ratio: 27.7%
+749f33a5-3e94-49a2-b357-02802350d240,HIGH - Low Quality,22,12.01%,85.53%,50.6,CRITICAL: 85.5% OOC tags (65/76 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 195 English characters|Low Bangla character ratio: 12.0%
+7175f791-2623-4c87-9d24-356489b5846c,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (57/57 words) - Unusable|Mixed English-Bangla text: 171 English characters|Low Bangla character ratio: 0.0%
+708a557d-0991-4af9-9ad3-01756255e692,HIGH - Low Quality,22,0.00%,98.08%,46.5,CRITICAL: 98.1% OOC tags (51/52 words) - Unusable|Mixed English-Bangla text: 153 English characters|Low Bangla character ratio: 0.0%
+701c0e22-02de-4782-9201-f00eea8662d3,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (48/48 words) - Unusable|Mixed English-Bangla text: 144 English characters|Low Bangla character ratio: 0.0%
+6f261dfd-eee4-4db2-b7e5-c52063c75420,HIGH - Low Quality,22,0.00%,98.25%,46.4,CRITICAL: 98.2% OOC tags (56/57 words) - Unusable|Mixed English-Bangla text: 168 English characters|Low Bangla character ratio: 0.0%
+6c6bf0af-24b9-4ac9-8046-13d0b1f75f1c,HIGH - Low Quality,17,0.00%,100.00%,47.0,CRITICAL: 100.0% OOC tags (20/20 words) - Unusable|Low word density: 0.7 words/second (expected 2-4)|Mixed English-Bangla text: 60 English characters|Low Bangla character ratio: 0.0%
+6c207d71-2ecd-4966-87cd-af8821a659b5,HIGH - Low Quality,22,0.00%,96.49%,47.1,CRITICAL: 96.5% OOC tags (55/57 words) - Unusable|Mixed English-Bangla text: 165 English characters|Low Bangla character ratio: 0.0%
+6b874ebd-bd10-417b-a894-d3265ec2ff28,HIGH - Low Quality,22,0.00%,96.15%,47.6,CRITICAL: 96.2% OOC tags (50/52 words) - Unusable|Mixed English-Bangla text: 150 English characters|Low Bangla character ratio: 0.0%
+6a47ce0c-291b-4462-af55-800c1703306d,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (54/54 words) - Unusable|Mixed English-Bangla text: 162 English characters|Low Bangla character ratio: 0.0%
+676027b8-45b9-440e-bfe3-79873b221dfd,HIGH - Low Quality,22,10.84%,85.51%,51.5,CRITICAL: 85.5% OOC tags (59/69 words) - Unusable|Mixed English-Bangla text: 177 English characters|Low Bangla character ratio: 10.8%
+63558d56-5139-40a0-b934-aba8a6f4030b,HIGH - Low Quality,22,14.81%,80.49%,52.6,CRITICAL: 80.5% OOC tags (66/82 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 198 English characters|Low Bangla character ratio: 14.8%
+8deb93a9-0823-4c3b-86e2-d91b7d3030cf,HIGH - Low Quality,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable|Low word density: 0.4 words/second (expected 2-4)|Mixed English-Bangla text: 36 English characters|Very low character rate: 2.4 chars/second|Low Bang
+8d41cc78-c923-4ef1-9684-0310c329b306,HIGH - Low Quality,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (62/62 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 186 English characters|Low Bangla character ratio: 0.0%
+8d009bed-b7c3-4b1b-b8ca-68472f3105e2,HIGH - Low Quality,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 39 English characters|Very low character rate: 2.6 chars/second|Low Bang
+8c627669-074a-4f5b-bdc6-d1b464f6dbe8,HIGH - Low Quality,22,0.00%,94.29%,49.4,CRITICAL: 94.3% OOC tags (33/35 words) - Unusable|Mixed English-Bangla text: 99 English characters|Low Bangla character ratio: 0.0%
+8b393f80-731f-4674-848e-95cc444b0546,HIGH - Low Quality,22,0.00%,100.00%,47.4,CRITICAL: 100.0% OOC tags (17/17 words) - Unusable|High OOC frequency: 3.0 OOC/second|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 0.0%
+89d98887-8532-4098-b5f5-21c8d207a2c5,HIGH - Low Quality,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (86/86 words) - Unusable|High OOC frequency: 2.9 OOC/second|Mixed English-Bangla text: 258 English characters|Low Bangla character ratio: 0.0%
+871d2f64-5fff-44e3-b966-940d19b0b103,HIGH - Low Quality,22,0.00%,94.29%,47.5,CRITICAL: 94.3% OOC tags (66/70 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 198 English characters|Low Bangla character ratio: 0.0%
+8650f115-b025-4df6-a689-8f03ac7d6776,HIGH - Low Quality,17,0.00%,100.00%,49.0,CRITICAL: 100.0% OOC tags (10/10 words) - Unusable|High OOC frequency: 2.4 OOC/second|Moderate annotation coverage: 65.4% of audio annotated|Mixed English-Bangla text: 30 English characters|Low Bangla
+84fd0bd0-9c6f-4cdc-a5bd-f376d58b81d8,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 66 English characters|Low Bangla character ratio: 0.0%
+8429040e-e24f-47fe-bcff-cd0a8ebf0cfa,HIGH - Low Quality,22,7.95%,87.50%,50.3,CRITICAL: 87.5% OOC tags (49/56 words) - Unusable|High OOC frequency: 2.6 OOC/second|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 8.0%
+81e2326d-e5be-4cac-9f65-5875a5edd981,HIGH - Low Quality,37,29.25%,62.00%,59.9,SEVERE: 62.0% OOC tags (31/50 words) - Manual review needed|Mixed English-Bangla text: 93 English characters|Low Bangla character ratio: 29.3%
+7f880b36-281f-4e89-9490-c51e310ee512,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (52/52 words) - Unusable|Mixed English-Bangla text: 156 English characters|Low Bangla character ratio: 0.0%
+7f776a92-74dd-4cdc-be0c-d48165aba566,HIGH - Low Quality,22,11.95%,79.17%,57.0,CRITICAL: 79.2% OOC tags (19/24 words) - Unusable|Mixed English-Bangla text: 57 English characters|Low Bangla character ratio: 11.9%
+7e9e90ba-e166-4404-bded-ca487840bc82,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|High OOC frequency: 3.1 OOC/second|Moderate annotation coverage: 76.7% of audio annotated|Mixed English-Bangla text: 66 English characters|Low Bangla
+7e16b6c9-80c3-49e4-9100-f1f9b88de0aa,HIGH - Low Quality,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (62/62 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 186 English characters|Low Bangla character ratio: 0.0%
+7defc653-b213-491f-a3f0-4305b16f46ed,HIGH - Low Quality,22,0.00%,100.00%,45.9,CRITICAL: 100.0% OOC tags (47/47 words) - Unusable|Mixed English-Bangla text: 141 English characters|Low Bangla character ratio: 0.0%
+a2392112-3b1c-4651-8fc2-f366c516c111,HIGH - Low Quality,22,2.97%,88.64%,50.2,CRITICAL: 88.6% OOC tags (39/44 words) - Unusable|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 117 English characters|Low Bangla character ratio: 3.0%
+a1ce9685-71c9-4eef-871a-54eaa51488e2,HIGH - Low Quality,22,12.24%,84.51%,52.1,CRITICAL: 84.5% OOC tags (60/71 words) - Unusable|Mixed English-Bangla text: 184 English characters|Low Bangla character ratio: 12.2%
+a1b7e9a6-938d-4eb3-83a6-1640846930ec,HIGH - Low Quality,32,21.43%,55.56%,63.8,SEVERE: 55.6% OOC tags (5/9 words) - Manual review needed|Moderate annotation coverage: 78.4% of audio annotated|Mixed English-Bangla text: 15 English characters|Low Bangla character ratio: 21.4%
+a19a6573-06e0-404d-ad41-9f36f5af1a66,HIGH - Low Quality,14,0.00%,100.00%,48.3,CRITICAL: 100.0% OOC tags (12/12 words) - Unusable|Low word density: 0.4 words/second (expected 2-4)|Mixed English-Bangla text: 36 English characters|Very low character rate: 2.4 chars/second|Low Bang
+a12b73bd-475a-4622-bc86-592a66158ed1,HIGH - Low Quality,32,28.18%,65.52%,61.0,SEVERE: 65.5% OOC tags (19/29 words) - Manual review needed|Moderate annotation coverage: 68.1% of audio annotated|Mixed English-Bangla text: 57 English characters|Low Bangla character ratio: 28.2%
+a0ccc3b1-1827-4224-bd28-4c4b2d4d4a30,HIGH - Low Quality,22,0.00%,94.44%,49.8,CRITICAL: 94.4% OOC tags (17/18 words) - Unusable|High OOC frequency: 2.6 OOC/second|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 0.0%
+9c6a62a4-db79-4a11-92b7-40d5f49adcea,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 66 English characters|Low Bangla character ratio: 0.0%
+9908bb44-dee2-4d2b-92db-6e5dc27b5965,HIGH - Low Quality,37,8.45%,72.73%,61.2,SEVERE: 72.7% OOC tags (8/11 words) - Manual review needed|Mixed English-Bangla text: 24 English characters|Low Bangla character ratio: 8.5%
+9868b919-dd48-4819-b9b1-eea001f20cd4,HIGH - Low Quality,17,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable|High OOC frequency: 3.4 OOC/second|Moderate annotation coverage: 59.7% of audio annotated|Mixed English-Bangla text: 39 English characters|Low Bangla
+95326f66-bf6f-4c22-bd41-1cc7e6d1ea94,HIGH - Low Quality,22,24.11%,75.44%,56.3,CRITICAL: 75.4% OOC tags (43/57 words) - Unusable|Mixed English-Bangla text: 129 English characters|Low Bangla character ratio: 24.1%
+922c2a1c-87fa-476e-a8dd-71887136bdf0,HIGH - Low Quality,17,0.00%,100.00%,47.5,CRITICAL: 100.0% OOC tags (16/16 words) - Unusable|Low word density: 0.6 words/second (expected 2-4)|Mixed English-Bangla text: 48 English characters|Low Bangla character ratio: 0.0%
+92163706-299d-47ac-a565-d11367062543,HIGH - Low Quality,22,0.00%,95.83%,48.6,CRITICAL: 95.8% OOC tags (23/24 words) - Unusable|High OOC frequency: 2.4 OOC/second|Mixed English-Bangla text: 69 English characters|Low Bangla character ratio: 0.0%
+901849a9-bce7-494e-8a01-c34a8a884114,HIGH - Low Quality,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 39 English characters|Very low character rate: 2.6 chars/second|Low Bang
+8fa2cfbb-b408-4369-b0b0-f64fbf105856,HIGH - Low Quality,37,19.42%,72.22%,56.0,SEVERE: 72.2% OOC tags (13/18 words) - Manual review needed|Mixed English-Bangla text: 39 English characters|Low Bangla character ratio: 19.4%
+8ee7cf3e-b5b5-45c3-ab47-ec7fcb7089ee,HIGH - Low Quality,37,27.39%,63.64%,58.3,SEVERE: 63.6% OOC tags (49/77 words) - Manual review needed|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 27.4%
+8e3049f3-33d5-4aac-9315-204715bcbf7d,HIGH - Low Quality,17,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable|High OOC frequency: 3.3 OOC/second|Moderate annotation coverage: 68.8% of audio annotated|Mixed English-Bangla text: 21 English characters|Low Bangla c
+ba0f4e10-e995-4a6a-95a8-e90398930881,HIGH - Low Quality,22,0.00%,98.51%,46.1,CRITICAL: 98.5% OOC tags (66/67 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 198 English characters|Low Bangla character ratio: 0.0%
+b95af17c-90ee-4408-8888-2debf9af06a6,HIGH - Low Quality,22,0.00%,98.15%,46.5,CRITICAL: 98.1% OOC tags (53/54 words) - Unusable|Mixed English-Bangla text: 159 English characters|Low Bangla character ratio: 0.0%
+b9109c32-d0d0-4932-919b-d37bd75df85c,HIGH - Low Quality,37,17.72%,71.79%,56.6,SEVERE: 71.8% OOC tags (28/39 words) - Manual review needed|Mixed English-Bangla text: 84 English characters|Low Bangla character ratio: 17.7%
+b8a85f9e-0cd2-40b5-9923-ff2214773eca,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 66 English characters|Low Bangla character ratio: 0.0%
+b7a2bf57-bad5-4f52-a866-393648544ce0,HIGH - Low Quality,17,0.00%,100.00%,47.4,CRITICAL: 100.0% OOC tags (17/17 words) - Unusable|Moderate annotation coverage: 75.4% of audio annotated|Mixed English-Bangla text: 51 English characters|Low Bangla character ratio: 0.0%
+b588ed3c-e1d2-498a-9dfc-fd500ad06ed5,HIGH - Low Quality,14,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 42 English characters|Very low character rate: 2.8 chars/second|Low Bang
+b4e1e226-de93-4890-aeaf-f178e58d63a8,HIGH - Low Quality,9,0.00%,100.00%,65.0,CRITICAL: 100.0% OOC tags (2/2 words) - Unusable|Moderate annotation coverage: 61.3% of audio annotated|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 6 English character
+b4660d59-e9ae-435c-800d-99a85d0e90b2,HIGH - Low Quality,22,10.02%,88.16%,50.0,CRITICAL: 88.2% OOC tags (67/76 words) - Unusable|High OOC frequency: 2.2 OOC/second|Mixed English-Bangla text: 201 English characters|Low Bangla character ratio: 10.0%
+b004d90d-b408-485d-9385-eb07d18b54e6,HIGH - Low Quality,37,25.90%,64.15%,57.5,SEVERE: 64.2% OOC tags (34/53 words) - Manual review needed|Mixed English-Bangla text: 102 English characters|Low Bangla character ratio: 25.9%
+ae0ecbf3-5461-4e9e-af2d-90c354cbb8bb,HIGH - Low Quality,22,0.00%,100.00%,45.8,CRITICAL: 100.0% OOC tags (49/49 words) - Unusable|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 0.0%
+ad277bb4-b04c-497f-b41e-5c009c3223d3,HIGH - Low Quality,22,0.00%,100.00%,45.7,CRITICAL: 100.0% OOC tags (60/60 words) - Unusable|Mixed English-Bangla text: 180 English characters|Low Bangla character ratio: 0.0%
+ac221add-6562-4184-b93f-04efc04e9f36,HIGH - Low Quality,22,9.90%,83.58%,51.0,CRITICAL: 83.6% OOC tags (56/67 words) - Unusable|Mixed English-Bangla text: 168 English characters|Low Bangla character ratio: 9.9%
+a9ef1a64-4ff6-4047-81ef-209a97def88b,HIGH - Low Quality,37,25.36%,73.08%,58.4,SEVERE: 73.1% OOC tags (38/52 words) - Manual review needed|Mixed English-Bangla text: 114 English characters|Low Bangla character ratio: 25.4%
+a752417e-73c9-4bed-8ca6-34aa7e1ff494,HIGH - Low Quality,17,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable|High OOC frequency: 2.1 OOC/second|Moderate annotation coverage: 65.3% of audio annotated|Mixed English-Bangla text: 12 English characters|Low Bangla c
+a59abe67-5af3-4bbb-b442-ec0bc469e4d0,HIGH - Low Quality,37,25.67%,64.04%,56.9,SEVERE: 64.0% OOC tags (57/89 words) - Manual review needed|Mixed English-Bangla text: 171 English characters|Low Bangla character ratio: 25.7%
+a583786b-59a7-419e-b4e0-fc4497655bd3,HIGH - Low Quality,22,13.48%,83.78%,52.1,CRITICAL: 83.8% OOC tags (62/74 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 186 English characters|Low Bangla character ratio: 13.5%
+cb608b0c-d8ec-45dc-96b3-e218ac9ff600,HIGH - Low Quality,37,23.23%,70.15%,56.4,SEVERE: 70.1% OOC tags (47/67 words) - Manual review needed|Mixed English-Bangla text: 141 English characters|Low Bangla character ratio: 23.2%
+ca9af7f1-3d03-4940-ba5b-6f1c1e42ed49,HIGH - Low Quality,37,28.57%,55.56%,60.1,SEVERE: 55.6% OOC tags (15/27 words) - Manual review needed|Mixed English-Bangla text: 45 English characters|Low Bangla character ratio: 28.6%
+c9c251a5-3fe3-4041-bf95-3497d3be8c88,HIGH - Low Quality,37,18.83%,73.85%,54.6,SEVERE: 73.8% OOC tags (48/65 words) - Manual review needed|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 144 English characters|Low Bangla character ratio: 18.8%
+c8800c82-5353-42c8-8b29-c730e0f394c1,HIGH - Low Quality,22,1.03%,96.88%,47.2,CRITICAL: 96.9% OOC tags (62/64 words) - Unusable|High OOC frequency: 2.1 OOC/second|Mixed English-Bangla text: 194 English characters|Low Bangla character ratio: 1.0%
+c6e21778-cac1-4b94-a93c-e6d731a85795,HIGH - Low Quality,22,14.20%,85.71%,52.0,CRITICAL: 85.7% OOC tags (48/56 words) - Unusable|Mixed English-Bangla text: 144 English characters|Low Bangla character ratio: 14.2%
+c6383163-53e7-4ded-ba68-4b22fd9081f6,HIGH - Low Quality,14,0.00%,100.00%,49.0,CRITICAL: 100.0% OOC tags (10/10 words) - Unusable|Low word density: 0.4 words/second (expected 2-4)|Mixed English-Bangla text: 30 English characters|Very low character rate: 2.0 chars/second|Low Bang
+c56e132f-fa55-4312-94e6-94022f466e4a,HIGH - Low Quality,22,17.37%,79.31%,53.7,CRITICAL: 79.3% OOC tags (23/29 words) - Unusable|Mixed English-Bangla text: 69 English characters|Low Bangla character ratio: 17.4%
+c481e82d-6098-48cf-b6a1-2d6574d915d1,HIGH - Low Quality,17,0.00%,100.00%,50.7,CRITICAL: 100.0% OOC tags (7/7 words) - Unusable|Low word density: 0.6 words/second (expected 2-4)|Mixed English-Bangla text: 21 English characters|Low Bangla character ratio: 0.0%
+c2e9f298-e4fa-41ba-99b6-a20d0d46bdea,HIGH - Low Quality,17,0.00%,100.00%,50.0,CRITICAL: 100.0% OOC tags (8/8 words) - Unusable|High OOC frequency: 2.1 OOC/second|Moderate annotation coverage: 69.2% of audio annotated|Mixed English-Bangla text: 24 English characters|Low Bangla c
+c157b539-5bd5-4add-b9da-4de2da0d7e4a,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 66 English characters|Low Bangla character ratio: 0.0%
+c02fa393-fc00-4b76-8546-bfe65bc9befc,HIGH - Low Quality,22,0.00%,95.77%,46.7,CRITICAL: 95.8% OOC tags (68/71 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 204 English characters|Low Bangla character ratio: 0.0%
+bf52ec55-9cd2-48f1-b1b3-d74c199c4762,HIGH - Low Quality,22,11.50%,79.03%,53.5,CRITICAL: 79.0% OOC tags (49/62 words) - Unusable|Mixed English-Bangla text: 147 English characters|Low Bangla character ratio: 11.5%
+bebe9205-f1c4-40a7-906f-7420e5cc85a2,HIGH - Low Quality,37,28.02%,69.70%,58.1,SEVERE: 69.7% OOC tags (46/66 words) - Manual review needed|Mixed English-Bangla text: 138 English characters|Low Bangla character ratio: 28.0%
+be546224-b34d-49f5-ac2a-fa7ac93e6d9c,HIGH - Low Quality,22,1.33%,96.00%,47.5,CRITICAL: 96.0% OOC tags (48/50 words) - Unusable|Mixed English-Bangla text: 144 English characters|Low Bangla character ratio: 1.3%
+be0a2a74-4845-42f9-b0a2-7ebd8cc5410b,HIGH - Low Quality,37,22.74%,72.00%,55.0,SEVERE: 72.0% OOC tags (36/50 words) - Manual review needed|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 108 English characters|Low Bangla character ratio: 22.7%
+ba62c128-879e-410d-8ab0-893beba94d38,HIGH - Low Quality,22,0.00%,92.59%,50.8,CRITICAL: 92.6% OOC tags (25/27 words) - Unusable|Mixed English-Bangla text: 75 English characters|Low Bangla character ratio: 0.0%
+e3380f92-934a-4aec-857d-1ecebcfe7b21,HIGH - Low Quality,22,11.45%,80.00%,50.6,CRITICAL: 80.0% OOC tags (52/65 words) - Unusable|Mixed English-Bangla text: 156 English characters|Low Bangla character ratio: 11.5%
+e300b3b6-abbf-45d2-a82d-9996cb549a60,HIGH - Low Quality,37,25.07%,69.49%,57.0,SEVERE: 69.5% OOC tags (41/59 words) - Manual review needed|Mixed English-Bangla text: 123 English characters|Low Bangla character ratio: 25.1%
+ddc82738-c8f3-41a9-97cb-fd619e155b3c,HIGH - Low Quality,17,12.17%,82.05%,51.9,CRITICAL: 82.1% OOC tags (32/39 words) - Unusable|Moderate annotation coverage: 66.6% of audio annotated|Mixed English-Bangla text: 96 English characters|Low Bangla character ratio: 12.2%
+daa4c365-add4-4c95-bf81-d439942d706a,HIGH - Low Quality,22,7.84%,91.18%,48.9,CRITICAL: 91.2% OOC tags (31/34 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 93 English characters|Low Bangla character ratio: 7.8%
+d70c0df2-1269-46e1-839b-5b7d87dda332,HIGH - Low Quality,22,0.00%,96.43%,47.3,CRITICAL: 96.4% OOC tags (54/56 words) - Unusable|Mixed English-Bangla text: 162 English characters|Low Bangla character ratio: 0.0%
+d630cc68-27da-46a0-a69a-9f3b24658d5c,HIGH - Low Quality,37,26.93%,58.33%,58.3,SEVERE: 58.3% OOC tags (35/60 words) - Manual review needed|Mixed English-Bangla text: 105 English characters|Low Bangla character ratio: 26.9%
+d58d5ff5-a6ba-47b6-af30-5f402a441ff8,HIGH - Low Quality,37,24.46%,62.50%,59.9,SEVERE: 62.5% OOC tags (15/24 words) - Manual review needed|Mixed English-Bangla text: 45 English characters|Low Bangla character ratio: 24.5%
+d41f3154-f79f-4d53-a06a-e2fb3d7d5c53,HIGH - Low Quality,17,7.55%,88.37%,51.1,CRITICAL: 88.4% OOC tags (38/43 words) - Unusable|Low word density: 1.5 words/second (expected 2-4)|Mixed English-Bangla text: 114 English characters|Low Bangla character ratio: 7.5%
+d1f5bd7c-1504-42ff-b7fc-921d816b311e,HIGH - Low Quality,17,0.00%,100.00%,46.9,CRITICAL: 100.0% OOC tags (21/21 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 63 English characters|Low Bangla character ratio: 0.0%
+d0948c29-41f4-44a8-bde7-e7b5f88060c4,HIGH - Low Quality,22,0.00%,100.00%,45.4,CRITICAL: 100.0% OOC tags (96/96 words) - Unusable|High OOC frequency: 3.2 OOC/second|Mixed English-Bangla text: 288 English characters|Low Bangla character ratio: 0.0%
+cfa5549b-c7cc-4906-af10-93df753bbd14,HIGH - Low Quality,37,29.89%,59.46%,59.1,SEVERE: 59.5% OOC tags (44/74 words) - Manual review needed|Mixed English-Bangla text: 132 English characters|Low Bangla character ratio: 29.9%
+cf0f959b-dda7-42c9-8622-f2505d0ecc28,HIGH - Low Quality,37,20.63%,72.09%,54.7,SEVERE: 72.1% OOC tags (31/43 words) - Manual review needed|High OOC frequency: 2.0 OOC/second|Mixed English-Bangla text: 93 English characters|Low Bangla character ratio: 20.6%
+cee720e9-4ad0-410d-886c-428c7178060b,HIGH - Low Quality,17,0.00%,100.00%,47.9,CRITICAL: 100.0% OOC tags (14/14 words) - Unusable|Moderate annotation coverage: 71.4% of audio annotated|Mixed English-Bangla text: 42 English characters|Low Bangla character ratio: 0.0%
+cda88637-5527-4bc7-8403-fdaa83efdbf9,HIGH - Low Quality,14,0.00%,100.00%,53.0,CRITICAL: 100.0% OOC tags (5/5 words) - Unusable|Low word density: 0.3 words/second (expected 2-4)|Mixed English-Bangla text: 15 English characters|Very low character rate: 1.7 chars/second|Low Bangla
+cd53b34e-1c22-4d6c-862c-e76785dcaee8,HIGH - Low Quality,22,0.00%,100.00%,45.5,CRITICAL: 100.0% OOC tags (79/79 words) - Unusable|High OOC frequency: 2.6 OOC/second|Mixed English-Bangla text: 237 English characters|Low Bangla character ratio: 0.0%
+cbfaff80-6491-4e62-8302-0e4a6eb76171,HIGH - Low Quality,14,0.00%,100.00%,48.1,CRITICAL: 100.0% OOC tags (13/13 words) - Unusable|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 39 English characters|Very low character rate: 2.6 chars/second|Low Bang
+fe4e8731-3737-4877-b346-d26d1160a2cd,HIGH - Low Quality,22,13.04%,80.33%,52.2,CRITICAL: 80.3% OOC tags (49/61 words) - Unusable|Mixed English-Bangla text: 154 English characters|Low Bangla character ratio: 13.0%
+fda504cf-1fa9-4ed8-834c-0039cf6b7bf0,HIGH - Low Quality,14,0.00%,100.00%,55.0,CRITICAL: 100.0% OOC tags (4/4 words) - Unusable|Low word density: 0.1 words/second (expected 2-4)|Mixed English-Bangla text: 12 English characters|Very low character rate: 0.8 chars/second|Low Bangla
+fc5c8b03-a5f9-4285-9fcb-b5e0e75b5089,HIGH - Low Quality,22,0.00%,97.83%,46.8,CRITICAL: 97.8% OOC tags (45/46 words) - Unusable|Mixed English-Bangla text: 135 English characters|Low Bangla character ratio: 0.0%
+fa675cfc-42a4-488f-a033-9644b04d53bc,HIGH - Low Quality,37,28.25%,55.36%,59.3,SEVERE: 55.4% OOC tags (31/56 words) - Manual review needed|Mixed English-Bangla text: 93 English characters|Low Bangla character ratio: 28.3%
+f8e6907c-6b56-4a3b-b37c-7d0a808b6710,HIGH - Low Quality,22,9.09%,80.82%,52.9,CRITICAL: 80.8% OOC tags (59/73 words) - Unusable|Mixed English-Bangla text: 177 English characters|Low Bangla character ratio: 9.1%
+f75c5b44-9b63-4651-b192-7472194b4c29,HIGH - Low Quality,37,25.96%,55.56%,64.5,SEVERE: 55.6% OOC tags (10/18 words) - Manual review needed|Mixed English-Bangla text: 30 English characters|Low Bangla character ratio: 26.0%
+f577c322-be75-4d85-86c6-67205b37f28e,HIGH - Low Quality,22,0.00%,100.00%,45.6,CRITICAL: 100.0% OOC tags (68/68 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 204 English characters|Low Bangla character ratio: 0.0%
+f4ff0059-95b0-42b1-bdcb-dea53c7e4ed4,HIGH - Low Quality,37,29.90%,65.08%,58.9,SEVERE: 65.1% OOC tags (41/63 words) - Manual review needed|Mixed English-Bangla text: 123 English characters|Low Bangla character ratio: 29.9%
+f2fa207f-f3fb-4a65-bcf2-2cb08fc805da,HIGH - Low Quality,37,29.73%,56.92%,56.6,SEVERE: 56.9% OOC tags (37/65 words) - Manual review needed|Mixed English-Bangla text: 111 English characters|Low Bangla character ratio: 29.7%
+ee2ec508-fdac-4a8c-b504-9ee1cc57f437,HIGH - Low Quality,22,0.00%,93.33%,50.9,CRITICAL: 93.3% OOC tags (14/15 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 42 English characters|Low Bangla character ratio: 0.0%
+ed9b227c-0f42-4d9e-873d-146c2abf3d3e,HIGH - Low Quality,17,0.00%,100.00%,46.8,CRITICAL: 100.0% OOC tags (22/22 words) - Unusable|Low word density: 0.8 words/second (expected 2-4)|Mixed English-Bangla text: 66 English characters|Low Bangla character ratio: 0.0%
+ec34b89a-48f6-4f7d-8763-26e630f3facd,HIGH - Low Quality,9,0.00%,100.00%,51.7,CRITICAL: 100.0% OOC tags (6/6 words) - Unusable|Poor annotation coverage: 42.0% of audio annotated|Low word density: 0.5 words/second (expected 2-4)|Mixed English-Bangla text: 18 English characters|V
+eb61f50f-c5bf-423e-89f8-a4ff5284a3d9,HIGH - Low Quality,37,23.34%,70.83%,55.4,SEVERE: 70.8% OOC tags (34/48 words) - Manual review needed|Mixed English-Bangla text: 102 English characters|Low Bangla character ratio: 23.3%
+eb464b1d-e254-4821-8d7b-9fd9dca2a68a,HIGH - Low Quality,22,0.00%,97.18%,46.7,CRITICAL: 97.2% OOC tags (69/71 words) - Unusable|High OOC frequency: 2.3 OOC/second|Mixed English-Bangla text: 207 English characters|Low Bangla character ratio: 0.0%
+e9c1ef28-232d-4847-a4c6-2239ff116ba2,HIGH - Low Quality,22,5.34%,95.65%,48.0,CRITICAL: 95.7% OOC tags (44/46 words) - Unusable|Mixed English-Bangla text: 132 English characters|Low Bangla character ratio: 5.3%
+e4aa03b1-77ef-45e2-870a-4a8473ead8b0,HIGH - Low Quality,37,29.47%,68.25%,58.8,SEVERE: 68.3% OOC tags (43/63 words) - Manual review needed|Mixed English-Bangla text: 129 English characters|Low Bangla character ratio: 29.5%
+0006b05f-07e1-4af3-b1e0-85cf81ebeb2e,HIGH - Low Quality,17,0.00%,100.00%,49.4,CRITICAL: 100.0% OOC tags (9/9 words) - Unusable|Moderate annotation coverage: 67.4% of audio annotated|Mixed English-Bangla text: 27 English characters|Low Bangla character ratio: 0.0%
+e8fb9f78-134f-4658-a333-aa6b9d1c4aab,HIGH - Suspicious,70,43.36%,43.42%,62.6,Excessive word repetition (word repeated 33 times)|Repeated phrases detected
+2c80ee3a-59cc-4759-9cb3-af7671eb6b07,HIGH - Suspicious,55,58.69%,32.08%,72.6,Excessive word repetition (word repeated 17 times)|Repeated phrases detected|Repeated negation patterns|Large gap in annotations (5.1s)
+9c73ed61-02d6-420a-9fa7-4959f0505582,HIGH - Suspicious,70,33.67%,55.81%,57.2,Excessive word repetition (word repeated 48 times)|Repeated phrases detected
+479baae5-c94b-4815-b821-569ebc8c0ec9,HIGH - Suspicious,70,42.32%,47.54%,64.1,Excessive word repetition (word repeated 29 times)|Repeated phrases detected
+71ef1356-afbb-445e-ae3d-645727dc9e31,HIGH - Suspicious,70,42.48%,48.00%,66.8,Excessive word repetition (word repeated 24 times)|Repeated phrases detected
+b8a85f9e-0cd2-40b5-9923-ff2214773eca,HIGH - Suspicious,35,0.00%,100.00%,46.8,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 22 times)|Repeated phrases detected|Very low word density in annotations
+8429040e-e24f-47fe-bcff-cd0a8ebf0cfa,HIGH - Suspicious,40,7.95%,87.50%,50.3,Low Bangla character ratio (8.0%)|Excessive word repetition (word repeated 49 times)|Repeated phrases detected
+5c076e78-4e00-43a3-9d78-0a3c6b9ddaa7,HIGH - Suspicious,70,37.02%,46.38%,64.1,Excessive word repetition (word repeated 32 times)|Repeated phrases detected
+44a550e2-22a1-463f-adf0-e43c77e9ed85,HIGH - Suspicious,70,50.85%,35.71%,63.4,Excessive word repetition (word repeated 25 times)|Repeated phrases detected
+33cbb06b-99fe-4920-937b-02a3a09cc632,HIGH - Suspicious,70,46.91%,40.00%,68.8,Excessive word repetition (word repeated 16 times)|Repeated phrases detected
+42c5580b-ed7f-4c43-850e-b38ad2f2345c,HIGH - Suspicious,40,0.00%,100.00%,51.7,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 6 times)|Repeated phrases detected
+f4ff0059-95b0-42b1-bdcb-dea53c7e4ed4,HIGH - Suspicious,40,29.90%,65.08%,58.9,Low Bangla character ratio (29.9%)|Excessive word repetition (word repeated 41 times)|Repeated phrases detected
+cd53b34e-1c22-4d6c-862c-e76785dcaee8,HIGH - Suspicious,40,0.00%,100.00%,45.5,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 79 times)|Repeated phrases detected
+d9e3a5b2-baad-4d59-ad7e-1b7a932f8a33,HIGH - Suspicious,70,46.61%,42.37%,66.2,Excessive word repetition (word repeated 25 times)|Repeated phrases detected
+c6e21778-cac1-4b94-a93c-e6d731a85795,HIGH - Suspicious,40,14.20%,85.71%,52.0,Low Bangla character ratio (14.2%)|Excessive word repetition (word repeated 48 times)|Repeated phrases detected
+e300b3b6-abbf-45d2-a82d-9996cb549a60,HIGH - Suspicious,40,25.07%,69.49%,57.0,Low Bangla character ratio (25.1%)|Excessive word repetition (word repeated 41 times)|Repeated phrases detected
+0ea1d7a0-18f1-4677-a60f-6811d8a9bfd1,HIGH - Suspicious,70,38.22%,44.30%,59.6,Excessive word repetition (word repeated 35 times)|Repeated phrases detected
+37c045fa-4384-48c8-bfb9-bdeb56ba2801,HIGH - Suspicious,40,28.42%,59.38%,61.8,Low Bangla character ratio (28.4%)|Excessive word repetition (word repeated 19 times)|Repeated phrases detected
+2a8a5c9f-ba55-48ac-9718-b61ada94dd3d,HIGH - Suspicious,70,47.38%,38.10%,62.9,Excessive word repetition (word repeated 32 times)|Repeated phrases detected
+b9b2356d-f84b-47ed-8771-0b3a5767fdbb,HIGH - Suspicious,70,59.53%,30.30%,70.2,Excessive word repetition (word repeated 20 times)|Repeated phrases detected
+ee2ec508-fdac-4a8c-b504-9ee1cc57f437,HIGH - Suspicious,40,0.00%,93.33%,50.9,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 14 times)|Repeated phrases detected
+901849a9-bce7-494e-8a01-c34a8a884114,HIGH - Suspicious,35,0.00%,100.00%,48.1,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 13 times)|Repeated phrases detected|Very low word density in annotations
+bebe9205-f1c4-40a7-906f-7420e5cc85a2,HIGH - Suspicious,25,28.02%,69.70%,58.1,Low Bangla character ratio (28.0%)|Excessive word repetition (word repeated 46 times)|Repeated phrases detected|Repeated negation patterns|Large gap in annotations (2.0s)
+8deb93a9-0823-4c3b-86e2-d91b7d3030cf,HIGH - Suspicious,35,0.00%,100.00%,48.3,Low Bangla character ratio (0.0%)|Excessive word repetition (word repeated 12 times)|Repeated phrases detected|Very low word density in annotations
+1fb762b8-690a-4548-909f-f089e4090a70,HIGH - Suspicious,70,43.01%,44.05%,59.0,Excessive word repetition (word repeated 37 times)|Repeated phrases detected
+524dac4a-787e-4753-9199-fcb29bb9b01d,MEDIUM - Medium Quality,62,41.09%,50.79%,64.5,SEVERE: 50.8% OOC tags (32/63 words) - Manual review needed|Mixed English-Bangla text: 96 English characters
+6c11d198-5f62-43e7-80d9-2b68d5c390ce,MEDIUM - Medium Quality,62,39.90%,54.55%,62.2,SEVERE: 54.5% OOC tags (36/66 words) - Manual review needed|Mixed English-Bangla text: 108 English characters
+53cf4d04-69d8-4e5c-ac4a-726d3deab380,MEDIUM - Medium Quality,62,32.02%,56.67%,59.9,SEVERE: 56.7% OOC tags (34/60 words) - Manual review needed|Mixed English-Bangla text: 102 English characters
+54da46e1-3095-4f9a-85d0-1d6bb0da4886,MEDIUM - Medium Quality,57,33.55%,57.69%,62.3,SEVERE: 57.7% OOC tags (15/26 words) - Manual review needed|Low word density: 0.9 words/second (expected 2-4)|Mixed English-Bangla text: 45 English characters
+570ee6ed-2e5c-40ea-ad23-7828d8ace497,MEDIUM - Medium Quality,62,42.03%,53.23%,63.7,SEVERE: 53.2% OOC tags (33/62 words) - Manual review needed|Mixed English-Bangla text: 99 English characters
+52e78419-0552-4bcc-a7cf-375dace7786e,MEDIUM - Medium Quality,62,30.56%,58.00%,60.5,SEVERE: 58.0% OOC tags (29/50 words) - Manual review needed|Mixed English-Bangla text: 87 English characters
+52111abc-2409-469a-a7d8-07acbc35e207,MEDIUM - Medium Quality,62,30.66%,66.67%,59.5,SEVERE: 66.7% OOC tags (46/69 words) - Manual review needed|Mixed English-Bangla text: 138 English characters
+9d0641f1-d13b-43ca-b4a0-678c89689038,MEDIUM - Medium Quality,62,37.02%,57.81%,62.5,SEVERE: 57.8% OOC tags (37/64 words) - Manual review needed|Mixed English-Bangla text: 111 English characters
+9d1ca0d6-2de7-490d-9b98-673f5aea35cf,MEDIUM - Medium Quality,57,37.97%,53.85%,64.2,SEVERE: 53.8% OOC tags (14/26 words) - Manual review needed|Low word density: 0.9 words/second (expected 2-4)|Mixed English-Bangla text: 42 English characters
+a383b2b0-c122-4474-8663-c7d74597e708,MEDIUM - Medium Quality,62,30.12%,60.29%,60.1,SEVERE: 60.3% OOC tags (41/68 words) - Manual review needed|Mixed English-Bangla text: 123 English characters
+a45cf1db-214a-4227-8b36-80972cf2a06f,MEDIUM - Medium Quality,62,39.81%,58.02%,61.5,SEVERE: 58.0% OOC tags (47/81 words) - Manual review needed|Mixed English-Bangla text: 141 English characters
+a9b3351f-c15a-4290-b3ac-e79ee320f386,MEDIUM - Medium Quality,62,37.50%,55.77%,64.3,SEVERE: 55.8% OOC tags (29/52 words) - Manual review needed|Mixed English-Bangla text: 92 English characters
+aa0f5a17-b337-4d13-b6e5-ac8f93bf0749,MEDIUM - Medium Quality,62,30.07%,70.21%,58.7,SEVERE: 70.2% OOC tags (33/47 words) - Manual review needed|Mixed English-Bangla text: 99 English characters
+ad7b1db2-4020-43cf-b708-df91b1ec740c,MEDIUM - Medium Quality,62,41.51%,50.72%,62.7,SEVERE: 50.7% OOC tags (35/69 words) - Manual review needed|Mixed English-Bangla text: 105 English characters
+fce7be12-3b96-460a-b6c6-d98df823ea3a,MEDIUM - Medium Quality,62,31.82%,55.56%,63.8,SEVERE: 55.6% OOC tags (10/18 words) - Manual review needed|Mixed English-Bangla text: 30 English characters
+e97fc29d-994c-4093-8fdb-3e9b5e6d98ba,MEDIUM - Medium Quality,62,36.04%,56.79%,62.3,SEVERE: 56.8% OOC tags (46/81 words) - Manual review needed|Mixed English-Bangla text: 138 English characters
+e02d06fc-976a-4380-bd9b-419019a68494,MEDIUM - Medium Quality,62,32.36%,55.56%,59.6,SEVERE: 55.6% OOC tags (30/54 words) - Manual review needed|Mixed English-Bangla text: 90 English characters
+dc8d3c2d-8043-4166-bb65-56e4db16a812,MEDIUM - Medium Quality,62,32.00%,55.56%,63.8,SEVERE: 55.6% OOC tags (10/18 words) - Manual review needed|Mixed English-Bangla text: 30 English characters
+dbf4aeef-76df-4b8e-8f73-50d4a79ab067,MEDIUM - Medium Quality,62,33.06%,61.40%,60.9,SEVERE: 61.4% OOC tags (35/57 words) - Manual review needed|Mixed English-Bangla text: 105 English characters
+d63ef92a-6905-4208-9013-7d6bacffd037,MEDIUM - Medium Quality,62,31.31%,61.76%,57.4,SEVERE: 61.8% OOC tags (42/68 words) - Manual review needed|Mixed English-Bangla text: 126 English characters
+d5334e5b-90af-43e7-b380-c1088e210cf3,MEDIUM - Medium Quality,62,30.06%,60.49%,57.4,SEVERE: 60.5% OOC tags (49/81 words) - Manual review needed|Mixed English-Bangla text: 147 English characters
+60e47b36-e06f-4206-8d05-79d613385aac,MEDIUM - Medium Quality,62,42.70%,54.29%,64.7,SEVERE: 54.3% OOC tags (38/70 words) - Manual review needed|Mixed English-Bangla text: 116 English characters
+66268d41-c122-453d-9b1d-30d822f35d7c,MEDIUM - Medium Quality,62,34.97%,61.54%,63.2,SEVERE: 61.5% OOC tags (32/52 words) - Manual review needed|Mixed English-Bangla text: 97 English characters
+b5dfe2ba-96cc-4a74-ae3a-778b3492b502,MEDIUM - Medium Quality,62,32.02%,60.53%,56.1,SEVERE: 60.5% OOC tags (23/38 words) - Manual review needed|Mixed English-Bangla text: 69 English characters
+b6fee097-426a-4e49-b5e5-84b8b4e39f92,MEDIUM - Medium Quality,62,47.06%,52.24%,64.9,SEVERE: 52.2% OOC tags (35/67 words) - Manual review needed|Mixed English-Bangla text: 105 English characters
+bb08cdc8-246b-458d-a603-02e28c9c0b8d,MEDIUM - Medium Quality,62,31.33%,65.38%,61.7,SEVERE: 65.4% OOC tags (17/26 words) - Manual review needed|Mixed English-Bangla text: 51 English characters
+bfc3782a-3d40-4ee5-8f30-d868c82859b8,MEDIUM - Medium Quality,62,30.41%,56.86%,59.0,SEVERE: 56.9% OOC tags (29/51 words) - Manual review needed|Mixed English-Bangla text: 87 English characters
+c346057c-dd5f-4e73-89d7-f718c9b6d54d,MEDIUM - Medium Quality,62,38.57%,58.06%,64.2,SEVERE: 58.1% OOC tags (36/62 words) - Manual review needed|Mixed English-Bangla text: 108 English characters
+c4aa9e1f-9351-4d27-bc4c-ed7431000d98,MEDIUM - Medium Quality,62,37.19%,53.85%,62.9,SEVERE: 53.8% OOC tags (35/65 words) - Manual review needed|Mixed English-Bangla text: 105 English characters
+c720305a-0b57-4d40-af3e-03a6b53f0582,MEDIUM - Medium Quality,57,34.56%,54.17%,61.2,SEVERE: 54.2% OOC tags (13/24 words) - Manual review needed|Moderate annotation coverage: 74.3% of audio annotated|Mixed English-Bangla text: 39 English characters
+b3454f59-97c0-4113-a445-0c29a074d2eb,MEDIUM - Medium Quality,57,41.38%,55.56%,68.9,SEVERE: 55.6% OOC tags (5/9 words) - Manual review needed|Moderate annotation coverage: 70.5% of audio annotated|Mixed English-Bangla text: 15 English characters
+c9827ba1-808d-4b91-805f-75033f0de5a3,MEDIUM - Medium Quality,62,35.01%,66.07%,61.5,SEVERE: 66.1% OOC tags (37/56 words) - Manual review needed|Mixed English-Bangla text: 111 English characters
+79cba121-98db-40cb-9e95-cb02d91d9ca5,MEDIUM - Medium Quality,62,39.47%,56.90%,62.7,SEVERE: 56.9% OOC tags (33/58 words) - Manual review needed|Mixed English-Bangla text: 99 English characters
+7a549cb3-979b-4963-bb45-06fc6df890d8,MEDIUM - Medium Quality,62,33.50%,65.00%,61.1,SEVERE: 65.0% OOC tags (39/60 words) - Manual review needed|Mixed English-Bangla text: 117 English characters
+815ed8dc-0b4e-4139-999a-2ec3e5d4e8bd,MEDIUM - Medium Quality,62,33.70%,55.13%,59.0,SEVERE: 55.1% OOC tags (43/78 words) - Manual review needed|Mixed English-Bangla text: 129 English characters
+85de8204-5902-463b-ae48-f88c4dc38378,MEDIUM - Medium Quality,62,32.94%,55.07%,59.3,SEVERE: 55.1% OOC tags (38/69 words) - Manual review needed|Mixed English-Bangla text: 114 English characters
+8876b61b-b659-47b8-849b-a0bb90a30307,MEDIUM - Medium Quality,62,44.27%,51.67%,64.0,SEVERE: 51.7% OOC tags (31/60 words) - Manual review needed|Mixed English-Bangla text: 93 English characters
+97acd237-3fed-4b45-b451-29b25663599c,MEDIUM - Medium Quality,62,30.95%,58.49%,60.8,SEVERE: 58.5% OOC tags (31/53 words) - Manual review needed|Mixed English-Bangla text: 93 English characters
+9c73ed61-02d6-420a-9fa7-4959f0505582,MEDIUM - Medium Quality,62,33.67%,55.81%,57.2,SEVERE: 55.8% OOC tags (48/86 words) - Manual review needed|Mixed English-Bangla text: 144 English characters
+cad4f6ee-63ae-4759-907c-de61eaef523f,MEDIUM - Medium Quality,62,37.50%,51.43%,62.4,SEVERE: 51.4% OOC tags (36/70 words) - Manual review needed|Mixed English-Bangla text: 108 English characters
+ce94e4a4-2bcb-42ef-953e-b876efb669cb,MEDIUM - Medium Quality,62,35.42%,52.38%,58.7,SEVERE: 52.4% OOC tags (44/84 words) - Manual review needed|Mixed English-Bangla text: 132 English characters
+28d0f445-4215-441a-a0b5-3a90850ba88b,MEDIUM - Medium Quality,62,34.03%,51.92%,61.8,SEVERE: 51.9% OOC tags (27/52 words) - Manual review needed|Mixed English-Bangla text: 81 English characters
+2be1d97f-0ea8-4412-b9bd-23828ae5efa0,MEDIUM - Medium Quality,62,30.16%,74.07%,58.6,SEVERE: 74.1% OOC tags (40/54 words) - Manual review needed|Mixed English-Bangla text: 120 English characters
+0d6cd60b-9170-422f-922c-8e0ffdfa28ce,MEDIUM - Medium Quality,62,37.09%,58.73%,63.2,SEVERE: 58.7% OOC tags (37/63 words) - Manual review needed|Mixed English-Bangla text: 111 English characters
+142b748d-d4b9-49fa-9ab3-1dc04aa6f89a,MEDIUM - Medium Quality,62,32.70%,53.57%,58.7,SEVERE: 53.6% OOC tags (45/84 words) - Manual review needed|Mixed English-Bangla text: 135 English characters
+0ad3a1fb-d8d7-4930-b2a7-a4650016c285,MEDIUM - Medium Quality,62,35.68%,53.16%,62.2,SEVERE: 53.2% OOC tags (42/79 words) - Manual review needed|Mixed English-Bangla text: 133 English characters
+0bdaa289-850f-45fb-8c9d-76a2c999c0f3,MEDIUM - Medium Quality,62,36.72%,56.10%,60.6,SEVERE: 56.1% OOC tags (46/82 words) - Manual review needed|Mixed English-Bangla text: 138 English characters
+3b857a8d-3735-4a26-b1cd-fccc7dc5cacb,MEDIUM - Medium Quality,62,34.23%,51.85%,60.7,SEVERE: 51.9% OOC tags (14/27 words) - Manual review needed|Mixed English-Bangla text: 42 English characters
+42948163-161b-4458-8715-3fd8a8e4b6cc,MEDIUM - Medium Quality,62,37.02%,54.10%,61.6,SEVERE: 54.1% OOC tags (33/61 words) - Manual review needed|Mixed English-Bangla text: 99 English characters
+2ccc5a16-85d5-450c-9094-4ab90498bdf8,MEDIUM - Medium Quality,62,31.52%,55.81%,61.3,SEVERE: 55.8% OOC tags (24/43 words) - Manual review needed|Mixed English-Bangla text: 72 English characters
+2e46eb34-3f13-4457-af6d-c5bea9c84b60,MEDIUM - Medium Quality,62,31.86%,55.26%,60.4,SEVERE: 55.3% OOC tags (21/38 words) - Manual review needed|Mixed English-Bangla text: 63 English characters
+4bda7285-e416-4c35-8423-3414c725f56c,MEDIUM - Medium Quality,62,34.89%,51.19%,58.2,SEVERE: 51.2% OOC tags (43/84 words) - Manual review needed|Mixed English-Bangla text: 129 English characters
+4bdcecce-b12a-4aa6-8f04-46ebe7e71664,MEDIUM - Medium Quality,62,33.46%,52.17%,62.0,SEVERE: 52.2% OOC tags (24/46 words) - Manual review needed|Mixed English-Bangla text: 72 English characters
+1a8a5405-9720-4688-b6f8-68898849b260,MEDIUM - Medium Quality,62,38.69%,56.14%,64.6,SEVERE: 56.1% OOC tags (32/57 words) - Manual review needed|Mixed English-Bangla text: 96 English characters
+26ccb03f-3c69-4e3e-8c62-01c187129451,MEDIUM - Medium Quality,62,37.89%,51.67%,60.9,SEVERE: 51.7% OOC tags (31/60 words) - Manual review needed|Mixed English-Bangla text: 93 English characters
+0ae1bcd4-0bff-4172-9973-d5bb5e65d375,LOW - Quality Verification,95,82.74%,0.00%,81.5,High quality - verification sample
+6a1bd119-f569-4bc7-8f47-310c7505642e,LOW - Quality Verification,100,80.16%,0.00%,85.2,High quality - verification sample
+ff1d81aa-6298-4bd4-b190-101ca164c2ab,LOW - Quality Verification,100,80.15%,0.00%,80.6,High quality - verification sample
+bd946e32-31aa-4602-9004-d012254686c7,LOW - Quality Verification,100,84.25%,0.00%,86.3,High quality - verification sample
+63d9405a-d34a-4958-8a8c-6f88e5b08bb6,LOW - Quality Verification,100,86.24%,0.00%,89.1,High quality - verification sample
+81d3a119-3399-4758-b98c-e35780b97961,LOW - Quality Verification,100,83.53%,0.00%,84.0,High quality - verification sample
+add10fdf-bfda-4b84-83ca-032eee02d914,LOW - Quality Verification,100,80.92%,0.00%,80.2,High quality - verification sample
+5e797bf8-7f5c-4dde-834e-0378119faee0,LOW - Quality Verification,95,81.40%,0.00%,85.5,High quality - verification sample
+bb1d98d6-4957-4ad3-94cb-17d168c1893b,LOW - Quality Verification,100,81.68%,0.00%,80.8,High quality - verification sample
+109245b2-a0f0-4f39-9b43-4618d25bc7b1,LOW - Quality Verification,100,82.64%,0.00%,80.6,High quality - verification sample
+872a6d1d-7029-45f6-8da2-819df11bce1e,LOW - Quality Verification,95,81.92%,0.00%,82.2,High quality - verification sample
+b744e120-d90f-4c39-82b9-4828e6835b59,LOW - Quality Verification,100,82.53%,0.00%,81.0,High quality - verification sample
+51b10da6-49d2-4705-9bea-a117e0b3a01b,LOW - Quality Verification,100,83.21%,0.00%,81.2,High quality - verification sample
+344438bc-8786-4a06-a8ac-4aeeadcbeac6,LOW - Quality Verification,95,82.71%,0.00%,88.1,High quality - verification sample
+135fb606-82e3-459c-b1ae-73af949f5ebc,LOW - Quality Verification,95,83.08%,0.00%,86.7,High quality - verification sample
+ec961203-0ae8-4268-a2d7-2d47552465b2,LOW - Quality Verification,95,84.76%,0.00%,91.7,High quality - verification sample
+73bb939b-0a97-4253-89ce-1f0d635ba44c,LOW - Quality Verification,100,78.25%,0.00%,71.1,High quality - verification sample
+2e45c2a4-a1d7-469b-a9b3-a37f6019b223,LOW - Quality Verification,100,80.12%,0.00%,72.8,High quality - verification sample
+fffeae04-385a-44e9-a675-8130aef0e888,LOW - Quality Verification,100,81.25%,0.00%,77.0,High quality - verification sample
+494a048b-f502-4c18-b682-3cf383640bb5,LOW - Quality Verification,100,82.83%,0.00%,75.9,High quality - verification sample
+fabedb63-0bbf-499c-94e1-f6e08cec5a66,LOW - Quality Verification,100,79.84%,0.00%,74.5,High quality - verification sample
+593ebd63-6ce4-4060-98f7-125c3f07b8fe,LOW - Quality Verification,100,77.50%,0.00%,71.1,High quality - verification sample
+984608c6-a906-41ff-9844-b4db41aa983a,LOW - Quality Verification,100,82.74%,0.00%,70.8,High quality - verification sample
+c800f8df-2b25-46c4-aecd-9aeacb7eafe3,LOW - Quality Verification,100,81.01%,0.00%,71.7,High quality - verification sample
+c7990edb-c799-4655-9c7c-9a395ec75970,LOW - Quality Verification,100,77.19%,0.00%,71.7,High quality - verification sample
+26552a8a-64c0-4b03-906d-413fc1e0c58f,LOW - Quality Verification,100,79.48%,0.00%,73.0,High quality - verification sample
+8342ce82-0f7e-48e8-810b-35770a13d705,LOW - Quality Verification,100,80.88%,0.00%,71.1,High quality - verification sample
+65a929bf-f7a5-4bcb-9852-a6b804fdf114,LOW - Quality Verification,92,39.81%,42.86%,73.2,High quality - verification sample
+b48201ce-50a2-4695-b9e5-a3986b2448fd,LOW - Quality Verification,100,76.70%,0.00%,75.6,High quality - verification sample
+03173981-06e6-47c5-a12d-f09be241a2fa,LOW - Quality Verification,100,78.32%,0.00%,72.4,High quality - verification sample
+8fafc0c2-e8b5-493a-8cbf-b3275e9755d6,LOW - Quality Verification,100,80.86%,0.00%,70.6,High quality - verification sample
+25b80716-af8f-4147-a445-f59bad070fdd,LOW - Quality Verification,100,78.32%,0.00%,78.1,High quality - verification sample
+32a15121-4854-4417-b958-5618919ed86b,LOW - Quality Verification,100,81.29%,0.00%,71.5,High quality - verification sample
+c8259461-6d69-4a99-8a9c-8eb813326b6f,LOW - Quality Verification,100,82.58%,0.00%,71.2,High quality - verification sample
+7d69c8cb-b58f-4ba2-bdc8-cb1c423f0145,LOW - Quality Verification,100,84.01%,0.00%,75.4,High quality - verification sample
+e641223f-3db2-4cde-a98a-a338e25095a9,LOW - Quality Verification,100,77.32%,0.00%,70.3,High quality - verification sample
+f4030c1b-4db1-487e-af64-045c9db58891,LOW - Quality Verification,100,80.25%,0.00%,69.3,High quality - verification sample
+567418f0-684f-48ae-8009-77a7445c223e,LOW - Quality Verification,100,75.54%,0.00%,63.1,High quality - verification sample
+96c60870-fbef-48ab-a058-843801661709,LOW - Quality Verification,100,80.12%,0.00%,73.9,High quality - verification sample
+22cc2367-97c3-4ef3-9fb0-1dc6a1a4422a,LOW - Quality Verification,100,76.11%,0.00%,69.5,High quality - verification sample
+323fe273-0d97-45a2-9f35-f0645bafc99d,LOW - Quality Verification,100,74.73%,0.00%,63.9,High quality - verification sample
+3a244a55-3c1a-466d-b260-bd844a3f0d47,LOW - Quality Verification,100,79.00%,0.00%,69.2,High quality - verification sample
+8e0fb946-6471-474b-bda6-09b6c76b6a38,LOW - Quality Verification,100,82.71%,0.00%,67.3,High quality - verification sample
+bc7a622c-a693-4ae5-8533-9c69754e03da,LOW - Quality Verification,100,74.94%,0.00%,64.0,High quality - verification sample
+d577031d-3455-4bed-bd89-6c741ac66f28,LOW - Quality Verification,100,78.52%,0.00%,68.7,High quality - verification sample
+be3ea618-ad37-4f47-aaaa-823cebb8b2f3,LOW - Quality Verification,100,81.26%,0.00%,69.0,High quality - verification sample
+db069e0f-5080-4db1-a61e-c8398073b0c6,LOW - Quality Verification,95,75.38%,0.00%,54.1,High quality - verification sample
+4b9aa8b1-a29b-4f9d-998a-c64833a4f6e7,LOW - Quality Verification,100,76.79%,0.00%,67.0,High quality - verification sample
+84fc7ccc-a5b8-4172-9e0d-9e1a31c569b4,LOW - Quality Verification,100,81.09%,0.00%,75.8,High quality - verification sample
+6228ad4d-d258-4950-bdea-acc115f2e715,LOW - Quality Verification,100,81.95%,0.00%,73.1,High quality - verification sample
+ceecd0f4-8347-4bb7-8285-9466d8a2fd75,LOW - Quality Verification,100,79.37%,0.00%,72.3,High quality - verification sample
+b05c2c00-6518-4922-8847-68b27731813c,LOW - Quality Verification,100,84.22%,0.00%,79.0,High quality - verification sample
+de5536be-cf0d-4500-8815-16dab70adde2,LOW - Quality Verification,100,82.63%,0.00%,74.6,High quality - verification sample
+624cae8b-da2a-474e-a320-e7002830125f,LOW - Quality Verification,100,82.20%,0.00%,76.3,High quality - verification sample
+d94187bb-6386-4436-9cb7-c910d8f9b3cc,LOW - Quality Verification,100,77.25%,0.00%,70.5,High quality - verification sample
+f7d6be3b-8265-4a98-86b2-d1d0b89af5c2,LOW - Quality Verification,100,81.30%,0.00%,77.4,High quality - verification sample
+ac7f91f8-e5bd-4a7d-939c-6900096ac87f,LOW - Quality Verification,100,76.74%,0.00%,75.1,High quality - verification sample
+b5e5da06-feec-4740-88a8-be8e3897933c,LOW - Quality Verification,100,79.49%,0.00%,76.5,High quality - verification sample
+69b3d138-6c47-4005-8d10-24e124e5cbce,LOW - Quality Verification,98,67.14%,0.00%,69.8,High quality - verification sample
+e0148451-272c-4079-88da-a56488769957,LOW - Quality Verification,100,81.86%,0.00%,73.1,High quality - verification sample
+a6e8552a-2a12-4254-a782-143e5e6b0350,LOW - Quality Verification,100,80.96%,0.00%,73.0,High quality - verification sample
+ba66f9c6-6a5e-40e4-a5f0-4706d3eed8a4,LOW - Quality Verification,100,80.49%,0.00%,76.5,High quality - verification sample
+8a86cfa3-4e70-4cee-8bfc-9c2f1dc6ef9f,LOW - Quality Verification,100,79.03%,0.00%,69.7,High quality - verification sample
+48cafd1c-9f2f-47fa-b7d2-14f8359bc83b,LOW - Quality Verification,100,82.04%,0.00%,78.2,High quality - verification sample
+4819eee8-b289-49fe-9f5d-09403c4771e2,LOW - Quality Verification,100,81.66%,0.00%,79.6,High quality - verification sample
+a78598ac-0dfa-4350-b6b1-1ce31b0a6fe8,LOW - Quality Verification,100,82.09%,0.00%,69.6,High quality - verification sample
+5655b3db-af83-4362-8f2b-ccb96405cfde,LOW - Quality Verification,100,84.05%,0.00%,70.8,High quality - verification sample
+604aaf72-40fd-4b30-bb35-1b8e0a37829e,LOW - Quality Verification,100,80.00%,0.00%,74.0,High quality - verification sample
+70fe65c8-8cc6-4d32-9ac5-68521d28acfd,LOW - Quality Verification,100,77.84%,0.00%,72.7,High quality - verification sample
+7b897ddc-9a2e-4b9d-8e30-71f80c71a58a,LOW - Quality Verification,100,75.80%,0.00%,76.0,High quality - verification sample
+f1ba0991-ff3a-4ce2-8418-9a1b1fd36686,LOW - Quality Verification,95,76.29%,0.00%,78.3,High quality - verification sample
+587ba6ad-8a30-4ba1-a9d6-5a0baa63e5d5,LOW - Quality Verification,100,80.83%,0.00%,74.7,High quality - verification sample
+5b63609d-4ee7-4f1a-a8a0-d9fe08880cec,LOW - Quality Verification,100,76.42%,0.00%,72.1,High quality - verification sample
+2e5612e2-1794-44bf-8353-49620f1adff0,LOW - Quality Verification,100,79.74%,0.00%,75.8,High quality - verification sample
+f5dc38a2-32fd-4915-a330-46f134bf1b79,LOW - Quality Verification,100,78.09%,0.00%,71.5,High quality - verification sample
+09e1c5d8-8679-4bb2-b6ad-944533532d08,LOW - Quality Verification,100,81.00%,0.00%,73.4,High quality - verification sample
+4b726a1c-5bc2-468a-a98f-fe42c5d6a0e7,LOW - Quality Verification,100,69.13%,22.64%,77.9,High quality - verification sample
+034385da-fb5c-4507-a0ff-e64ddef69d17,LOW - Quality Verification,100,80.37%,0.00%,73.9,High quality - verification sample
+d0de783e-eceb-4b46-9076-6ef178f24019,LOW - Quality Verification,100,80.87%,0.00%,71.4,High quality - verification sample
+0a5c1a0f-5d0f-4ef1-afec-e6522efe6022,LOW - Quality Verification,100,81.36%,0.00%,73.3,High quality - verification sample
+449478cf-db96-432a-8e46-3988d2035150,LOW - Quality Verification,100,80.92%,1.11%,74.8,High quality - verification sample
+f1dac61f-ead6-46e1-a50c-31e8eb007d9b,LOW - Quality Verification,100,80.61%,0.00%,77.4,High quality - verification sample
+aaa6bcbd-9d16-401c-b868-1043035fccd3,LOW - Quality Verification,100,81.74%,0.00%,75.8,High quality - verification sample
+f48a2c55-f428-4048-a51f-3df2983903cd,LOW - Quality Verification,100,82.10%,0.00%,75.9,High quality - verification sample
+32cccd91-e71a-4157-a990-c5b7f48b23ef,LOW - Quality Verification,100,80.76%,0.00%,75.9,High quality - verification sample
+7857fb2a-f047-41d8-b4e0-8eb294db2b2e,LOW - Quality Verification,100,82.75%,0.00%,78.5,High quality - verification sample
+c3cc2d63-5db9-4a70-9043-4105fe9c1ef0,LOW - Quality Verification,100,80.86%,0.00%,75.5,High quality - verification sample
+1011155e-5969-4c32-ad07-adf3ffbfef31,LOW - Quality Verification,100,82.83%,0.00%,78.9,High quality - verification sample
+d9a541f6-fdef-4486-a42e-9726a794ce21,LOW - Quality Verification,100,81.87%,0.00%,77.8,High quality - verification sample
+f03f9e02-e49f-4a94-9f48-a4b2c5ba5dc1,LOW - Quality Verification,100,81.67%,0.00%,74.3,High quality - verification sample
+38dae0f5-e70f-4afc-a101-b7851c89e9f2,LOW - Quality Verification,100,81.62%,0.00%,78.2,High quality - verification sample
+5f3bd901-aa98-4bb1-a7a5-47ddb06665ff,LOW - Quality Verification,100,78.64%,0.00%,73.1,High quality - verification sample
+c2e1a9e1-a198-4622-a5aa-a255ab5b5574,LOW - Quality Verification,100,78.05%,0.00%,77.2,High quality - verification sample
+bb2773c0-fbb6-4626-acdc-f0c573629779,LOW - Quality Verification,100,80.36%,0.00%,71.0,High quality - verification sample
+5d81be5b-ba2d-4179-a1eb-98dc5bca19a5,LOW - Quality Verification,100,82.79%,0.00%,79.7,High quality - verification sample
+2992ade5-98b3-496f-a013-95cb336e8cc4,LOW - Quality Verification,100,82.20%,0.00%,81.6,High quality - verification sample
+37770aa4-7482-4209-ba8b-f0ba7aa02d40,LOW - Quality Verification,100,81.79%,0.00%,81.1,High quality - verification sample
+6c1886a3-031c-48bb-a543-036554a77ddf,LOW - Quality Verification,100,83.29%,0.00%,82.6,High quality - verification sample
+740f5a45-2f4b-4618-9c86-1e4600e92586,LOW - Quality Verification,95,84.91%,0.00%,88.9,High quality - verification sample
+29d92d76-8580-4d94-aab6-1912e0fcf4de,LOW - Quality Verification,95,83.71%,0.00%,86.1,High quality - verification sample
+f7dbb6e6-d8d2-41c6-9dbf-b5a977be5ed2,LOW - Quality Verification,100,81.52%,0.00%,85.6,High quality - verification sample
+d54a024f-99c0-4e7b-9ea4-ca7b8e5ba41c,LOW - Quality Verification,100,83.49%,0.00%,83.1,High quality - verification sample
+4014e0fb-2134-4278-841b-4e202f7ea059,LOW - Quality Verification,100,82.85%,0.00%,85.8,High quality - verification sample
+f6f8bebd-7b5d-4c89-84ca-7fe821979c8e,LOW - Quality Verification,100,83.86%,0.00%,83.8,High quality - verification sample
+39c8e11b-9d47-4545-ac3e-9306f6da0bd8,LOW - Quality Verification,100,82.81%,0.00%,81.9,High quality - verification sample
+142d2118-8ec4-4b34-805c-3358a09cd949,LOW - Quality Verification,100,81.66%,0.00%,82.9,High quality - verification sample
+4d37382f-4fa8-43f3-8db7-9c15607efcc5,LOW - Quality Verification,100,83.91%,0.00%,83.9,High quality - verification sample
+58b997f8-b110-45c6-b08a-80e054c5f48a,LOW - Quality Verification,100,80.11%,0.00%,81.0,High quality - verification sample
+90d28b1e-fbf0-4425-8ef8-d5605faec6d9,LOW - Quality Verification,100,84.48%,0.00%,81.5,High quality - verification sample
+1362d5c5-b106-424e-94e8-a81167dd4ba0,LOW - Quality Verification,95,84.76%,0.00%,87.6,High quality - verification sample
