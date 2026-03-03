@@ -16,6 +16,10 @@ try {
 
 const app = express();
 const { BASE_DIR, PORT, SESSION_TIMEOUT, DEBUG } = config;
+const AUDIO_EXTENSIONS = ['.flac', '.wav', '.mp3', '.m4a', '.ogg'];
+const EVALUATION_SAMPLE_CSV = path.join(__dirname, 'MANUAL_EVALUATION_SAMPLE_500.csv');
+const SPLIT_FOLDERS = ['nusrat', 'marzan'];
+const ANNOTATIONS_ROOT = path.join(__dirname, 'annotations');
 
 // Helper function to normalize paths to forward slashes consistently
 function normalizePath(pathStr) {
@@ -25,6 +29,108 @@ function normalizePath(pathStr) {
         .replace(/\/+/g, '/')          // Replace multiple consecutive slashes with single slash
         .replace(/^\//, '')            // Remove leading slash if present
         .replace(/\/$/, '');           // Remove trailing slash if present
+}
+
+function parseCsvFirstField(line) {
+    let value = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+            inQuotes = !inQuotes;
+            continue;
+        }
+        if (ch === ',' && !inQuotes) {
+            break;
+        }
+        value += ch;
+    }
+    return value.trim();
+}
+
+function loadEvaluationManifest() {
+    if (!fs.existsSync(EVALUATION_SAMPLE_CSV)) {
+        throw new Error(`Manifest CSV not found: ${EVALUATION_SAMPLE_CSV}`);
+    }
+
+    const raw = fs.readFileSync(EVALUATION_SAMPLE_CSV, 'utf8');
+    const lines = raw.split(/\r?\n/).filter(line => line.trim().length > 0);
+    const fileIds = [];
+
+    for (let i = 1; i < lines.length && fileIds.length < 500; i++) {
+        const id = parseCsvFirstField(lines[i]);
+        if (id) {
+            fileIds.push(id);
+        }
+    }
+
+    if (fileIds.length < 500) {
+        console.warn(`Warning: expected 500 rows in CSV, found ${fileIds.length}.`);
+    }
+
+    return {
+        nusrat: fileIds.slice(0, 250),
+        marzan: fileIds.slice(250, 500)
+    };
+}
+
+const evaluationManifest = loadEvaluationManifest();
+const manifestSetByFolder = {
+    nusrat: new Set(evaluationManifest.nusrat),
+    marzan: new Set(evaluationManifest.marzan)
+};
+const audioFileNameCache = new Map();
+
+function resolveAudioFileName(fileId) {
+    if (audioFileNameCache.has(fileId)) {
+        return audioFileNameCache.get(fileId);
+    }
+
+    // Manifest is file-id based; default to .flac when extension is absent.
+    const resolved = path.extname(fileId) ? fileId : `${fileId}.flac`;
+
+    audioFileNameCache.set(fileId, resolved);
+    return resolved;
+}
+
+function resolveAudioPathFromRequest(requestPath) {
+    const normalized = normalizePath(requestPath);
+    const leafName = path.basename(normalized);
+
+    if (!leafName || leafName === '.' || leafName === '..') {
+        return null;
+    }
+
+    if (path.extname(leafName)) {
+        const directPath = path.resolve(BASE_DIR, leafName);
+        if (fs.existsSync(directPath)) {
+            return directPath;
+        }
+        return null;
+    }
+
+    for (const ext of AUDIO_EXTENSIONS) {
+        const candidate = path.resolve(BASE_DIR, `${leafName}${ext}`);
+        if (fs.existsSync(candidate)) {
+            return candidate;
+        }
+    }
+
+    return null;
+}
+
+function resolveTranscriptPathFromRequest(requestPath) {
+    const normalized = normalizePath(requestPath);
+    const leafName = path.basename(normalized);
+
+    if (!leafName || leafName === '.' || leafName === '..') {
+        return null;
+    }
+
+    const fileName = path.extname(leafName) ? leafName : `${leafName}.json`;
+    const fullPath = path.resolve(BASE_DIR, fileName);
+    return fs.existsSync(fullPath) ? fullPath : null;
 }
 
 // Demo accounts with secure random passwords
@@ -89,19 +195,10 @@ app.get('/audio/*', (req, res) => {
     // Get the file path from the URL
     const filePath = req.params[0];
     const decodedPath = decodeURIComponent(filePath);
-    const windowsPath = decodedPath.replace(/\//g, path.sep);
-    const fullPath = path.resolve(BASE_DIR, windowsPath);
+    const fullPath = resolveAudioPathFromRequest(decodedPath);
 
     try {
-        // Security check: ensure the resolved path is within BASE_DIR
-        const normalizedBase = path.resolve(BASE_DIR);
-        const normalizedFull = path.resolve(fullPath);
-
-        if (!normalizedFull.startsWith(normalizedBase)) {
-            return res.status(403).json({ error: 'Access denied: Path outside base directory' });
-        }
-
-        if (!fs.existsSync(fullPath)) {
+        if (!fullPath) {
             return res.status(404).json({ error: 'File not found' });
         }
 
@@ -190,134 +287,44 @@ app.post('/api/logout', (req, res) => {
 
 // API endpoint to get directory contents
 app.get('/api/browse', requireAuth, (req, res) => {
-    const relativePath = decodeURIComponent(req.query.path || '');
-    // Convert forward slashes to Windows path separators
-    const windowsPath = relativePath.replace(/\//g, path.sep);
-    const fullPath = path.resolve(BASE_DIR, windowsPath);
+    const relativePath = normalizePath(decodeURIComponent(req.query.path || ''));
 
     try {
-        // Security check: ensure the resolved path is within BASE_DIR
-        const normalizedBase = path.resolve(BASE_DIR);
-        const normalizedFull = path.resolve(fullPath);
-
-        if (!normalizedFull.startsWith(normalizedBase)) {
-            return res.status(403).json({ error: 'Access denied: Path outside base directory' });
-        }
-
-        if (!fs.existsSync(fullPath)) {
-            return res.status(404).json({ error: `Directory not found: ${fullPath}` });
-        }
-
-        const items = fs.readdirSync(fullPath, { withFileTypes: true });
-        const result = {
-            currentPath: relativePath,
-            items: []
-        };
-
-        // Collect all files by type
-        const audioFiles = [];
-        const jsonFiles = [];
-        const allFiles = [];
-
-        items.forEach(item => {
-            if (item.isDirectory()) {
-                // Use forward slashes for web paths, but handle Windows paths properly
-                const itemPath = normalizePath(relativePath ? `${relativePath}/${item.name}` : item.name);
-
-                // Count files in this directory
-                const dirFullPath = path.join(fullPath, item.name);
-                let fileCount = 0;
-                try {
-                    const dirItems = fs.readdirSync(dirFullPath, { withFileTypes: true });
-                    fileCount = dirItems.filter(dirItem => dirItem.isFile()).length;
-                } catch (error) {
-                    // If we can't read the directory, set count to 0
-                    fileCount = 0;
-                }
-
-                result.items.push({
-                    name: item.name,
+        if (!relativePath) {
+            return res.json({
+                currentPath: '',
+                items: SPLIT_FOLDERS.map(folder => ({
+                    name: folder,
                     type: 'folder',
-                    path: itemPath,
-                    fileCount: fileCount
-                });
-            } else {
-                allFiles.push(item.name);
-
-                // Support multiple audio formats
-                if (item.name.match(/\.(flac|wav|mp3|m4a|ogg)$/i)) {
-                    audioFiles.push(item.name);
-                } else if (item.name.endsWith('.json')) {
-                    jsonFiles.push(item.name);
-                }
-            }
-        });
-
-        // Debug logging (only in debug mode)
-        if (DEBUG) {
-            console.log(`\n=== DIRECTORY SCAN ===`);
-            console.log(`Original relative path: "${relativePath}"`);
-            console.log(`Windows path: "${windowsPath}"`);
-            console.log(`Full path: "${fullPath}"`);
-            console.log(`Directory exists: ${fs.existsSync(fullPath)}`);
-            console.log(`All files found: ${allFiles.length}`);
-            if (allFiles.length > 0) {
-                console.log(`Files:`, allFiles);
-            }
-            console.log(`Audio files found: ${audioFiles.length}`);
-            if (audioFiles.length > 0) {
-                console.log(`Audio files:`, audioFiles);
-            }
-            console.log(`JSON files found: ${jsonFiles.length}`);
-            if (jsonFiles.length > 0) {
-                console.log(`JSON files:`, jsonFiles);
-            }
-            console.log(`======================\n`);
+                    path: folder,
+                    fileCount: evaluationManifest[folder].length
+                }))
+            });
         }
 
-        // Process audio files with flexible matching
-        audioFiles.forEach(audioFile => {
-            const baseName = audioFile.replace(/\.(flac|wav|mp3|m4a|ogg)$/i, '');
-            let matchingJson = null;
+        if (!SPLIT_FOLDERS.includes(relativePath)) {
+            return res.status(404).json({ error: 'Folder not found' });
+        }
 
-            // Try different matching strategies
-            // 1. Exact base name match
-            matchingJson = jsonFiles.find(jsonFile => jsonFile === baseName + '.json');
-
-            // 2. If no exact match, try UUID-based matching (for files with timestamps)
-            if (!matchingJson) {
-                const uuidMatch = audioFile.match(/_([a-f0-9-]{36})\.(flac|wav|mp3|m4a|ogg)$/i);
-                if (uuidMatch) {
-                    const uuid = uuidMatch[1];
-                    matchingJson = jsonFiles.find(jsonFile => jsonFile.includes(uuid));
-                }
-            }
-
-            // 3. If still no match, try partial name matching
-            if (!matchingJson) {
-                matchingJson = jsonFiles.find(jsonFile => {
-                    const jsonBase = jsonFile.replace('.json', '');
-                    return baseName.includes(jsonBase) || jsonBase.includes(baseName);
-                });
-            }
-
-            const audioPath = normalizePath(relativePath ? `${relativePath}/${audioFile}` : audioFile);
-            const jsonPath = matchingJson ? normalizePath(relativePath ? `${relativePath}/${matchingJson}` : matchingJson) : null;
-
-            result.items.push({
-                name: baseName,
+        const clipItems = evaluationManifest[relativePath].map(fileId => {
+            const audioFile = resolveAudioFileName(fileId);
+            return {
+                name: fileId,
                 type: 'audio',
-                audioFile: audioPath,
-                jsonFile: jsonPath,
-                path: audioPath
-            });
+                path: normalizePath(`${relativePath}/${fileId}`),
+                audioFile,
+                jsonFile: `${fileId}.json`,
+                splitFolder: relativePath
+            };
         });
 
-        console.log(`Final items count: ${result.items.length}`);
-        res.json(result);
+        res.json({
+            currentPath: relativePath,
+            items: clipItems
+        });
     } catch (error) {
         console.error('Browse error:', error);
-        res.status(500).json({ error: 'Failed to read directory: ' + error.message });
+        res.status(500).json({ error: 'Failed to load sample list: ' + error.message });
     }
 });
 
@@ -367,10 +374,10 @@ app.get('/api/absolutePath', requireAuth, (req, res) => {
     }
 
     const decodedPath = decodeURIComponent(filePath);
-
-    // Convert the path to the desired format: collect/read/YouTube/Sangsad TV/496k9w8hY2c/filename.flac
-    // Use helper function to ensure consistent forward slash format
-    const normalizedPath = normalizePath(decodedPath);
+    const resolvedAudioPath = resolveAudioPathFromRequest(decodedPath);
+    const normalizedPath = resolvedAudioPath
+        ? normalizePath(path.basename(resolvedAudioPath))
+        : normalizePath(path.basename(decodedPath));
 
     // Debug logging
     if (DEBUG) {
@@ -392,11 +399,10 @@ app.get('/api/transcript', requireAuth, (req, res) => {
     }
 
     const decodedPath = decodeURIComponent(filePath);
-    const windowsPath = decodedPath.replace(/\//g, path.sep);
-    const fullPath = path.resolve(BASE_DIR, windowsPath);
+    const fullPath = resolveTranscriptPathFromRequest(decodedPath);
 
     try {
-        if (!fs.existsSync(fullPath)) {
+        if (!fullPath) {
             return res.status(404).json({ error: 'File not found' });
         }
 
@@ -405,6 +411,50 @@ app.get('/api/transcript', requireAuth, (req, res) => {
         res.json(jsonData);
     } catch (error) {
         res.status(500).json({ error: 'Failed to read transcript file' });
+    }
+});
+
+// Save annotation by split folder
+app.post('/api/annotation', requireAuth, (req, res) => {
+    const sessionId = req.headers['x-session-id'];
+    const session = sessions.get(sessionId);
+    const username = session?.username || 'unknown';
+    const { splitFolder, clipId, audioFile, jsonFile, duration, text, evaluation } = req.body || {};
+
+    if (!splitFolder || !clipId || !evaluation || typeof evaluation !== 'object') {
+        return res.status(400).json({ error: 'splitFolder, clipId, and evaluation are required' });
+    }
+
+    if (!SPLIT_FOLDERS.includes(splitFolder)) {
+        return res.status(400).json({ error: 'Invalid splitFolder' });
+    }
+
+    if (!manifestSetByFolder[splitFolder].has(clipId)) {
+        return res.status(400).json({ error: 'clipId does not belong to this split folder' });
+    }
+
+    try {
+        const folderPath = path.join(ANNOTATIONS_ROOT, splitFolder);
+        fs.mkdirSync(folderPath, { recursive: true });
+
+        const outputPath = path.join(folderPath, `${clipId}.json`);
+        const payload = {
+            splitFolder,
+            clipId,
+            audioFile: audioFile || null,
+            jsonFile: jsonFile || null,
+            duration: duration || null,
+            text: text || '',
+            evaluation,
+            savedBy: username,
+            savedAt: new Date().toISOString()
+        };
+
+        fs.writeFileSync(outputPath, JSON.stringify(payload, null, 2), 'utf8');
+        res.json({ success: true, file: outputPath });
+    } catch (error) {
+        console.error('Annotation save error:', error);
+        res.status(500).json({ error: 'Failed to save annotation' });
     }
 });
 

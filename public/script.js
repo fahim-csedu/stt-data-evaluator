@@ -12,6 +12,7 @@ class AudioFileBrowser {
     constructor() {
         this.currentPath = '';
         this.pathHistory = [];
+        this.currentItems = [];
         this.selectedFile = null;
         this.currentTranscript = null;
         this.bookmarks = this.loadBookmarks();
@@ -51,6 +52,7 @@ class AudioFileBrowser {
         this.bookmarkBtn = document.getElementById('bookmarkBtn');
         this.bookmarkSelect = document.getElementById('bookmarkSelect');
         this.copyBtn = document.getElementById('copyBtn');
+        this.saveBtn = document.getElementById('saveBtn');
         this.logoutBtn = document.getElementById('logoutBtn');
         this.userInfo = document.getElementById('userInfo');
         this.navigationHint = document.getElementById('navigationHint');
@@ -67,6 +69,7 @@ class AudioFileBrowser {
         this.bookmarkBtn.addEventListener('click', () => this.addBookmark());
         this.bookmarkSelect.addEventListener('change', (e) => this.jumpToBookmark(e.target.value));
         this.copyBtn.addEventListener('click', () => this.copyToClipboard());
+        this.saveBtn.addEventListener('click', () => this.saveAnnotation());
         this.logoutBtn.addEventListener('click', () => this.logout());
         this.hintClose.addEventListener('click', () => this.dismissHint());
         this.clearAnnotationBtn.addEventListener('click', () => this.clearAnnotation());
@@ -113,6 +116,12 @@ class AudioFileBrowser {
                     this.handleAuthError();
                     return;
                 }
+                if (response.status === 404 && path) {
+                    this.pathHistory = [];
+                    localStorage.removeItem('audioFileBrowserLastPath');
+                    await this.loadDirectory('');
+                    return;
+                }
                 throw new Error(data.error || 'Failed to load directory');
             }
             
@@ -137,6 +146,8 @@ class AudioFileBrowser {
     }
     
     renderFileList(items) {
+        this.currentItems = items;
+
         if (items.length === 0) {
             this.fileList.innerHTML = '<div class="loading">No files found in this directory</div>';
             return;
@@ -240,23 +251,10 @@ class AudioFileBrowser {
     selectFileElement(element) {
         if (!element) return;
         
-        const type = element.dataset.type;
-        const path = element.dataset.path;
-        
-        // Create item object from element data
-        const item = {
-            type: type,
-            path: path,
-            name: element.querySelector('.file-name').textContent
-        };
-        
-        if (type === 'audio') {
-            // We need to reconstruct the full item data for audio files
-            item.audioFile = path;
-            item.jsonFile = path.replace('.flac', '.json');
-        }
-        // For folders, no additional properties needed
-        
+        const index = Number(element.dataset.index);
+        const item = Number.isInteger(index) ? this.currentItems[index] : null;
+        if (!item) return;
+
         this.selectFile(element, item);
     }
     
@@ -417,6 +415,101 @@ class AudioFileBrowser {
     }
     
     // Copy functionality for spreadsheet
+    getTranscriptText() {
+        if (!this.currentTranscript) return '';
+
+        if (this.currentTranscript.annotation && Array.isArray(this.currentTranscript.annotation)) {
+            return this.currentTranscript.annotation.map(item => item.text).join(' ');
+        }
+
+        if (typeof this.currentTranscript === 'string') {
+            return this.currentTranscript;
+        }
+
+        if (this.currentTranscript.text) {
+            return this.currentTranscript.text;
+        }
+
+        if (this.currentTranscript.transcript) {
+            return this.currentTranscript.transcript;
+        }
+
+        if (Array.isArray(this.currentTranscript)) {
+            return this.currentTranscript.map(item => item.text || item).join(' ');
+        }
+
+        return '';
+    }
+
+    collectAnnotationData() {
+        if (!this.selectedFile) return null;
+
+        const duration = this.currentTranscript?.duration || 'N/A';
+        const text = this.getTranscriptText();
+
+        return {
+            splitFolder: this.selectedFile.splitFolder || this.currentPath,
+            clipId: this.selectedFile.name,
+            audioFile: this.selectedFile.audioFile || null,
+            jsonFile: this.selectedFile.jsonFile || null,
+            duration,
+            text,
+            evaluation: {
+                correct: document.querySelector('input[name="correct"]:checked')?.value || '',
+                wordMissing: document.querySelector('input[name="wordMissing"]:checked')?.value || '',
+                spellingMistake: document.querySelector('input[name="spellingMistake"]:checked')?.value || '',
+                languageContent: document.querySelector('input[name="languageContent"]:checked')?.value || '',
+                wordAccuracy: document.querySelector('input[name="wordAccuracy"]:checked')?.value || '',
+                grammarSyntax: document.querySelector('input[name="grammarSyntax"]:checked')?.value || '',
+                properNounRecognition: document.querySelector('input[name="properNounRecognition"]:checked')?.value || '',
+                punctuationFormatting: document.querySelector('input[name="punctuationFormatting"]:checked')?.value || '',
+                audioQuality: document.querySelector('input[name="audioQuality"]:checked')?.value || '',
+                notes: this.evaluationNotes.value || ''
+            }
+        };
+    }
+
+    async saveAnnotation() {
+        if (!this.selectedFile || this.selectedFile.type !== 'audio') {
+            alert('Select an audio clip first');
+            return;
+        }
+
+        const payload = this.collectAnnotationData();
+        if (!payload || !payload.splitFolder) {
+            alert('Unable to determine split folder for this clip');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/annotation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-session-id': this.sessionId
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to save annotation');
+            }
+
+            const originalText = this.saveBtn.textContent;
+            this.saveBtn.textContent = '✓ Saved';
+            this.saveBtn.style.background = '#28a745';
+
+            setTimeout(() => {
+                this.saveBtn.textContent = originalText;
+                this.saveBtn.style.background = '#17a2b8';
+            }, 1500);
+        } catch (error) {
+            console.error('Save annotation error:', error);
+            alert(`Failed to save annotation: ${error.message}`);
+        }
+    }
+
     async copyToClipboard() {
         if (!this.selectedFile || !this.currentTranscript) {
             alert('No audio file selected or transcript not loaded');
@@ -439,28 +532,19 @@ class AudioFileBrowser {
             // Ensure consistent forward slash format using helper function
             const absolutePath = this.normalizePath(pathData.absolutePath || this.selectedFile.name);
             console.log('Using absolute path:', absolutePath);
-            const duration = this.currentTranscript.duration || 'N/A';
-            
-            // Extract all text from annotations
-            let fullText = '';
-            if (this.currentTranscript.annotation && Array.isArray(this.currentTranscript.annotation)) {
-                fullText = this.currentTranscript.annotation.map(item => item.text).join(' ');
-            }
-            
-            // Get evaluation data from radio buttons
-            const correct = document.querySelector('input[name="correct"]:checked')?.value || '';
-            const wordMissing = document.querySelector('input[name="wordMissing"]:checked')?.value || '';
-            const spellingMistake = document.querySelector('input[name="spellingMistake"]:checked')?.value || '';
-            const languageContent = document.querySelector('input[name="languageContent"]:checked')?.value || '';
-            
-            // Get radio button values
-            const wordAccuracy = document.querySelector('input[name="wordAccuracy"]:checked')?.value || '';
-            const grammarSyntax = document.querySelector('input[name="grammarSyntax"]:checked')?.value || '';
-            const properNounRecognition = document.querySelector('input[name="properNounRecognition"]:checked')?.value || '';
-            const punctuationFormatting = document.querySelector('input[name="punctuationFormatting"]:checked')?.value || '';
-            const audioQuality = document.querySelector('input[name="audioQuality"]:checked')?.value || '';
-            
-            const evaluationNotes = this.evaluationNotes.value || '';
+            const annotationData = this.collectAnnotationData();
+            const duration = annotationData.duration || 'N/A';
+            const fullText = annotationData.text || '';
+            const correct = annotationData.evaluation.correct || '';
+            const wordMissing = annotationData.evaluation.wordMissing || '';
+            const spellingMistake = annotationData.evaluation.spellingMistake || '';
+            const languageContent = annotationData.evaluation.languageContent || '';
+            const wordAccuracy = annotationData.evaluation.wordAccuracy || '';
+            const grammarSyntax = annotationData.evaluation.grammarSyntax || '';
+            const properNounRecognition = annotationData.evaluation.properNounRecognition || '';
+            const punctuationFormatting = annotationData.evaluation.punctuationFormatting || '';
+            const audioQuality = annotationData.evaluation.audioQuality || '';
+            const evaluationNotes = annotationData.evaluation.notes || '';
             
             // Create tab-separated values for spreadsheet (matching the exact template order)
             // Corrected Order: 1.Filename(Absolute Path) 2.Duration 3.Text 4.Correct 5.Word Missing 6.Spelling Mistake 7.Word Accuracy 8.Grammar & Syntax 9.Proper Noun Recognition 10.Punctuation & Formatting 11.Audio Quality 12.Language Content 13.Notes

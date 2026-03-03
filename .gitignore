@@ -103,3 +103,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Local evaluation workflow artifacts
+annotations/
+MANUAL_EVALUATION_SAMPLE_500.csv
