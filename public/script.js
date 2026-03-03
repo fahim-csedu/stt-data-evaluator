@@ -15,6 +15,8 @@ class AudioFileBrowser {
         this.currentItems = [];
         this.selectedFile = null;
         this.currentTranscript = null;
+        this.transcriptSegments = [];
+        this.activeTranscriptSegmentIndex = -1;
         this.bookmarks = this.loadBookmarks();
         this.sessionId = localStorage.getItem('audioFileBrowserSession');
         this.username = localStorage.getItem('audioFileBrowserUsername');
@@ -73,6 +75,9 @@ class AudioFileBrowser {
         this.logoutBtn.addEventListener('click', () => this.logout());
         this.hintClose.addEventListener('click', () => this.dismissHint());
         this.clearAnnotationBtn.addEventListener('click', () => this.clearAnnotation());
+        this.audioPlayer.addEventListener('timeupdate', () => this.updateTranscriptHighlight());
+        this.audioPlayer.addEventListener('seeked', () => this.updateTranscriptHighlight());
+        this.audioPlayer.addEventListener('loadedmetadata', () => this.updateTranscriptHighlight());
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -316,6 +321,7 @@ class AudioFileBrowser {
                     const transcript = await response.json();
                     this.currentTranscript = transcript;
                     this.displayTranscript(transcript);
+                    this.updateTranscriptHighlight();
                     this.copyBtn.style.display = 'block';
                 } else {
                     this.transcriptContent.textContent = 'Transcript not available';
@@ -335,16 +341,35 @@ class AudioFileBrowser {
     displayTranscript(transcript) {
         // Handle different transcript formats
         let text = '';
+        this.transcriptSegments = [];
+        this.activeTranscriptSegmentIndex = -1;
         
         if (typeof transcript === 'string') {
             text = transcript;
         } else if (transcript.annotation && Array.isArray(transcript.annotation)) {
-            // Handle the annotation format with timestamps
-            text = transcript.annotation.map(item => {
-                const start = this.formatTime(item.start);
-                const end = this.formatTime(item.end);
-                return `[${start} - ${end}] ${item.text}`;
-            }).join('\n\n');
+            this.transcriptContent.innerHTML = '';
+
+            transcript.annotation.forEach((item) => {
+                const startSec = Number(item.start);
+                const endSec = Number(item.end);
+                const isTimed = Number.isFinite(startSec) && Number.isFinite(endSec);
+
+                const segmentEl = document.createElement('div');
+                segmentEl.className = 'transcript-segment';
+
+                const start = this.formatTime(isTimed ? startSec : 0);
+                const end = this.formatTime(isTimed ? endSec : 0);
+                segmentEl.textContent = `[${start} - ${end}] ${item.text || ''}`;
+                this.transcriptContent.appendChild(segmentEl);
+
+                this.transcriptSegments.push({
+                    element: segmentEl,
+                    start: isTimed ? startSec : null,
+                    end: isTimed ? endSec : null
+                });
+            });
+
+            return;
         } else if (transcript.text) {
             text = transcript.text;
         } else if (transcript.transcript) {
@@ -356,6 +381,34 @@ class AudioFileBrowser {
         }
         
         this.transcriptContent.textContent = text;
+    }
+
+    updateTranscriptHighlight() {
+        if (!this.transcriptSegments.length) return;
+
+        const currentTime = this.audioPlayer.currentTime || 0;
+        const newIndex = this.transcriptSegments.findIndex(segment => (
+            Number.isFinite(segment.start) &&
+            Number.isFinite(segment.end) &&
+            currentTime >= segment.start &&
+            currentTime <= segment.end
+        ));
+
+        if (newIndex === this.activeTranscriptSegmentIndex) {
+            return;
+        }
+
+        if (this.activeTranscriptSegmentIndex >= 0) {
+            this.transcriptSegments[this.activeTranscriptSegmentIndex].element.classList.remove('active');
+        }
+
+        this.activeTranscriptSegmentIndex = newIndex;
+
+        if (newIndex >= 0) {
+            const activeEl = this.transcriptSegments[newIndex].element;
+            activeEl.classList.add('active');
+            activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
     }
     
     formatTime(seconds) {
@@ -467,6 +520,7 @@ class AudioFileBrowser {
                 wordMissing: document.querySelector('input[name="wordMissing"]:checked')?.value || '',
                 spellingMistake: document.querySelector('input[name="spellingMistake"]:checked')?.value || '',
                 languageContent: document.querySelector('input[name="languageContent"]:checked')?.value || '',
+                timeAlignmentIssue: document.querySelector('input[name="timeAlignmentIssue"]:checked')?.value || '',
                 wordAccuracy: document.querySelector('input[name="wordAccuracy"]:checked')?.value || '',
                 grammarSyntax: document.querySelector('input[name="grammarSyntax"]:checked')?.value || '',
                 properNounRecognition: document.querySelector('input[name="properNounRecognition"]:checked')?.value || '',
@@ -680,6 +734,7 @@ class AudioFileBrowser {
         document.querySelectorAll('input[name="wordMissing"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="spellingMistake"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="languageContent"]').forEach(radio => radio.checked = false);
+        document.querySelectorAll('input[name="timeAlignmentIssue"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="wordAccuracy"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="grammarSyntax"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="properNounRecognition"]').forEach(radio => radio.checked = false);

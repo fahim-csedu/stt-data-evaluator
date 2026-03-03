@@ -637,6 +637,18 @@ header {
     overflow-y: auto;
 }
 
+.transcript-segment {
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border-left: 3px solid transparent;
+}
+
+.transcript-segment.active {
+    background: #d4edda;
+    border-left-color: #28a745;
+}
+
 .loading {
     text-align: center;
     padding: 40px;
