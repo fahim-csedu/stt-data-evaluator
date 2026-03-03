@@ -182,6 +182,14 @@ class AudioFileBrowser {
             const name = document.createElement('span');
             name.className = 'file-name';
             name.textContent = item.name;
+
+            if (item.type === 'audio' && item.saved) {
+                const savedIndicator = document.createElement('span');
+                savedIndicator.className = 'saved-indicator';
+                savedIndicator.textContent = '✓';
+                savedIndicator.title = 'Annotation saved';
+                name.appendChild(savedIndicator);
+            }
             
             // File count for folders
             if (item.type === 'folder' && item.fileCount !== undefined) {
@@ -496,6 +504,8 @@ class AudioFileBrowser {
                 throw new Error(data.error || 'Failed to save annotation');
             }
 
+            this.markSelectedAsSaved();
+
             const originalText = this.saveBtn.textContent;
             this.saveBtn.textContent = '✓ Saved';
             this.saveBtn.style.background = '#28a745';
@@ -507,6 +517,31 @@ class AudioFileBrowser {
         } catch (error) {
             console.error('Save annotation error:', error);
             alert(`Failed to save annotation: ${error.message}`);
+        }
+    }
+
+    markSelectedAsSaved() {
+        if (!this.selectedFile || this.selectedFile.type !== 'audio') return;
+
+        this.selectedFile.saved = true;
+
+        const selectedElement = this.fileList.querySelector('.file-item.selected');
+        if (!selectedElement) return;
+
+        const index = Number(selectedElement.dataset.index);
+        if (Number.isInteger(index) && this.currentItems[index]) {
+            this.currentItems[index].saved = true;
+        }
+
+        const nameEl = selectedElement.querySelector('.file-name');
+        if (!nameEl) return;
+
+        if (!nameEl.querySelector('.saved-indicator')) {
+            const savedIndicator = document.createElement('span');
+            savedIndicator.className = 'saved-indicator';
+            savedIndicator.textContent = '✓';
+            savedIndicator.title = 'Annotation saved';
+            nameEl.appendChild(savedIndicator);
         }
     }
 

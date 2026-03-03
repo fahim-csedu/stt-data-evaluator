@@ -253,6 +253,22 @@ header {
     flex: 1;
 }
 
+.saved-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #d4edda;
+    color: #1e7e34;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #b7e4c1;
+    vertical-align: middle;
+}
+
 .file-serial {
     font-size: 11px;
     color: #495057;

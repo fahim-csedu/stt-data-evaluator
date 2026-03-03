@@ -82,6 +82,11 @@ const manifestSetByFolder = {
 };
 const audioFileNameCache = new Map();
 
+function isAnnotationSaved(splitFolder, clipId) {
+    const annotationPath = path.join(ANNOTATIONS_ROOT, splitFolder, `${clipId}.json`);
+    return fs.existsSync(annotationPath);
+}
+
 function resolveAudioFileName(fileId) {
     if (audioFileNameCache.has(fileId)) {
         return audioFileNameCache.get(fileId);
@@ -314,7 +319,8 @@ app.get('/api/browse', requireAuth, (req, res) => {
                 path: normalizePath(`${relativePath}/${fileId}`),
                 audioFile,
                 jsonFile: `${fileId}.json`,
-                splitFolder: relativePath
+                splitFolder: relativePath,
+                saved: isAnnotationSaved(relativePath, fileId)
             };
         });
 
