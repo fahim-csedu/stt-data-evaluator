@@ -17,7 +17,7 @@ try {
 const app = express();
 const { BASE_DIR, PORT, SESSION_TIMEOUT, DEBUG } = config;
 const AUDIO_EXTENSIONS = ['.flac', '.wav', '.mp3', '.m4a', '.ogg'];
-const EVALUATION_SAMPLE_CSV = path.join(__dirname, 'MANUAL_EVALUATION_SAMPLE_500.csv');
+const EVALUATION_SAMPLE_CSV = path.join(__dirname, 'MANUAL_EVALUATION_SAMPLE_500_DEDUP.csv');
 const SPLIT_FOLDERS = ['nusrat', 'marzan'];
 const ANNOTATIONS_ROOT = path.join(__dirname, 'annotations');
 
@@ -56,22 +56,26 @@ function loadEvaluationManifest() {
 
     const raw = fs.readFileSync(EVALUATION_SAMPLE_CSV, 'utf8');
     const lines = raw.split(/\r?\n/).filter(line => line.trim().length > 0);
+    const seen = new Set();
     const fileIds = [];
 
-    for (let i = 1; i < lines.length && fileIds.length < 500; i++) {
+    for (let i = 1; i < lines.length; i++) {
         const id = parseCsvFirstField(lines[i]);
-        if (id) {
+        if (id && !seen.has(id)) {
+            seen.add(id);
             fileIds.push(id);
         }
     }
 
-    if (fileIds.length < 500) {
-        console.warn(`Warning: expected 500 rows in CSV, found ${fileIds.length}.`);
+    if (fileIds.length === 0) {
+        throw new Error(`No valid file_id entries found in ${EVALUATION_SAMPLE_CSV}`);
     }
 
+    const splitIndex = Math.ceil(fileIds.length / 2);
+
     return {
-        nusrat: fileIds.slice(0, 250),
-        marzan: fileIds.slice(250, 500)
+        nusrat: fileIds.slice(0, splitIndex),
+        marzan: fileIds.slice(splitIndex)
     };
 }
 
