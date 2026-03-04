@@ -464,6 +464,38 @@ app.post('/api/annotation', requireAuth, (req, res) => {
     }
 });
 
+// Get saved annotation by split folder and clip
+app.get('/api/annotation', requireAuth, (req, res) => {
+    const splitFolder = normalizePath(decodeURIComponent(req.query.splitFolder || ''));
+    const clipId = decodeURIComponent(req.query.clipId || '');
+
+    if (!splitFolder || !clipId) {
+        return res.status(400).json({ error: 'splitFolder and clipId are required' });
+    }
+
+    if (!SPLIT_FOLDERS.includes(splitFolder)) {
+        return res.status(400).json({ error: 'Invalid splitFolder' });
+    }
+
+    if (!manifestSetByFolder[splitFolder].has(clipId)) {
+        return res.status(400).json({ error: 'clipId does not belong to this split folder' });
+    }
+
+    try {
+        const annotationPath = path.join(ANNOTATIONS_ROOT, splitFolder, `${clipId}.json`);
+        if (!fs.existsSync(annotationPath)) {
+            return res.json({ saved: false });
+        }
+
+        const content = fs.readFileSync(annotationPath, 'utf8');
+        const annotation = JSON.parse(content);
+        return res.json({ saved: true, annotation });
+    } catch (error) {
+        console.error('Annotation load error:', error);
+        return res.status(500).json({ error: 'Failed to load annotation' });
+    }
+});
+
 // Serve the main HTML page (protected) with no-cache headers
 app.get('/', (req, res) => {
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');

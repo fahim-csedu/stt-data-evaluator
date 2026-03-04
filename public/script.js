@@ -305,6 +305,9 @@ class AudioFileBrowser {
     }
     
     async loadAudioFile(item) {
+        const requestedClipId = item.name;
+        const requestedSplitFolder = item.splitFolder || this.currentPath;
+
         try {
             // Load audio with session ID in query parameter
             this.audioPlayer.src = `/audio/${item.audioFile}?session=${encodeURIComponent(this.sessionId)}`;
@@ -317,6 +320,8 @@ class AudioFileBrowser {
                         'x-session-id': this.sessionId
                     }
                 });
+                if (this.selectedFile?.name !== requestedClipId || (this.selectedFile?.splitFolder || this.currentPath) !== requestedSplitFolder) return;
+
                 if (response.ok) {
                     const transcript = await response.json();
                     this.currentTranscript = transcript;
@@ -331,6 +336,9 @@ class AudioFileBrowser {
             } else {
                 this.transcriptContent.textContent = 'No transcript file found';
             }
+
+            if (this.selectedFile?.name !== requestedClipId || (this.selectedFile?.splitFolder || this.currentPath) !== requestedSplitFolder) return;
+            await this.loadSavedAnnotation(requestedSplitFolder, requestedClipId);
             
         } catch (error) {
             console.error('Error loading audio file:', error);
@@ -408,6 +416,65 @@ class AudioFileBrowser {
             const activeEl = this.transcriptSegments[newIndex].element;
             activeEl.classList.add('active');
             activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    setRadioValue(name, value) {
+        if (!value) return;
+        const safeValue = String(value).trim();
+        if (!safeValue) return;
+
+        const radios = document.querySelectorAll(`input[name="${name}"]`);
+        radios.forEach(radio => {
+            radio.checked = radio.value === safeValue;
+        });
+    }
+
+    applySavedAnnotation(annotation) {
+        const evaluation = annotation?.evaluation || {};
+
+        this.clearAnnotationSilent();
+        this.setRadioValue('correct', evaluation.correct);
+        this.setRadioValue('wordMissing', evaluation.wordMissing);
+        this.setRadioValue('spellingMistake', evaluation.spellingMistake);
+        this.setRadioValue('languageContent', evaluation.languageContent);
+        this.setRadioValue('timeAlignmentIssue', evaluation.timeAlignmentIssue);
+        this.setRadioValue('wordAccuracy', evaluation.wordAccuracy);
+        this.setRadioValue('grammarSyntax', evaluation.grammarSyntax);
+        this.setRadioValue('properNounRecognition', evaluation.properNounRecognition);
+        this.setRadioValue('punctuationFormatting', evaluation.punctuationFormatting);
+        this.setRadioValue('audioQuality', evaluation.audioQuality);
+        this.evaluationNotes.value = evaluation.notes || '';
+    }
+
+    async loadSavedAnnotation(splitFolder, clipId) {
+        try {
+            const response = await fetch(`/api/annotation?splitFolder=${encodeURIComponent(splitFolder)}&clipId=${encodeURIComponent(clipId)}`, {
+                headers: {
+                    'x-session-id': this.sessionId
+                }
+            });
+
+            if (this.selectedFile?.name !== clipId || (this.selectedFile?.splitFolder || this.currentPath) !== splitFolder) return;
+
+            if (!response.ok) {
+                if (response.status === 401) {
+                    this.handleAuthError();
+                    return;
+                }
+                return;
+            }
+
+            const data = await response.json();
+            if (!data.saved || !data.annotation) {
+                return;
+            }
+
+            if (this.selectedFile?.name !== clipId || (this.selectedFile?.splitFolder || this.currentPath) !== splitFolder) return;
+            this.applySavedAnnotation(data.annotation);
+            this.markSelectedAsSaved();
+        } catch (error) {
+            console.error('Failed to load saved annotation:', error);
         }
     }
     
