@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSEDU STT Eval</title>
-    <link rel="stylesheet" href="/static/style.css?v=1.1">
+    <title>CSEDU STT Audit</title>
+    <link rel="stylesheet" href="/static/style.css?v=2.0">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="header-content">
                 <div class="header-left">
-                    <h1>CSEDU STT Eval</h1>
+                    <h1>CSEDU STT Audit</h1>
                     <div class="breadcrumb" id="breadcrumb"></div>
                 </div>
                 <div class="header-right">
+                    <div class="progress-bar-container" id="progressContainer" style="display:none;">
+                        <span id="progressText" class="progress-text">0 / 0</span>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
                     <span id="userInfo" class="user-info"></span>
                     <button id="logoutBtn" class="logout-btn">Logout</button>
                 </div>
@@ -35,7 +41,7 @@
                         </div>
                     </div>
                     <div class="navigation-hint" id="navigationHint">
-                        <span class="hint-text">💡 Double-click folders to enter • Single-click audio files to play</span>
+                        <span class="hint-text">Double-click folders to enter. Single-click audio files to play and audit.</span>
                         <button class="hint-close" id="hintClose" title="Dismiss hint">×</button>
                     </div>
                     <div class="file-list" id="fileList">
@@ -52,137 +58,96 @@
                             Your browser does not support the audio element.
                         </audio>
                     </div>
+
+                    <!-- Metrics panel -->
+                    <div class="metrics-panel" id="metricsPanel" style="display:none;">
+                        <span class="metric-badge" id="metricWER" title="Word Error Rate">WER: —</span>
+                        <span class="metric-badge" id="metricCER" title="Character Error Rate">CER: —</span>
+                        <span class="metric-badge" id="metricSNR" title="Signal-to-Noise Ratio (dB)">SNR: —</span>
+                        <span class="metric-badge" id="metricSilence" title="Silence Percentage">Silence: —</span>
+                        <span class="metric-badge" id="metricWords" title="Unique Word Count">Words: —</span>
+                    </div>
                     
+                    <!-- Dual transcript -->
                     <div class="transcript-area">
-                        <div class="transcript-header">
-                            <h4>Transcript</h4>
+                        <div class="dual-transcript" id="dualTranscript" style="display:none;">
+                            <div class="transcript-column">
+                                <div class="transcript-col-header">Ground Truth</div>
+                                <div id="transcriptGT" class="transcript-content">—</div>
+                            </div>
+                            <div class="transcript-column">
+                                <div class="transcript-col-header">ElevenLabs STT</div>
+                                <div id="transcriptEL" class="transcript-content">—</div>
+                            </div>
                         </div>
-                        <div id="transcriptContent" class="transcript-content">
-                            Select an audio file to view its transcript
+                        <div id="singleTranscript">
+                            <div class="transcript-header">
+                                <h4>Transcript</h4>
+                            </div>
+                            <div id="transcriptContent" class="transcript-content">
+                                Select an audio file to view its transcript
+                            </div>
                         </div>
                     </div>
                     
+                    <!-- Simplified audit form -->
                     <div class="annotation-area" id="annotationArea" style="display: none;">
                         <div class="annotation-header">
-                            <h4>STT Evaluation</h4>
-                            <button id="clearAnnotationBtn" class="action-btn clear-btn" title="Clear all fields">🗑️ Clear</button>
+                            <h4>Quick Audit</h4>
+                            <button id="clearAnnotationBtn" class="action-btn clear-btn" title="Clear all fields">Clear</button>
                         </div>
                         <div class="annotation-form">
                             <div class="form-section">
-                                <h5>Instructions</h5>
-                                <div class="instructions">
-                                    <p><strong>Evaluation Criteria:</strong></p>
-                                    <ul>
-                                        <li><strong>Yes/No fields:</strong> Mark if the issue is present</li>
-                                        <li><strong>Scoring (0/0.5/1):</strong> 0=Poor, 0.5=Fair, 1=Good</li>
-                                        <li><strong>Language Content:</strong> Mark Yes if >10% foreign language</li>
-                                    </ul>
+                                <div class="audit-group">
+                                    <div class="audit-item">
+                                        <span class="field-label">Overall Sample Quality:</span>
+                                        <div class="radio-group">
+                                            <label><input type="radio" name="overallQuality" value="Good"> Good</label>
+                                            <label><input type="radio" name="overallQuality" value="Acceptable"> Acceptable</label>
+                                            <label><input type="radio" name="overallQuality" value="Poor"> Poor</label>
+                                            <label><input type="radio" name="overallQuality" value="Unusable"> Unusable</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="audit-item">
+                                        <span class="field-label">Transcript Accuracy:</span>
+                                        <div class="radio-group">
+                                            <label><input type="radio" name="transcriptAccuracy" value="Correct"> Correct</label>
+                                            <label><input type="radio" name="transcriptAccuracy" value="Minor Errors"> Minor Errors</label>
+                                            <label><input type="radio" name="transcriptAccuracy" value="Major Errors"> Major Errors</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="audit-item">
+                                        <span class="field-label">Audio Quality:</span>
+                                        <div class="radio-group">
+                                            <label><input type="radio" name="audioQuality" value="Clear"> Clear</label>
+                                            <label><input type="radio" name="audioQuality" value="Noisy"> Noisy</label>
+                                            <label><input type="radio" name="audioQuality" value="Unusable"> Unusable</label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="form-section">
-                                <!-- Yes/No Radio Buttons -->
-                                <div class="yesno-group">
-                                    <div class="yesno-item">
-                                        <span class="field-label">Correct:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="correct" value="Yes"> Yes</label>
-                                            <label><input type="radio" name="correct" value="No"> No</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="yesno-item">
-                                        <span class="field-label">Word Missing:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="wordMissing" value="Yes"> Yes</label>
-                                            <label><input type="radio" name="wordMissing" value="No"> No</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="yesno-item">
-                                        <span class="field-label">Spelling Mistake:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="spellingMistake" value="Yes"> Yes</label>
-                                            <label><input type="radio" name="spellingMistake" value="No"> No</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="yesno-item">
-                                        <span class="field-label">Language Content (>10% foreign):</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="languageContent" value="Yes"> Yes</label>
-                                            <label><input type="radio" name="languageContent" value="No"> No</label>
-                                        </div>
-                                    </div>
 
-                                    <div class="yesno-item">
-                                        <span class="field-label">Time Alignment Issue:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="timeAlignmentIssue" value="Yes"> Yes</label>
-                                            <label><input type="radio" name="timeAlignmentIssue" value="No"> No</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Scoring Fields (0/0.5/1) -->
-                                <div class="scoring-group">
-                                    <div class="scoring-item">
-                                        <span class="field-label">Word Accuracy:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="wordAccuracy" value="0"> 0</label>
-                                            <label><input type="radio" name="wordAccuracy" value="0.5"> 0.5</label>
-                                            <label><input type="radio" name="wordAccuracy" value="1"> 1</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="scoring-item">
-                                        <span class="field-label">Grammar & Syntax:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="grammarSyntax" value="0"> 0</label>
-                                            <label><input type="radio" name="grammarSyntax" value="0.5"> 0.5</label>
-                                            <label><input type="radio" name="grammarSyntax" value="1"> 1</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="scoring-item">
-                                        <span class="field-label">Proper Noun Recognition:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="properNounRecognition" value="0"> 0</label>
-                                            <label><input type="radio" name="properNounRecognition" value="0.5"> 0.5</label>
-                                            <label><input type="radio" name="properNounRecognition" value="1"> 1</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="scoring-item">
-                                        <span class="field-label">Punctuation & Formatting:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="punctuationFormatting" value="0"> 0</label>
-                                            <label><input type="radio" name="punctuationFormatting" value="0.5"> 0.5</label>
-                                            <label><input type="radio" name="punctuationFormatting" value="1"> 1</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Audio Quality (1-5 scale) -->
-                                <div class="audio-quality-group">
-                                    <span class="field-label">Audio Quality:</span>
-                                    <div class="radio-group-vertical">
-                                        <label><input type="radio" name="audioQuality" value="5 – High-quality, Clean Bangla speech"> 5 – High-quality, Clean Bangla speech</label>
-                                        <label><input type="radio" name="audioQuality" value="4– Usable, minor flaws Minor background noise."> 4– Usable, minor flaws Minor background noise.</label>
-                                        <label><input type="radio" name="audioQuality" value="3 – Mixed language or inconsistent quality"> 3 – Mixed language or inconsistent quality</label>
-                                        <label><input type="radio" name="audioQuality" value="2 - Poor quality Noisy, unclear,"> 2 - Poor quality Noisy, unclear,</label>
-                                        <label><input type="radio" name="audioQuality" value="1 - Unusable Severely degraded, or non-Bangla"> 1 - Unusable Severely degraded, or non-Bangla</label>
+                                <div class="issue-flags-group">
+                                    <span class="field-label">Issue Flags (optional):</span>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" name="issueFlags" value="Wrong Language"> Wrong Language</label>
+                                        <label><input type="checkbox" name="issueFlags" value="Missing Words"> Missing Words</label>
+                                        <label><input type="checkbox" name="issueFlags" value="Garbled/Nonsense"> Garbled/Nonsense</label>
+                                        <label><input type="checkbox" name="issueFlags" value="Excessive Silence"> Excessive Silence</label>
+                                        <label><input type="checkbox" name="issueFlags" value="Proper Noun Errors"> Proper Noun Errors</label>
+                                        <label><input type="checkbox" name="issueFlags" value="Punctuation Issues"> Punctuation Issues</label>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="evaluationNotes">Notes:</label>
-                                    <textarea id="evaluationNotes" class="form-textarea" placeholder="Add any specific observations, issues, or comments..."></textarea>
+                                    <label for="evaluationNotes">Notes (optional):</label>
+                                    <textarea id="evaluationNotes" class="form-textarea" placeholder="Any specific observations..."></textarea>
                                 </div>
                                 
                                 <div class="copy-button-container">
-                                    <button id="saveBtn" class="action-btn save-btn" title="Save annotation to split folder">💾 Save Annotation</button>
-                                    <button id="copyBtn" class="action-btn copy-all-btn" title="Copy all data for spreadsheet">📋 Copy All</button>
+                                    <button id="saveBtn" class="action-btn save-btn" title="Save annotation">Save</button>
+                                    <button id="copyBtn" class="action-btn copy-all-btn" title="Copy all data for spreadsheet">Copy TSV</button>
                                 </div>
                             </div>
                         </div>
@@ -192,6 +157,6 @@
         </main>
     </div>
     
-    <script src="/static/script.js?v=1.1"></script>
+    <script src="/static/script.js?v=2.0"></script>
 </body>
 </html>

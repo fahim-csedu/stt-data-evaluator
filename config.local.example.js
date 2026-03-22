@@ -13,7 +13,13 @@ const config = {
     SESSION_TIMEOUT: 24 * 60 * 60 * 1000, // 24 hours
 
     // Enable debug logging for local development
-    DEBUG: true
+    DEBUG: true,
+
+    // Annotator split CSVs: maps virtual folder name -> CSV file path
+    SPLIT_CSVS: {
+        'annotator1': 'split_annotator1.csv',
+        'annotator2': 'split_annotator2.csv',
+    },
 };
 
 module.exports = config;
