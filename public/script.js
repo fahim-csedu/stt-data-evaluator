@@ -95,6 +95,15 @@ class AudioFileBrowser {
         document.querySelectorAll('input[name="gtCorrect"], input[name="elCorrect"]').forEach(radio => {
             radio.addEventListener('change', () => this.updateCorrectedTranscriptVisibility());
         });
+
+        document.querySelectorAll('.speed-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const speed = parseFloat(btn.dataset.speed);
+                this.audioPlayer.playbackRate = speed;
+                document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
         
         document.addEventListener('keydown', (e) => {
             const isTyping = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable;
