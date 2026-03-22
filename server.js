@@ -133,6 +133,7 @@ function resolveAudioPathFromRequest(requestPath) {
 
     if (path.extname(leafName)) {
         const directPath = path.resolve(BASE_DIR, leafName);
+        if (DEBUG) console.log(`Audio resolve: "${requestPath}" -> "${directPath}" exists=${fs.existsSync(directPath)}`);
         if (fs.existsSync(directPath)) return directPath;
         return null;
     }
@@ -141,6 +142,7 @@ function resolveAudioPathFromRequest(requestPath) {
         const candidate = path.resolve(BASE_DIR, `${leafName}${ext}`);
         if (fs.existsSync(candidate)) return candidate;
     }
+    if (DEBUG) console.log(`Audio resolve: "${requestPath}" -> no match in ${BASE_DIR}`);
     return null;
 }
 
@@ -503,7 +505,13 @@ app.get('/login.html', (req, res) => {
 });
 
 app.listen(PORT, () => {
+    const resolvedBase = path.resolve(BASE_DIR);
     console.log(`Audio file server running at http://localhost:${PORT}`);
-    console.log(`Serving files from: ${BASE_DIR}`);
+    console.log(`Serving files from: ${BASE_DIR} (resolved: ${resolvedBase})`);
+    console.log(`  BASE_DIR exists: ${fs.existsSync(resolvedBase)}`);
+    if (fs.existsSync(resolvedBase)) {
+        const sample = fs.readdirSync(resolvedBase).slice(0, 3);
+        console.log(`  Sample files: ${sample.join(', ')}`);
+    }
     console.log(`Splits: ${splitFolders.join(', ')}`);
 });
