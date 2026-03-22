@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <link rel="stylesheet" href="/static/style.css?v=4.0">
 </head>
 <body>
     <div class="container">
@@ -145,15 +145,31 @@
                                     </div>
                                 </div>
 
-                                <div class="issue-flags-group">
-                                    <span class="field-label">Issue Flags (optional):</span>
-                                    <div class="checkbox-group">
-                                        <label><input type="checkbox" name="issueFlags" value="Wrong Language"> Wrong Language</label>
-                                        <label><input type="checkbox" name="issueFlags" value="Missing Words"> Missing Words</label>
-                                        <label><input type="checkbox" name="issueFlags" value="Garbled/Nonsense"> Garbled/Nonsense</label>
-                                        <label><input type="checkbox" name="issueFlags" value="Excessive Silence"> Excessive Silence</label>
-                                        <label><input type="checkbox" name="issueFlags" value="Proper Noun Errors"> Proper Noun Errors</label>
-                                        <label><input type="checkbox" name="issueFlags" value="Punctuation Issues"> Punctuation Issues</label>
+                                <div class="issue-flags-section">
+                                    <div class="flags-group-card flags-audio">
+                                        <div class="flags-group-title">Audio Issues</div>
+                                        <div class="checkbox-group">
+                                            <label><input type="checkbox" name="audioFlags" value="Audio Cutoff"> Audio Cutoff</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Background Music/TV"> Background Music/TV</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Overlapping Speakers"> Overlapping Speakers</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Clipping/Distortion"> Clipping/Distortion</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Unintelligible Speech"> Unintelligible Speech</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Echo/Reverb"> Echo/Reverb</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Excessive Silence"> Excessive Silence</label>
+                                            <label><input type="checkbox" name="audioFlags" value="Wrong Language"> Wrong Language</label>
+                                        </div>
+                                    </div>
+                                    <div class="flags-group-card flags-transcript">
+                                        <div class="flags-group-title">Transcript Issues</div>
+                                        <div class="checkbox-group">
+                                            <label><input type="checkbox" name="transcriptFlags" value="Missing Words"> Missing Words</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Extra/Hallucinated Words"> Extra/Hallucinated Words</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Repeated/Duplicated Text"> Repeated/Duplicated Text</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Garbled/Nonsense"> Garbled/Nonsense</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Proper Noun Errors"> Proper Noun Errors</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Punctuation Issues"> Punctuation Issues</label>
+                                            <label><input type="checkbox" name="transcriptFlags" value="Code-Switching"> Code-Switching</label>
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -179,6 +195,17 @@
                                     </div>
                                 </div>
 
+                                <div class="incorrect-words-row">
+                                    <div class="form-group">
+                                        <label for="extraWordsGT">Extra/Hallucinated in Ground Truth:</label>
+                                        <textarea id="extraWordsGT" class="form-textarea" placeholder="Words in GT transcript but not spoken in audio..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="extraWordsEL">Extra/Hallucinated in ElevenLabs:</label>
+                                        <textarea id="extraWordsEL" class="form-textarea" placeholder="Words in EL transcript but not spoken in audio..."></textarea>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="evaluationNotes">Notes (optional):</label>
                                     <textarea id="evaluationNotes" class="form-textarea" placeholder="Any specific observations..."></textarea>
@@ -196,6 +223,6 @@
         </main>
     </div>
     
-    <script src="/static/script.js?v=3.0"></script>
+    <script src="/static/script.js?v=4.0"></script>
 </body>
 </html>
