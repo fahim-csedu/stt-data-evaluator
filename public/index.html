@@ -72,12 +72,12 @@
                     <div class="transcript-area">
                         <div class="dual-transcript" id="dualTranscript" style="display:none;">
                             <div class="transcript-column">
-                                <div class="transcript-col-header">Ground Truth</div>
-                                <div id="transcriptGT" class="transcript-content">—</div>
+                                <div class="transcript-col-header">Ground Truth <span class="click-hint">(click words to mark incorrect)</span></div>
+                                <div id="transcriptGT" class="transcript-content transcript-clickable">—</div>
                             </div>
                             <div class="transcript-column">
-                                <div class="transcript-col-header">ElevenLabs STT</div>
-                                <div id="transcriptEL" class="transcript-content">—</div>
+                                <div class="transcript-col-header">ElevenLabs STT <span class="click-hint">(click words to mark incorrect)</span></div>
+                                <div id="transcriptEL" class="transcript-content transcript-clickable">—</div>
                             </div>
                         </div>
                         <div id="singleTranscript">
@@ -140,6 +140,17 @@
                                     </div>
                                 </div>
                                 
+                                <div class="incorrect-words-row">
+                                    <div class="form-group">
+                                        <label for="incorrectGT">Incorrect in Ground Truth:</label>
+                                        <textarea id="incorrectGT" class="form-textarea" placeholder="Click words above to add, or type manually..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="incorrectEL">Incorrect in ElevenLabs:</label>
+                                        <textarea id="incorrectEL" class="form-textarea" placeholder="Click words above to add, or type manually..."></textarea>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="evaluationNotes">Notes (optional):</label>
                                     <textarea id="evaluationNotes" class="form-textarea" placeholder="Any specific observations..."></textarea>

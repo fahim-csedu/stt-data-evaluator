@@ -67,6 +67,9 @@ class AudioFileBrowser {
         this.progressContainer = document.getElementById('progressContainer');
         this.progressText = document.getElementById('progressText');
         this.progressFill = document.getElementById('progressFill');
+
+        this.incorrectGT = document.getElementById('incorrectGT');
+        this.incorrectEL = document.getElementById('incorrectEL');
     }
     
     bindEvents() {
@@ -412,14 +415,44 @@ class AudioFileBrowser {
         if (meta.transcript || meta.elevenLabs) {
             this.dualTranscript.style.display = 'grid';
             this.singleTranscript.style.display = 'none';
-            this.transcriptGT.textContent = meta.transcript || '(empty)';
-            this.transcriptEL.textContent = meta.elevenLabs || '(empty)';
+            this.renderClickableWords(this.transcriptGT, meta.transcript || '', this.incorrectGT);
+            this.renderClickableWords(this.transcriptEL, meta.elevenLabs || '', this.incorrectEL);
             this.currentTranscript = { text: meta.transcript };
         } else {
             this.dualTranscript.style.display = 'none';
             this.singleTranscript.style.display = 'block';
             this.transcriptContent.textContent = 'No transcript available';
         }
+    }
+
+    renderClickableWords(container, text, targetTextarea) {
+        container.innerHTML = '';
+        if (!text) { container.textContent = '(empty)'; return; }
+
+        const words = text.split(/(\s+)/);
+        words.forEach(token => {
+            if (/^\s+$/.test(token)) {
+                container.appendChild(document.createTextNode(token));
+                return;
+            }
+            const span = document.createElement('span');
+            span.className = 'clickable-word';
+            span.textContent = token;
+            span.addEventListener('click', () => {
+                span.classList.toggle('word-marked');
+                if (span.classList.contains('word-marked')) {
+                    const current = targetTextarea.value.trim();
+                    targetTextarea.value = current ? current + ', ' + token : token;
+                } else {
+                    const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    targetTextarea.value = targetTextarea.value
+                        .replace(new RegExp(',?\\s*' + escaped), '')
+                        .replace(/^,\s*/, '')
+                        .trim();
+                }
+            });
+            container.appendChild(span);
+        });
     }
     
     displayTranscript(transcript) {
@@ -499,11 +532,12 @@ class AudioFileBrowser {
         this.clearAnnotationSilent();
 
         if (evaluation.overallQuality !== undefined) {
-            // New simplified format
             this.setRadioValue('overallQuality', evaluation.overallQuality);
             this.setRadioValue('transcriptAccuracy', evaluation.transcriptAccuracy);
             this.setRadioValue('audioQuality', evaluation.audioQuality);
             this.setCheckboxValues('issueFlags', evaluation.issueFlags);
+            this.incorrectGT.value = evaluation.incorrectGT || '';
+            this.incorrectEL.value = evaluation.incorrectEL || '';
             this.evaluationNotes.value = evaluation.notes || '';
         } else {
             // Legacy format – map old fields to new ones as best we can
@@ -626,6 +660,8 @@ class AudioFileBrowser {
                 transcriptAccuracy: document.querySelector('input[name="transcriptAccuracy"]:checked')?.value || '',
                 audioQuality: document.querySelector('input[name="audioQuality"]:checked')?.value || '',
                 issueFlags,
+                incorrectGT: this.incorrectGT.value || '',
+                incorrectEL: this.incorrectEL.value || '',
                 notes: this.evaluationNotes.value || ''
             }
         };
@@ -709,7 +745,6 @@ class AudioFileBrowser {
             const meta = this.currentMeta || {};
             const flags = (ad.evaluation.issueFlags || []).join('; ');
 
-            // TSV: filename, WER, CER, overallQuality, transcriptAccuracy, audioQuality, issueFlags, notes
             const tsvData = [
                 absolutePath,
                 meta.wer !== undefined ? meta.wer.toFixed(4) : '',
@@ -718,6 +753,8 @@ class AudioFileBrowser {
                 ad.evaluation.transcriptAccuracy,
                 ad.evaluation.audioQuality,
                 flags,
+                ad.evaluation.incorrectGT,
+                ad.evaluation.incorrectEL,
                 ad.evaluation.notes
             ].join('\t');
             
@@ -779,7 +816,10 @@ class AudioFileBrowser {
         document.querySelectorAll('input[name="transcriptAccuracy"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="audioQuality"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="issueFlags"]').forEach(cb => cb.checked = false);
+        this.incorrectGT.value = '';
+        this.incorrectEL.value = '';
         this.evaluationNotes.value = '';
+        document.querySelectorAll('.clickable-word.word-marked').forEach(el => el.classList.remove('word-marked'));
     }
     
     async copyFilename(item, buttonElement) {

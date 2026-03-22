@@ -156,15 +156,8 @@ function resolveTranscriptPathFromRequest(requestPath) {
 // ── Auth ─────────────────────────────────────────────────────────────────────
 
 const DEMO_ACCOUNTS = {
-    'mehadi': 'Kx9#mP2vL8qR',
-    'annoor': 'Zt4$nW7jF3xY',
-    'lina': 'Bv6&hQ9sM1kE',
-    'rar': 'Gp3*rT8cN5wA',
-    'dipto': 'Jm7@uV2bX4zD',
-    'sta': 'Qw5!yH8fK9pL',
-    'mrk': 'Cx2%eR6gJ7nM',
-    'fa': 'Fs4^iO1tY3vB',
-    'demo': 'Nz8&aU5hW2qS'
+    'Annotator1': 'pass1',
+    'Annotator2': 'pass2',
 };
 
 const sessions = new Map();
