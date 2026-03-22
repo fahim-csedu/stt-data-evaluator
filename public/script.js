@@ -70,6 +70,9 @@ class AudioFileBrowser {
 
         this.incorrectGT = document.getElementById('incorrectGT');
         this.incorrectEL = document.getElementById('incorrectEL');
+
+        this.correctedTranscriptGroup = document.getElementById('correctedTranscriptGroup');
+        this.correctedTranscript = document.getElementById('correctedTranscript');
     }
     
     bindEvents() {
@@ -84,6 +87,10 @@ class AudioFileBrowser {
         this.audioPlayer.addEventListener('timeupdate', () => this.updateTranscriptHighlight());
         this.audioPlayer.addEventListener('seeked', () => this.updateTranscriptHighlight());
         this.audioPlayer.addEventListener('loadedmetadata', () => this.updateTranscriptHighlight());
+
+        document.querySelectorAll('input[name="gtCorrect"], input[name="elCorrect"]').forEach(radio => {
+            radio.addEventListener('change', () => this.updateCorrectedTranscriptVisibility());
+        });
         
         document.addEventListener('keydown', (e) => {
             const isTyping = e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable;
@@ -511,6 +518,13 @@ class AudioFileBrowser {
 
     // ── Annotation form helpers ──────────────────────────────────────────────
 
+    updateCorrectedTranscriptVisibility() {
+        const gtVal = document.querySelector('input[name="gtCorrect"]:checked')?.value;
+        const elVal = document.querySelector('input[name="elCorrect"]:checked')?.value;
+        const bothIncorrect = gtVal === 'No' && elVal === 'No';
+        this.correctedTranscriptGroup.classList.toggle('visible', bothIncorrect);
+    }
+
     setRadioValue(name, value) {
         if (!value) return;
         const safeValue = String(value).trim();
@@ -539,8 +553,11 @@ class AudioFileBrowser {
             this.incorrectGT.value = evaluation.incorrectGT || '';
             this.incorrectEL.value = evaluation.incorrectEL || '';
             this.evaluationNotes.value = evaluation.notes || '';
+            this.setRadioValue('gtCorrect', evaluation.gtCorrect);
+            this.setRadioValue('elCorrect', evaluation.elCorrect);
+            this.correctedTranscript.value = evaluation.correctedTranscript || '';
+            this.updateCorrectedTranscriptVisibility();
         } else {
-            // Legacy format – map old fields to new ones as best we can
             if (evaluation.correct === 'Yes') this.setRadioValue('overallQuality', 'Good');
             else if (evaluation.correct === 'No') this.setRadioValue('overallQuality', 'Poor');
             this.evaluationNotes.value = evaluation.notes || '';
@@ -659,6 +676,9 @@ class AudioFileBrowser {
                 overallQuality: document.querySelector('input[name="overallQuality"]:checked')?.value || '',
                 transcriptAccuracy: document.querySelector('input[name="transcriptAccuracy"]:checked')?.value || '',
                 audioQuality: document.querySelector('input[name="audioQuality"]:checked')?.value || '',
+                gtCorrect: document.querySelector('input[name="gtCorrect"]:checked')?.value || '',
+                elCorrect: document.querySelector('input[name="elCorrect"]:checked')?.value || '',
+                correctedTranscript: this.correctedTranscript.value || '',
                 issueFlags,
                 incorrectGT: this.incorrectGT.value || '',
                 incorrectEL: this.incorrectEL.value || '',
@@ -752,6 +772,9 @@ class AudioFileBrowser {
                 ad.evaluation.overallQuality,
                 ad.evaluation.transcriptAccuracy,
                 ad.evaluation.audioQuality,
+                ad.evaluation.gtCorrect,
+                ad.evaluation.elCorrect,
+                ad.evaluation.correctedTranscript,
                 flags,
                 ad.evaluation.incorrectGT,
                 ad.evaluation.incorrectEL,
@@ -815,10 +838,14 @@ class AudioFileBrowser {
         document.querySelectorAll('input[name="overallQuality"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="transcriptAccuracy"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="audioQuality"]').forEach(r => r.checked = false);
+        document.querySelectorAll('input[name="gtCorrect"]').forEach(r => r.checked = false);
+        document.querySelectorAll('input[name="elCorrect"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="issueFlags"]').forEach(cb => cb.checked = false);
         this.incorrectGT.value = '';
         this.incorrectEL.value = '';
         this.evaluationNotes.value = '';
+        this.correctedTranscript.value = '';
+        this.correctedTranscriptGroup.classList.remove('visible');
         document.querySelectorAll('.clickable-word.word-marked').forEach(el => el.classList.remove('word-marked'));
     }
     

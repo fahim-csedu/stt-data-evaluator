@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSEDU STT Audit</title>
-    <link rel="stylesheet" href="/static/style.css?v=2.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
 </head>
 <body>
     <div class="container">
@@ -21,6 +24,7 @@
                             <div class="progress-fill" id="progressFill"></div>
                         </div>
                     </div>
+                    <a href="/help.html" class="help-link" title="How to use this tool">? Help</a>
                     <span id="userInfo" class="user-info"></span>
                     <button id="logoutBtn" class="logout-btn">Logout</button>
                 </div>
@@ -90,7 +94,7 @@
                         </div>
                     </div>
                     
-                    <!-- Simplified audit form -->
+                    <!-- Audit form -->
                     <div class="annotation-area" id="annotationArea" style="display: none;">
                         <div class="annotation-header">
                             <h4>Quick Audit</h4>
@@ -125,6 +129,29 @@
                                             <label><input type="radio" name="audioQuality" value="Noisy"> Noisy</label>
                                             <label><input type="radio" name="audioQuality" value="Unusable"> Unusable</label>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <!-- Transcript Correctness -->
+                                <div class="transcript-correctness-group">
+                                    <div class="correctness-section-title">Transcript Correctness</div>
+                                    <div class="correctness-item">
+                                        <span class="field-label">Ground Truth correct?</span>
+                                        <div class="radio-group">
+                                            <label><input type="radio" name="gtCorrect" value="Yes"> Yes</label>
+                                            <label><input type="radio" name="gtCorrect" value="No"> No</label>
+                                        </div>
+                                    </div>
+                                    <div class="correctness-item">
+                                        <span class="field-label">ElevenLabs STT correct?</span>
+                                        <div class="radio-group">
+                                            <label><input type="radio" name="elCorrect" value="Yes"> Yes</label>
+                                            <label><input type="radio" name="elCorrect" value="No"> No</label>
+                                        </div>
+                                    </div>
+                                    <div class="corrected-transcript-group" id="correctedTranscriptGroup">
+                                        <label for="correctedTranscript">Both transcripts are incorrect — please write the correct transcript:</label>
+                                        <textarea id="correctedTranscript" placeholder="Type the correct transcript after listening to the audio..."></textarea>
                                     </div>
                                 </div>
 
@@ -168,6 +195,6 @@
         </main>
     </div>
     
-    <script src="/static/script.js?v=2.0"></script>
+    <script src="/static/script.js?v=3.0"></script>
 </body>
 </html>

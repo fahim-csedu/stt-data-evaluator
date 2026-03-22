@@ -504,6 +504,13 @@ app.get('/login.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
+app.get('/help.html', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.sendFile(path.join(__dirname, 'public', 'help.html'));
+});
+
 app.listen(PORT, () => {
     const resolvedBase = path.resolve(BASE_DIR);
     console.log(`Audio file server running at http://localhost:${PORT}`);
