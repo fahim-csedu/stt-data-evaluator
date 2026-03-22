@@ -104,16 +104,6 @@
                             <div class="form-section">
                                 <div class="audit-group">
                                     <div class="audit-item">
-                                        <span class="field-label">Overall Sample Quality:</span>
-                                        <div class="radio-group">
-                                            <label><input type="radio" name="overallQuality" value="Good"> Good</label>
-                                            <label><input type="radio" name="overallQuality" value="Acceptable"> Acceptable</label>
-                                            <label><input type="radio" name="overallQuality" value="Poor"> Poor</label>
-                                            <label><input type="radio" name="overallQuality" value="Unusable"> Unusable</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="audit-item">
                                         <span class="field-label">Transcript Accuracy:</span>
                                         <div class="radio-group">
                                             <label><input type="radio" name="transcriptAccuracy" value="Correct"> Correct</label>
@@ -175,6 +165,17 @@
                                     <div class="form-group">
                                         <label for="incorrectEL">Incorrect in ElevenLabs:</label>
                                         <textarea id="incorrectEL" class="form-textarea" placeholder="Click words above to add, or type manually..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="incorrect-words-row">
+                                    <div class="form-group">
+                                        <label for="missingWordsGT">Missing Words in Ground Truth:</label>
+                                        <textarea id="missingWordsGT" class="form-textarea" placeholder="Words spoken in audio but missing from GT..."></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="missingWordsEL">Missing Words in ElevenLabs:</label>
+                                        <textarea id="missingWordsEL" class="form-textarea" placeholder="Words spoken in audio but missing from EL..."></textarea>
                                     </div>
                                 </div>
 

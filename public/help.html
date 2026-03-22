@@ -270,17 +270,6 @@
         <div class="section">
             <h2><span class="icon">📝</span> Filling the Audit Form</h2>
 
-            <h3>Overall Sample Quality</h3>
-            <table>
-                <thead><tr><th>Rating</th><th>When to use</th></tr></thead>
-                <tbody>
-                    <tr><td><span class="badge badge-green">Good</span></td><td>Audio is clear, transcript is accurate, sample is suitable for training.</td></tr>
-                    <tr><td><span class="badge badge-blue">Acceptable</span></td><td>Minor issues that do not significantly impact usability.</td></tr>
-                    <tr><td><span class="badge badge-yellow">Poor</span></td><td>Noticeable problems — noisy audio, multiple transcript errors, etc.</td></tr>
-                    <tr><td><span class="badge badge-red">Unusable</span></td><td>Should be discarded — wrong language, corrupt audio, completely wrong transcript.</td></tr>
-                </tbody>
-            </table>
-
             <h3>Transcript Accuracy</h3>
             <table>
                 <thead><tr><th>Rating</th><th>When to use</th></tr></thead>
@@ -324,6 +313,12 @@
 
             <h3>Incorrect Words</h3>
             <p>Either click words in the transcript to mark them, or type them manually into the two "Incorrect in …" fields. Separate multiple words with commas.</p>
+
+            <h3>Missing Words</h3>
+            <p>Use the dedicated <strong>"Missing Words in Ground Truth"</strong> and <strong>"Missing Words in ElevenLabs"</strong> fields to record words that are clearly spoken in the audio but absent from the respective transcript. This is stored separately from incorrect words to make analysis easier later.</p>
+            <div class="tip">
+                <strong>Tip:</strong> Listen to the audio while reading each transcript. If you hear a word that isn't in the transcript at all, note it in the missing words field for that transcript.
+            </div>
 
             <h3>Notes</h3>
             <p>Use this for anything else worth mentioning — specific observations, edge cases, or reasons for your ratings.</p>
@@ -373,7 +368,7 @@
             <h2><span class="icon">❓</span> FAQ</h2>
 
             <h3>What if I can't understand the audio at all?</h3>
-            <p>Mark Audio Quality as <span class="badge badge-red">Unusable</span> and Overall Quality as <span class="badge badge-red">Unusable</span>. Add a note explaining why (e.g., "too much static", "speaker is inaudible").</p>
+            <p>Mark Audio Quality as <span class="badge badge-red">Unusable</span> and Transcript Accuracy as <span class="badge badge-red">Major Errors</span>. Add a note explaining why (e.g., "too much static", "speaker is inaudible").</p>
 
             <h3>What if the Ground Truth and ElevenLabs transcripts are different but both seem correct?</h3>
             <p>This can happen with minor variations (e.g., numbers as words vs. digits). Mark both as correct and note the difference in the Notes field.</p>
